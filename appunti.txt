@@ -1,0 +1,67 @@
+http://www.dvlup.com/Challenge/346
+
+The Nokia MixRadio API give you access to millions of music tracks. In this challenge you will create a ‘name that tune’ style game, which will keep any user guessing for ages.
+
+The game must include the following features:
+
+The ability to select a genre of music the user wishes to play against.
+Play a short sound bite of a few second from a song and enable the user to offer a guess as to the song’s artist or title or both. The mechanism for guessing must include the option to use voice to name the artist and title as required.
+Provide a scoring mechanism and score history by genre with the ability to clear the score history.
+When the user chooses to end the game, display a simple attribution and link to the Nokia MixRadio app.
+Include at least one background image captured or created by you.
+Include an about screen describing the game and its features as well as a feedback mechanism.
+In addition, as other developers will be taking this challenge, consider how to incorporate unique or differentiating features in your game so it stands out from the crowd in the app store.
+
+Your game must make use of Nokia MixRadio APIs and it must work on Windows Phone 8
+
+In addition to the specific challenge features, your game must:
+
+Employ Fast App Switching.
+Include all three sizes of Live Tiles.
+Include a Primary or Secondary Live Tile, which must flip; cycle; animate; count; or update in any manner with data; images; or text. The tile animation must start as soon as the tile is pinned and any secondary tile must be available from the main Application Bar.
+Follow the Windows Phone Design Language.
+Support ALL Windows Phone 8 screen resolutions.
+Your game should be made available only in those countries that offer the Nokia Music service. At the time of writing the countries supporting Nokia Music are: 
+
+Australia
+Austria
+Brazil
+Canada
+China
+Finland
+France
+Germany
+India
+Indonesia
+Ireland
+Italy
+Malaysia
+Mexico
+Netherlands
+Norway
+Poland
+Portugal
+Russia
+Saudi Arabia
+Singapore
+South Africa
+Spain
+Sweden
+Switzerland
+Thailand
+Turkey
+UAE
+UK
+USA
+Vietnam
+You can earn XP for one game only in this challenge, once you have earned XP you’ll no longer be able to submit games to this challenge.
+
+Games submitted to this challenge must be first published on the Windows Phone Store after the Challenge’s start date but before the Challenge’s end date. The game must be new and not previously published in a similar form.
+
+Games submitted to this challenge must include an English language localization and be available in the US store.
+
+Games submitted to this challenge and awarded XP will not be accepted for any other App or Game challenge, but may be resubmitted for Update and Quality challenges.
+
+Games submitted to this challenge must be your original work. If you incorporate other software to create your games, you must comply with the terms and conditions applying to the use of that other software.
+
+Please remember to allow time for your games to be published in Windows Phone Store and show on DVLUP.com. You are responsible for ensuring that your games are submitted on time. There will be no time extension to this challenge.
