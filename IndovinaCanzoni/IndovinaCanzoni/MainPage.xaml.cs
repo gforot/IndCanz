@@ -9,6 +9,10 @@ using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using IndovinaCanzoni.Resources;
 using Nokia.Music.Tasks;
+using Nokia.Music;
+using IndovinaCanzoni.Utils;
+using Nokia.Music.Types;
+using System.Globalization;
 
 namespace IndovinaCanzoni
 {
@@ -23,10 +27,35 @@ namespace IndovinaCanzoni
             //BuildLocalizedApplicationBar();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private async void Button_Click(object sender, RoutedEventArgs e)
         {
-            LaunchTask task = new LaunchTask();
-            task.Show();
+            //LaunchTask task = new LaunchTask();
+            //task.Show();
+            //MusicClient client = new MusicClient(Constants.ClientId, "it","it");
+            MusicClient client = new MusicClient(Constants.ClientId);
+            ListResponse<MusicItem> result = await client.SearchAsync("love");
+            int count = -100;
+            if (result.Result != null) 
+            {
+                count = result.Result.Count;
+            }
+            result = await client.SearchAsync("Green Day");
+            if (result.Result != null)
+            {
+                count = result.Result.Count;
+            }
+            result = await client.SearchAsync("Ligabue");
+            if (result.Result != null)
+            {
+                count = result.Result.Count;
+            }
+            result = await client.SearchAsync("U2");
+            if (result.Result != null)
+            {
+                count = result.Result.Count;
+            }
+
+            var artists = await client.GetTopArtistsAsync();
         }
 
         // Sample code for building a localized ApplicationBar
