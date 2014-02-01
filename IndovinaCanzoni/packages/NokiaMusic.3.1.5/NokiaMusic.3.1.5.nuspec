@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>NokiaMusic</id>
+    <version>3.1.5</version>
+    <title>Nokia MixRadio</title>
+    <authors>MixRadio team</authors>
+    <owners>MixRadio team</owners>
+    <licenseUrl>https://raw.github.com/mixradio/wp-api-client/master/LICENSE.txt</licenseUrl>
+    <projectUrl>https://github.com/mixradio/wp-api-client</projectUrl>
+    <iconUrl>http://dev.mixrad.io/assets/icon.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>The Nokia MixRadio SDK (formally Nokia Music SDK) lets you easily integrate your Windows Phone or Windows 8 applicaton with Nokia MixRadio. The SDK offers two levels of integration; the simplest and quickest to get going is to use the high-level Launcher Tasks, with more advanced integration available to perform searches and get recommendations within your app.</description>
+    <summary>The Nokia MixRadio SDK (formally Nokia Music SDK) lets you easily integrate your Windows Phone or Windows 8 applicaton with Nokia MixRadio.</summary>
+    <releaseNotes />
+    <copyright>Copyright (c) 2012-2013, Nokia</copyright>
+    <language>en-US</language>
+    <tags>Nokia Music NokiaMusic MixRadio Mix Radio WindowsPhone wp8 windows8 pcl</tags>
+    <dependencies>
+      <group>
+        <dependency id="Newtonsoft.Json" version="5.0.6" />
+      </group>
+      <group targetFramework="WindowsPhone8.0">
+        <dependency id="SharpGIS.GZipWebClient" version="1.4.0.0" />
+        <dependency id="Newtonsoft.Json" version="5.0.6" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>
