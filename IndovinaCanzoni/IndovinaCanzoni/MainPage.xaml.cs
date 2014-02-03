@@ -32,7 +32,11 @@ namespace IndovinaCanzoni
             //LaunchTask task = new LaunchTask();
             //task.Show();
             //MusicClient client = new MusicClient(Constants.ClientId, "it","it");
-            MusicClient client = new MusicClient(Constants.ClientId);
+            CountryResolver resolver = new CountryResolver(Constants.ClientId);
+            bool available = await resolver.CheckAvailabilityAsync(RegionInfo.CurrentRegion.TwoLetterISORegionName.ToLower());
+
+            MusicClient client = new MusicClient(Constants.ClientId, );
+            AuthResultCode r = await client.AuthenticateUserAsync(Constants.ClientSecret);
             ListResponse<MusicItem> result = await client.SearchAsync("love");
             int count = -100;
             if (result.Result != null) 
