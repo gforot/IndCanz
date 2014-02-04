@@ -148,6 +148,11 @@
     </Content>
     <Content Include="docs\images.txt" />
     <Content Include="docs\todo.txt" />
+    <Content Include="icons\tiles\100x100.png" />
+    <Content Include="icons\tiles\110x110.png" />
+    <Content Include="icons\tiles\159x159.png" />
+    <Content Include="icons\tiles\202x202.png" />
+    <Content Include="icons\tiles\336x336.png" />
     <Content Include="README_FIRST.txt" />
     <Content Include="Toolkit.Content\ApplicationBar.Add.png" />
     <Content Include="Toolkit.Content\ApplicationBar.Cancel.png" />
