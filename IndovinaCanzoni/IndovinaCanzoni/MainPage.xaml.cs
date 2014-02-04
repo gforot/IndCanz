@@ -13,54 +13,89 @@ using Nokia.Music;
 using IndovinaCanzoni.Utils;
 using Nokia.Music.Types;
 using System.Globalization;
+using IndovinaCanzoni.ViewModel;
 
 namespace IndovinaCanzoni
 {
     public partial class MainPage : PhoneApplicationPage
     {
+        MainViewModel _vm;
+
         // Constructor
         public MainPage()
         {
             InitializeComponent();
 
+            _vm = new MainViewModel();
+            DataContext = _vm;
+
             // Sample code to localize the ApplicationBar
             //BuildLocalizedApplicationBar();
+
+            CreateTiles();
+
+            FeedbackOverlay.VisibilityChanged += FeedbackOverlay_VisibilityChanged;
         }
 
-        private async void Button_Click(object sender, RoutedEventArgs e)
+        private void FeedbackOverlay_VisibilityChanged(object sender, EventArgs e)
         {
-            //LaunchTask task = new LaunchTask();
-            //task.Show();
-            //MusicClient client = new MusicClient(Constants.ClientId, "it","it");
-            CountryResolver resolver = new CountryResolver(Constants.ClientId);
-            bool available = await resolver.CheckAvailabilityAsync(RegionInfo.CurrentRegion.TwoLetterISORegionName.ToLower());
-
-            MusicClient client = new MusicClient(Constants.ClientId, );
-            AuthResultCode r = await client.AuthenticateUserAsync(Constants.ClientSecret);
-            ListResponse<MusicItem> result = await client.SearchAsync("love");
-            int count = -100;
-            if (result.Result != null) 
-            {
-                count = result.Result.Count;
-            }
-            result = await client.SearchAsync("Green Day");
-            if (result.Result != null)
-            {
-                count = result.Result.Count;
-            }
-            result = await client.SearchAsync("Ligabue");
-            if (result.Result != null)
-            {
-                count = result.Result.Count;
-            }
-            result = await client.SearchAsync("U2");
-            if (result.Result != null)
-            {
-                count = result.Result.Count;
-            }
-
-            var artists = await client.GetTopArtistsAsync();
+            ApplicationBar.IsVisible = (FeedbackOverlay.Visibility != Visibility.Visible);
         }
+
+        private void CreateTiles()
+        {
+            if (Mangopollo.Utils.CanUseLiveTiles)
+            {
+                var tileId = ShellTile.ActiveTiles.FirstOrDefault();
+                if (tileId != null)
+                {
+                    var tileData = new FlipTileData();
+                    tileData.Title = AppResources.ApplicationTitle;
+                    tileData.BackContent = "";
+                    //tileData.BackgroundImage = new Uri("/Icons/173x173.png", UriKind.Relative);
+                    tileData.BackBackgroundImage = new Uri("/Icons/173x173.png", UriKind.Relative);
+                    tileData.WideBackContent = "";
+                    //tileData.WideBackgroundImage = new Uri("/Icons/346x173.png", UriKind.Relative);
+                    tileData.WideBackBackgroundImage = new Uri("/Icons/346x173.png", UriKind.Relative);
+                    //Debug.WriteLine("Activating live tile: " + Mangopollo.Utils.CanUseLiveTiles);
+                    tileId.Update(tileData);
+                }
+            }
+        }
+
+        //private async void Button_Click(object sender, RoutedEventArgs e)
+        //{
+        //    //LaunchTask task = new LaunchTask();
+        //    //task.Show();
+        //    MusicClient client = new MusicClient(Constants.ClientId, "it",null);
+        //    //MusicClient client = new MusicClient(Constants.ClientId);
+
+
+
+        //    ListResponse<MusicItem> result = await client.SearchAsync("love");
+        //    int count = -100;
+        //    if (result.Result != null) 
+        //    {
+        //        count = result.Result.Count;
+        //    }
+        //    result = await client.SearchAsync("Green Day");
+        //    if (result.Result != null)
+        //    {
+        //        count = result.Result.Count;
+        //    }
+        //    result = await client.SearchAsync("Ligabue");
+        //    if (result.Result != null)
+        //    {
+        //        count = result.Result.Count;
+        //    }
+        //    result = await client.SearchAsync("U2");
+        //    if (result.Result != null)
+        //    {
+        //        count = result.Result.Count;
+        //    }
+
+        //    var artists = await client.GetTopArtistsAsync();
+        //}
 
         // Sample code for building a localized ApplicationBar
         //private void BuildLocalizedApplicationBar()

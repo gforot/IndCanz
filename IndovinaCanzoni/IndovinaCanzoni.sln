@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Express 2012 for Windows Phone
+# Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IndovinaCanzoni", "IndovinaCanzoni\IndovinaCanzoni.csproj", "{E11BAA81-A2E3-4BBF-816A-1991B01EA0D0}"
 EndProject
 Global

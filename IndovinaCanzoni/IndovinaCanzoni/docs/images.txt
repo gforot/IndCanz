@@ -1,0 +1,9 @@
+﻿VXGA resolution Tile sizes:
+				Flip and Cycle				Iconic
+Small			159x159						110x110
+Medium			336x336						202x202
+Wide			691x336						N/A
+
+
+Application Icon:
+100x100 png
