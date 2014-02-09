@@ -50,10 +50,10 @@ namespace IndovinaCanzoni.ViewModel
             else
             {
                 // Code runs "for real"
-                Genres = new ObservableCollection<Genre>(MusicClientAPI.GetInstance().Genres);
+                //Genres = new ObservableCollection<Genre>(MusicClientAPI.GetInstance().Genres);
             }
 
-            _selectedGenre = Genres[2];
+            //_selectedGenre = Genres[2];
         }
 
 

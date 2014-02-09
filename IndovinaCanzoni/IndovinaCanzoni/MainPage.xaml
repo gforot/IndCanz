@@ -62,7 +62,13 @@
 
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-            <telerikInput:RadListPicker ItemsSource="{Binding Genres}"
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <MediaElement x:Name="player" AutoPlay="True"/>
+            <Button Content="Prova" Click="Button_Click" />
+            <telerikInput:RadListPicker Grid.Row="1" ItemsSource="{Binding Genres}"
                                         ItemTemplate="{StaticResource genreTemplate}"
                                         SelectedItem="{Binding SelectedGenre}"
                                         />

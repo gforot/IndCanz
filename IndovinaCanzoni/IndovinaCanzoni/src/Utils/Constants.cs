@@ -8,7 +8,7 @@ namespace IndovinaCanzoni.Utils
 {
     class Constants
     {
-        public const bool IsNetworkAvailable = false;
+        public const bool IsNetworkAvailable = true;
 
         #region Applications Ids
         public const string ApplicationId = "IndovinaCanzoni";

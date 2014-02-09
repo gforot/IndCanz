@@ -63,6 +63,18 @@ namespace IndovinaCanzoni
             }
         }
 
+        private async void Button_Click(object sender, RoutedEventArgs e)
+        {
+            MusicClient client = new MusicClient(Constants.ClientId, "it", null);
+            ListResponse<MusicItem> result = await client.SearchAsync("balliamo", Category.Track);
+
+            //ok
+            Uri trackUri = client.GetTrackSampleUri(result[0].Id);
+            player.Source = new Uri(trackUri.AbsoluteUri);
+            player.Play();
+
+        }
+
         //private async void Button_Click(object sender, RoutedEventArgs e)
         //{
         //    //LaunchTask task = new LaunchTask();
