@@ -33,12 +33,8 @@ namespace IndovinaCanzoni.Model
         {
             _countryResolver = new CountryResolver(Constants.ClientId);
             _musicClient = new MusicClient(Constants.ClientId);
-        }
 
-        //public async Task Init()
-        //{
-            
-        //}
+        }
 
         /// <summary>
         /// Get the List of available Genres
@@ -58,5 +54,14 @@ namespace IndovinaCanzoni.Model
                 new Genre(){Id = "4", Name="Metal"}
             };
         }
+
+        public async Task<List<Product>> GetListOfProductsByGenreAsync(Genre genre)
+        {
+            ListResponse<Product> products = await _musicClient.GetTopProductsForGenreAsync(genre, Category.Track);
+
+            return new List<Product>(products);
+        }
+
+
     }
 }

@@ -1,20 +1,18 @@
-﻿using System.Collections.ObjectModel;
-using GalaSoft.MvvmLight;
+﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using IndovinaCanzoni.Model;
+using Nokia.Music.Types;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace IndovinaCanzoni.ViewModel
 {
-    public class ScoresPageViewModel : ViewModelBase
+    public class GamePageViewModel : ViewModelBase
     {
-
         public event EventHandler PlayRequested;
-        #region Properties
-
-        public ObservableCollection<ScoreItem> ScoreItems { get; private set; }
-
-        #endregion
 
         #region Command
         public RelayCommand PlayCommand { get; private set; }
@@ -33,13 +31,16 @@ namespace IndovinaCanzoni.ViewModel
         }
         #endregion
 
-        #region Constructor
 
-        public ScoresPageViewModel()
+
+        public GamePageViewModel()
         {
-            ScoreItems = Data.DataLayer.GetInstance().LoadScoreItems(App.SelectedGenre.Id);
-            PlayCommand = new RelayCommand(Play, CanPlay);
+            //recupero la lista di canzoni.
         }
-        #endregion
+
+        public async Task Init()
+        {
+            List<Product> products = await MusicClientAPI.GetInstance().GetListOfProductsByGenreAsync(App.SelectedGenre);
+        }
     }
 }

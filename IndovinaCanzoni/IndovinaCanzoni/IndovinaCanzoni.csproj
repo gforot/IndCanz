@@ -94,6 +94,9 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="src\Data\DataLayer.cs" />
+    <Compile Include="src\Gui\GamePage.xaml.cs">
+      <DependentUpon>GamePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="src\Gui\ScoresPage.xaml.cs">
       <DependentUpon>ScoresPage.xaml</DependentUpon>
     </Compile>
@@ -110,6 +113,7 @@
       <DependentUpon>AppResources.resx</DependentUpon>
     </Compile>
     <Compile Include="src\Utils\Constants.cs" />
+    <Compile Include="src\ViewModel\GamePageViewModel.cs" />
     <Compile Include="src\ViewModel\MainViewModel.cs" />
     <Compile Include="src\ViewModel\ScoresPageViewModel.cs" />
     <Compile Include="src\ViewModel\ViewModelLocator.cs" />
@@ -120,6 +124,10 @@
       <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
     <Page Include="MainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="src\Gui\GamePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

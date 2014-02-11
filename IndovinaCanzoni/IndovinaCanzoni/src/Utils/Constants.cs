@@ -6,7 +6,7 @@
         /// True se si vuole testare la effettiva connessione con MixRadio
         /// Altrimenti false.
         /// </summary>
-        public const bool IsNetworkAvailable = false;
+        public const bool IsNetworkAvailable = true;
 
         #region Applications Ids
         public const string ApplicationId = "IndovinaCanzoni";
