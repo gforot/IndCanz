@@ -93,6 +93,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="src\Data\DataLayer.cs" />
     <Compile Include="src\Gui\ScoresPage.xaml.cs">
       <DependentUpon>ScoresPage.xaml</DependentUpon>
     </Compile>

@@ -31,8 +31,20 @@ namespace IndovinaCanzoni.ViewModel
 
         public ScoresPageViewModel()
         {
-            ScoreItems = new ObservableCollection<ScoreItem>();
+            Data.DataLayer.GetInstance().SaveScoreItems(App.SelectedGenre.Id, new ObservableCollection<ScoreItem>()
+            {
+                new ScoreItem()
+                {
+                    GuessedTitles = 2, GuessedBoth=1, GuessedAuthors = 3
+                },
+                new ScoreItem()
+                {
+                    GuessedTitles = 4, GuessedBoth=2, GuessedAuthors = 1
+                }
+            });
 
+            //ScoreItems = new ObservableCollection<ScoreItem>();
+            ScoreItems = Data.DataLayer.GetInstance().LoadScoreItems(App.SelectedGenre.Id);
             PlayCommand = new RelayCommand(Play, CanPlay);
         }
         #endregion

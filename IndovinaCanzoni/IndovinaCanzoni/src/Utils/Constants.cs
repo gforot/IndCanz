@@ -15,11 +15,10 @@
         #endregion
 
         #region Punteggio
-
-        public const int GuessSongPoints = 1000;
-        public const int GuessAuthorPoints = 500;
-        public const int HintDecreasePoints = 100;
-
+        public const int GuessBothPoints = 100;
+        public const int GuessTitlePoints = 50;
+        public const int GuessAuthorPoints = 25;
+        public const int HintDecreasePoints = 10;
         #endregion
     }
 }

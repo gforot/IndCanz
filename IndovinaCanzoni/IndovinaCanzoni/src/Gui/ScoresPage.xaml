@@ -17,9 +17,25 @@
     <Grid x:Name="LayoutRoot" Background="Transparent">
         <Grid.Resources>
             <DataTemplate x:Key="scoreItemTemplate">
-                <StackPanel>
-                    <TextBlock Text="{Binding Score}" />
-                </StackPanel>
+                <Border>
+                    <StackPanel>
+                        <TextBlock Text="{Binding Score}" />
+                        <StackPanel Orientation="Horizontal">
+                            <StackPanel x:Name="songPanel">
+                                <TextBlock Text="$Guessed Songs" />
+                                <TextBlock Text="{Binding GuessedTitles}" />
+                            </StackPanel>
+                            <StackPanel x:Name="authorsPanel">
+                                <TextBlock Text="$Guessed Authors" />
+                                <TextBlock Text="{Binding GuessedAuthors}" />
+                            </StackPanel>
+                            <StackPanel x:Name="bothPanel">
+                                <TextBlock Text="$Guessed Both" />
+                                <TextBlock Text="{Binding GuessedBoth}" />
+                            </StackPanel>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
             </DataTemplate>
         </Grid.Resources>
         <Grid.RowDefinitions>
