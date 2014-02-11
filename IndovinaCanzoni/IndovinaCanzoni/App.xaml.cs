@@ -8,11 +8,14 @@ using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using IndovinaCanzoni.Resources;
 using IndovinaCanzoni.Model;
+using Nokia.Music.Types;
 
 namespace IndovinaCanzoni
 {
     public partial class App : Application
     {
+        public static Genre SelectedGenre { get; set; }
+
         /// <summary>
         /// Provides easy access to the root frame of the Phone Application.
         /// </summary>
@@ -64,7 +67,7 @@ namespace IndovinaCanzoni
         {
             //inizializzazione della classe MusicClient
             //dopo questa chiamata è disponibile il flag IsServiceAvailable.
-            await MusicClientAPI.GetInstance().Init();
+            //await MusicClientAPI.GetInstance().Init();
         }
 
         // Code to execute when the application is activated (brought to foreground)

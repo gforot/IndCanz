@@ -1,14 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace IndovinaCanzoni.Utils
+﻿namespace IndovinaCanzoni.Utils
 {
-    class Constants
+    public class Constants
     {
-        public const bool IsNetworkAvailable = true;
+        /// <summary>
+        /// True se si vuole testare la effettiva connessione con MixRadio
+        /// Altrimenti false.
+        /// </summary>
+        public const bool IsNetworkAvailable = false;
 
         #region Applications Ids
         public const string ApplicationId = "IndovinaCanzoni";

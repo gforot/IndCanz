@@ -2,3 +2,4 @@
 
 Creazione ICONE (vedi images.txt)
 Controllare corretto uso di RateMyApp.
+

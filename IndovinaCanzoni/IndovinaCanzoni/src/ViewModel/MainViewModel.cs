@@ -1,5 +1,9 @@
+using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Threading.Tasks;
 using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
 using IndovinaCanzoni.Model;
 using Nokia.Music.Types;
 
@@ -19,43 +23,77 @@ namespace IndovinaCanzoni.ViewModel
     /// </summary>
     public class MainViewModel : ViewModelBase
     {
-        private Genre _selectedGenre;
+        #region Events
 
+        public event EventHandler GenreSelected;
+
+        #endregion
+
+        #region Properties
+
+        //lista dei Generi disponibili.
         public ObservableCollection<Genre> Genres { get; private set; }
-        public Genre SelectedGenre {
-            get { return _selectedGenre; }
+
+        private const string _selectedGenrePrpName = "SelectedGenre";
+        private Genre _selectedGenre;
+        public Genre SelectedGenre
+        {
+            get
+            {
+                return _selectedGenre;
+            }
             set
             {
                 _selectedGenre = value;
-                RaisePropertyChanged("SelectedGenre");
+                RaisePropertyChanged(_selectedGenrePrpName);
+                SelectGenreCommand.RaiseCanExecuteChanged();
             }
         }
+        #endregion
+
+        #region Commands
+
+        public RelayCommand SelectGenreCommand { get; private set; }
+
+        private bool CanSelectGenre()
+        {
+            return _selectedGenre != null;
+        }
+
+        private void SelectGenre()
+        {
+            if (GenreSelected != null)
+            {
+                GenreSelected(this, new EventArgs());    
+            }
+        }
+
+        #endregion
+
+        #region Constructor
 
         /// <summary>
         /// Initializes a new instance of the MainViewModel class.
         /// </summary>
         public MainViewModel()
         {
-            if (IsInDesignMode)
-            {
-                // Code runs in Blend --> create design time data.
-                Genres = new ObservableCollection<Genre>
-                {
-                    new Genre(){Id = "1", Name="Rock"},
-                    new Genre(){Id = "2", Name="Pop"},
-                    new Genre(){Id="3", Name="Classica"},
-                    new Genre(){Id = "4", Name="Metal"}
-                };
-            }
-            else
-            {
-                // Code runs "for real"
-                //Genres = new ObservableCollection<Genre>(MusicClientAPI.GetInstance().Genres);
-            }
+            Genres = new ObservableCollection<Genre>();
+            SelectGenreCommand = new RelayCommand(SelectGenre, CanSelectGenre);
+        }
+        #endregion
 
-            //_selectedGenre = Genres[2];
+        #region Methods
+
+        internal async Task GetGenres()
+        {
+            Genres.Clear();
+            List<Genre> tmpGenres = await MusicClientAPI.GetInstance().GetListOfGenresAsync();
+            foreach (Genre g in tmpGenres)
+            {
+                Genres.Add(g);
+            }
         }
 
-
+        #endregion
     }
 }

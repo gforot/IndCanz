@@ -14,6 +14,7 @@ using IndovinaCanzoni.Utils;
 using Nokia.Music.Types;
 using System.Globalization;
 using IndovinaCanzoni.ViewModel;
+using IndovinaCanzoni.Model;
 
 namespace IndovinaCanzoni
 {
@@ -27,6 +28,8 @@ namespace IndovinaCanzoni
             InitializeComponent();
 
             _vm = new MainViewModel();
+            _vm.GenreSelected += _vm_GenreSelected;    
+            
             DataContext = _vm;
 
             // Sample code to localize the ApplicationBar
@@ -37,11 +40,26 @@ namespace IndovinaCanzoni
             FeedbackOverlay.VisibilityChanged += FeedbackOverlay_VisibilityChanged;
         }
 
-        private void FeedbackOverlay_VisibilityChanged(object sender, EventArgs e)
+        private void _vm_GenreSelected(object sender, EventArgs e)
         {
-            ApplicationBar.IsVisible = (FeedbackOverlay.Visibility != Visibility.Visible);
+            IndovinaCanzoni.App.SelectedGenre = _vm.SelectedGenre;
+
+            //navigazione verso pagina punteggi
+            NavigationService.Navigate(new Uri("/src/Gui/ScoresPage.xaml", UriKind.Relative));
         }
 
+        #region Rate My App
+        private void FeedbackOverlay_VisibilityChanged(object sender, EventArgs e)
+        {
+            //Nascondo la ApplicationBar (se presente) quando viene visualizzato il FeedbackOverlay di RateMyApp
+            if (ApplicationBar != null)
+            {
+                ApplicationBar.IsVisible = (FeedbackOverlay.Visibility != Visibility.Visible);
+            }
+        }
+        #endregion
+
+        #region Tiles
         private void CreateTiles()
         {
             if (Mangopollo.Utils.CanUseLiveTiles)
@@ -62,18 +80,7 @@ namespace IndovinaCanzoni
                 }
             }
         }
-
-        private async void Button_Click(object sender, RoutedEventArgs e)
-        {
-            MusicClient client = new MusicClient(Constants.ClientId, "it", null);
-            ListResponse<MusicItem> result = await client.SearchAsync("balliamo", Category.Track);
-
-            //ok
-            Uri trackUri = client.GetTrackSampleUri(result[0].Id);
-            player.Source = new Uri(trackUri.AbsoluteUri);
-            player.Play();
-
-        }
+        #endregion
 
         //private async void Button_Click(object sender, RoutedEventArgs e)
         //{
@@ -124,5 +131,15 @@ namespace IndovinaCanzoni
         //    ApplicationBarMenuItem appBarMenuItem = new ApplicationBarMenuItem(AppResources.AppBarMenuItemText);
         //    ApplicationBar.MenuItems.Add(appBarMenuItem);
         //}
+
+        protected async override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+
+            //quando arrivo sulla pagina vado a leggere i generi disponibili
+            await _vm.GetGenres();
+        }
+
+
     }
 }

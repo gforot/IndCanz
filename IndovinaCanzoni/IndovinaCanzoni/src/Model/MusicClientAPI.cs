@@ -15,7 +15,6 @@ namespace IndovinaCanzoni.Model
         private MusicClient _musicClient;
         private CountryResolver _countryResolver;
         public bool IsServiceAvailable { get; private set; }
-        public IList <Genre> Genres { get; private set; }
 
         #region Singleton Instance
         private static MusicClientAPI _instance;
@@ -36,23 +35,20 @@ namespace IndovinaCanzoni.Model
             _musicClient = new MusicClient(Constants.ClientId);
         }
 
-        public async Task Init()
-        {
-            string countryCode = RegionInfo.CurrentRegion.TwoLetterISORegionName.ToLower();
-            Genres = await GetListOfGenresAsync();
-            //IsServiceAvailable = await _countryResolver.CheckAvailabilityAsync(countryCode);
-            //if (IsServiceAvailable)
-            //{
-            //    Genres = await GetListOfGenresAsync();
-            //}
+        //public async Task Init()
+        //{
             
-        }
+        //}
 
-        public async Task<IList<Genre>> GetListOfGenresAsync()
+        /// <summary>
+        /// Get the List of available Genres
+        /// </summary>
+        /// <returns></returns>
+        public async Task<List<Genre>> GetListOfGenresAsync()
         {
             if (Constants.IsNetworkAvailable)
             {
-                return await _musicClient.GetGenresAsync();
+                return new List<Genre>(await _musicClient.GetGenresAsync());
             }
             return new List<Genre>
             {
