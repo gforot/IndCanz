@@ -55,13 +55,15 @@ namespace IndovinaCanzoni.Model
             };
         }
 
-        public async Task<List<Product>> GetListOfProductsByGenreAsync(Genre genre)
+        public async Task<List<Product>> GetListOfTracksByGenreAsync(Genre genre)
         {
-            ListResponse<Product> products = await _musicClient.GetTopProductsForGenreAsync(genre, Category.Track);
-
+            ListResponse<Product> products = await _musicClient.GetTopProductsForGenreAsync(genre, Category.Track, 0, 100);
             return new List<Product>(products);
         }
 
-
+        public Uri GetTrackSampleUri(string trackId)
+        {
+            return _musicClient.GetTrackSampleUri(trackId);
+        }
     }
 }

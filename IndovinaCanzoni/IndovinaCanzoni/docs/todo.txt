@@ -1,5 +1,5 @@
-﻿Selezionare un genere musicale.
-
-Creazione ICONE (vedi images.txt)
-Controllare corretto uso di RateMyApp.
+﻿
+Creazione ICONE 691x336
+Migliorare graficamente l'Item della lista dei punteggi.
+Fare il play delle canzoni.
 

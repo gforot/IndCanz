@@ -19,9 +19,18 @@ namespace IndovinaCanzoni.src.Gui
         {
             InitializeComponent();
 
+            //creazione viewModel
             _vm = new GamePageViewModel();
             _vm.PlayRequested += _vm_PlayRequested;
+            _vm.StopRequested += _vm_StopRequested;
+            
+            //imposto il DataContext
             DataContext = _vm;
+        }
+
+        private void _vm_StopRequested(object sender, EventArgs e)
+        {
+            player.Stop();
         }
 
         private void _vm_PlayRequested(object sender, EventArgs e)

@@ -6,6 +6,7 @@
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:converters="clr-namespace:IndovinaCanzoni.Converters"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
@@ -15,6 +16,9 @@
 
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
+        <Grid.Resources>
+            <converters:ResultToImageConverter x:Key="resultToImageConverter" />
+        </Grid.Resources>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
@@ -27,10 +31,20 @@
         </StackPanel>
 
         <!--ContentPanel - place additional content here-->
-        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-            <MediaElement x:Name="player" AutoPlay="True" Source="{Binding SongSource}" />
+        <StackPanel x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+            <MediaElement x:Name="player" AutoPlay="True" Source="{Binding SourceUri, Mode=TwoWay}" />
             <Button Content="$Play" Command="{Binding PlayCommand}" />
-        </Grid>
+            <StackPanel Orientation="Horizontal">
+                <TextBox x:Name="txTitle" Text="{Binding AnswerTitle}" />
+                <Image Source="{Binding TitleAnswerResult, Converter={StaticResource resultToImageConverter}}" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBox x:Name="txArtist" Text="{Binding AnswerArtist}" />
+                <Image Source="{Binding ArtistAnswerResult, Converter={StaticResource resultToImageConverter}}" />
+            </StackPanel>
+            <Button Content="$Rispondi" Command="{Binding AnswerCommand}" />
+            <Button Content="$Next" Command="{Binding MoveNextCommand}" />
+        </StackPanel>
     </Grid>
 
 </phone:PhoneApplicationPage>

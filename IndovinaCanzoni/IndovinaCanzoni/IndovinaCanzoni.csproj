@@ -93,6 +93,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="src\Converters\ResultToImageConverter.cs" />
     <Compile Include="src\Data\DataLayer.cs" />
     <Compile Include="src\Gui\GamePage.xaml.cs">
       <DependentUpon>GamePage.xaml</DependentUpon>
@@ -171,6 +172,8 @@
     <Content Include="icons\tiles\159x159.png" />
     <Content Include="icons\tiles\202x202.png" />
     <Content Include="icons\tiles\336x336.png" />
+    <Content Include="images\check.png" />
+    <Content Include="images\delete.png" />
     <Content Include="README_FIRST.txt" />
     <Content Include="Toolkit.Content\ApplicationBar.Add.png" />
     <Content Include="Toolkit.Content\ApplicationBar.Cancel.png" />
