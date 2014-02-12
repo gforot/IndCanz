@@ -181,7 +181,7 @@ namespace IndovinaCanzoni.ViewModel
             if (PlayRequested != null)
             {
                 PlayRequested(this, new EventArgs());
-
+                IsPlaying = true;
                 _dispatcherTimer.Start();
             }
         }
@@ -244,14 +244,14 @@ namespace IndovinaCanzoni.ViewModel
             _answerArtist = string.Empty;
             _answerTitle = string.Empty;
 
-            
+            _isPlaying = false;
         }
 
         #region Timer
         private void _dispatcherTimer_Tick(object sender, EventArgs e)
         {
             _dispatcherTimer.Stop();
-
+            IsPlaying = false;
             if (StopRequested != null)
             {
                 StopRequested(this, new EventArgs());
