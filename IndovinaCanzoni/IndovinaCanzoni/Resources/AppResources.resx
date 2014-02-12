@@ -126,7 +126,7 @@
     <comment>Controls the Language and ensures that the font for all elements in the RootFrame aligns with the app's language. Set to the language code of this resource file's language.</comment>
   </data>
   <data name="ApplicationTitle" xml:space="preserve">
-    <value>$IndovinaCanzoni</value>
+    <value>Indovina Canzoni</value>
   </data>
   <data name="AppBarButtonText" xml:space="preserve">
     <value>add</value>
@@ -154,5 +154,14 @@
   </data>
   <data name="Select" xml:space="preserve">
     <value>Select</value>
+  </data>
+  <data name="GamePageTitle" xml:space="preserve">
+    <value>Game Page</value>
+  </data>
+  <data name="ScoresPageTitle" xml:space="preserve">
+    <value>Scores</value>
+  </data>
+  <data name="SelectGenrePageTitle" xml:space="preserve">
+    <value>Select Genre</value>
   </data>
 </root>
