@@ -11,11 +11,11 @@ namespace IndovinaCanzoni.Converters
             bool? responseResult = (bool?)value;
             if (responseResult.HasValue)
             {
-                return responseResult.Value ? new BitmapImage(new Uri("/IndovinaCanzoni;component/images/check.png", UriKind.Relative)) :
-                    new BitmapImage(new Uri("/IndovinaCanzoni;component/images/delete.png", UriKind.Relative));
+                return responseResult.Value ? new BitmapImage(new Uri("/images/check.png", UriKind.Relative)) :
+                    new BitmapImage(new Uri("/images/delete.png", UriKind.Relative));
             }
 
-            return null;
+            return new BitmapImage(new Uri("/images/questionmark.png", UriKind.Relative));
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)

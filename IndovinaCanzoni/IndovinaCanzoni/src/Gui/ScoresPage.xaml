@@ -30,15 +30,15 @@
                         <TextBlock Text="{Binding Score}" Margin="0,2" Style="{StaticResource totalPointsStyle}" />
                         <StackPanel Orientation="Horizontal">
                             <StackPanel x:Name="songPanel">
-                                <TextBlock Text="$Guessed Songs" />
+                                <TextBlock Text="{Binding Path=LocalizedResources.GuessedSong, Source={StaticResource LocalizedStrings}}"/>
                                 <TextBlock Text="{Binding GuessedTitles}" HorizontalAlignment="Center" Style="{StaticResource smallPointsStyle}" />
                             </StackPanel>
                             <StackPanel x:Name="authorsPanel">
-                                <TextBlock Text="$Guessed Authors" />
+                                <TextBlock Text="{Binding Path=LocalizedResources.GuessedAuthor, Source={StaticResource LocalizedStrings}}" />
                                 <TextBlock Text="{Binding GuessedAuthors}" Style="{StaticResource smallPointsStyle}" />
                             </StackPanel>
                             <StackPanel x:Name="bothPanel">
-                                <TextBlock Text="$Guessed Both" />
+                                <TextBlock Text="{Binding Path=LocalizedResources.GuessedBoth, Source={StaticResource LocalizedStrings}}" />
                                 <TextBlock Text="{Binding GuessedBoth}" Style="{StaticResource smallPointsStyle}" />
                             </StackPanel>
                         </StackPanel>
@@ -64,7 +64,7 @@
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             <ListBox x:Name="lbScores" ItemsSource="{Binding ScoreItems}" ItemTemplate="{StaticResource scoreItemTemplate}" />
-            <Button x:Name="btnPlay" Content="$Play" Grid.Row="1" Command="{Binding PlayCommand}" />
+            <Button x:Name="btnPlay" Content="{Binding Path=LocalizedResources.Play, Source={StaticResource LocalizedStrings}}" Grid.Row="1" Command="{Binding PlayCommand}" />
         </Grid>
     </Grid>
 

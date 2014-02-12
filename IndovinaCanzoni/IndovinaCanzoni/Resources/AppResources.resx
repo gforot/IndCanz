@@ -134,4 +134,25 @@
   <data name="AppBarMenuItemText" xml:space="preserve">
     <value>Menu Item</value>
   </data>
+  <data name="Answer" xml:space="preserve">
+    <value>Answer</value>
+  </data>
+  <data name="GuessedAuthors" xml:space="preserve">
+    <value>Authors</value>
+  </data>
+  <data name="GuessedBoth" xml:space="preserve">
+    <value>Both</value>
+  </data>
+  <data name="GuessedSong" xml:space="preserve">
+    <value>Songs</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Next</value>
+  </data>
+  <data name="Play" xml:space="preserve">
+    <value>Play</value>
+  </data>
+  <data name="Select" xml:space="preserve">
+    <value>Select</value>
+  </data>
 </root>
