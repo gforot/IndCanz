@@ -1,5 +1,12 @@
-﻿
+﻿Creare about page per descrivere il gioco.
+Inserire la pagina di credits per Nokia Mix Radio.(vedi testo challenge) DA APRIRE QUANDO si chiude il gioco.
+Gestione inizio/fine partita.
+
+Salvataggio punteggi. n migliori vengono salvati.
+Caricamento punteggi. 
+Controllare la resa grafica della lista dei punteggi.
+
+
+Traduzione in inglese, italiano.
 Creazione ICONE 691x336
-Migliorare graficamente l'Item della lista dei punteggi.
-Fare il play delle canzoni.
 
