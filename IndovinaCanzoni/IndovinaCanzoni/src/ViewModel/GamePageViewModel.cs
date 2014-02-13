@@ -183,6 +183,7 @@ namespace IndovinaCanzoni.ViewModel
                 _answered = value;
                 RaisePropertyChanged(_answeredPrpName);
                 AnswerCommand.RaiseCanExecuteChanged();
+                MoveNextCommand.RaiseCanExecuteChanged();
             }
         }
 
@@ -240,7 +241,7 @@ namespace IndovinaCanzoni.ViewModel
 
             Answered = true;
 
-            ArtistAnswerResult = CurrentProduct.Name.Equals(_answerArtist);
+            ArtistAnswerResult = CurrentProduct.Name.Equals(_answerTitle);
             TitleAnswerResult = CurrentProduct.Performers[0].Name.Equals(_answerArtist);
 
             #region Punteggio
@@ -272,7 +273,7 @@ namespace IndovinaCanzoni.ViewModel
 
         private bool CanMoveNext()
         {
-            return true;
+            return _answered;
         }
 
         private void MoveNext()
@@ -280,8 +281,8 @@ namespace IndovinaCanzoni.ViewModel
             //mi sposto sulla canzone successiva.
             Index++;
 
-            _answerArtist = string.Empty;
-            _answerTitle = string.Empty;
+            AnswerArtist = string.Empty;
+            AnswerTitle = string.Empty;
 
             ArtistAnswerResult = null;
             TitleAnswerResult = null;
