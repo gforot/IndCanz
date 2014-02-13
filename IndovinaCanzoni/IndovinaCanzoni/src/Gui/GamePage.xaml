@@ -28,7 +28,16 @@
         <!--TitlePanel contains the name of the application and page title-->
         <StackPanel Grid.Row="0" Margin="12,17,0,28">
             <TextBlock Text="{Binding LocalizedResources.ApplicationTitle, Source={StaticResource LocalizedStrings}}" Style="{StaticResource PhoneTextNormalStyle}"/>
-            <TextBlock Text="{Binding LocalizedResources.GamePageTitle, Source={StaticResource LocalizedStrings}}" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
+            <StackPanel x:Name="panelGenre" Orientation="Horizontal">
+                <TextBlock Text="{Binding Path=LocalizedResources.Genre, Source={StaticResource LocalizedStrings}}" />
+                <TextBlock Text="{Binding SelectedGenre}" />
+            </StackPanel>
+
+            <StackPanel x:Name="panelScore" Orientation="Horizontal">
+                <TextBlock Text="{Binding Path=LocalizedResources.Score, Source={StaticResource LocalizedStrings}}" />
+                <TextBlock Text="{Binding CurrentScore}" />
+            </StackPanel>
+            <!--<TextBlock Text="{Binding LocalizedResources.GamePageTitle, Source={StaticResource LocalizedStrings}}" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>-->
         </StackPanel>
 
         <!--ContentPanel - place additional content here-->

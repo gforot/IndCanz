@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Threading;
+using IndovinaCanzoni.Utils;
 
 namespace IndovinaCanzoni.ViewModel
 {
@@ -28,6 +29,11 @@ namespace IndovinaCanzoni.ViewModel
         #endregion
 
         #region Properties
+
+        public string SelectedGenre
+        {
+            get { return App.SelectedGenre.Name; }
+        }
 
         #region Products
         private const string _productsPrpName = "Products";
@@ -181,6 +187,23 @@ namespace IndovinaCanzoni.ViewModel
         }
 
         #endregion
+
+        #region CurrentScore
+
+        private const string _currentScorePrpName = "CurrentScore";
+        private int _currentScore;
+
+        public int CurrentScore
+        {
+            get { return _currentScore; }
+            set
+            {
+                _currentScore = value;
+                RaisePropertyChanged(_currentScorePrpName);
+            }
+        }
+
+        #endregion
         #endregion
 
         #region Command
@@ -220,6 +243,26 @@ namespace IndovinaCanzoni.ViewModel
             ArtistAnswerResult = CurrentProduct.Name.Equals(_answerArtist);
             TitleAnswerResult = CurrentProduct.Performers[0].Name.Equals(_answerArtist);
 
+            #region Punteggio
+            if ((ArtistAnswerResult.HasValue) && (TitleAnswerResult.HasValue))
+            {
+                if (ArtistAnswerResult.Value && TitleAnswerResult.Value)
+                {
+                    //entrambe le risposte corrette
+                    CurrentScore += Constants.GuessBothPoints;
+                }
+                else if (ArtistAnswerResult.Value)
+                {
+                    //solo artista
+                    CurrentScore += Constants.GuessAuthorPoints;
+                }
+                else if (TitleAnswerResult.Value)
+                {
+                    //solo titolo
+                    CurrentScore += Constants.GuessTitlePoints;
+                }
+            }
+            #endregion
         }
         #endregion
 
@@ -267,6 +310,8 @@ namespace IndovinaCanzoni.ViewModel
 
             _isPlaying = false;
             _answered = false;
+
+            _currentScore = 0;
         }
 
         #region Timer

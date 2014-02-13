@@ -164,4 +164,10 @@
   <data name="SelectGenrePageTitle" xml:space="preserve">
     <value>Select Genre</value>
   </data>
+  <data name="Genre" xml:space="preserve">
+    <value>Genre</value>
+  </data>
+  <data name="Score" xml:space="preserve">
+    <value>Score</value>
+  </data>
 </root>
