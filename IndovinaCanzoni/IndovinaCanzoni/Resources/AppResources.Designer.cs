@@ -61,6 +61,15 @@ namespace IndovinaCanzoni.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to About.
+        /// </summary>
+        public static string About {
+            get {
+                return ResourceManager.GetString("About", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Answer.
         /// </summary>
         public static string Answer {
@@ -88,11 +97,29 @@ namespace IndovinaCanzoni.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Guess songs and author and get the best score! Select your favourite genre of music play the short sound bite and guess song title and author..
+        /// </summary>
+        public static string AppDescription {
+            get {
+                return ResourceManager.GetString("AppDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Indovina Canzoni.
         /// </summary>
         public static string ApplicationTitle {
             get {
                 return ResourceManager.GetString("ApplicationTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to By Andrea Rota.
+        /// </summary>
+        public static string Author {
+            get {
+                return ResourceManager.GetString("Author", resourceCulture);
             }
         }
         

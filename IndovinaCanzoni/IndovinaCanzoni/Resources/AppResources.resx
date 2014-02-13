@@ -170,4 +170,13 @@
   <data name="Score" xml:space="preserve">
     <value>Score</value>
   </data>
+  <data name="About" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="AppDescription" xml:space="preserve">
+    <value>Guess songs and author and get the best score! Select your favourite genre of music play the short sound bite and guess song title and author.</value>
+  </data>
+  <data name="Author" xml:space="preserve">
+    <value>By Andrea Rota</value>
+  </data>
 </root>
