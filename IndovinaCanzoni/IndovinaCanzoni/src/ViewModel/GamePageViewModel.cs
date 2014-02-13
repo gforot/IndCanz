@@ -47,7 +47,6 @@ namespace IndovinaCanzoni.ViewModel
 
         #endregion
 
-
         #region Index
         private string _indexPrpName = "Index";
         private int _index;
@@ -165,6 +164,23 @@ namespace IndovinaCanzoni.ViewModel
         }
 
         #endregion
+
+        #region Answered
+
+        private const string _answeredPrpName = "Answered";
+        private bool _answered;
+        public bool Answered
+        {
+            get { return _answered; }
+            set
+            {
+                _answered = value;
+                RaisePropertyChanged(_answeredPrpName);
+                AnswerCommand.RaiseCanExecuteChanged();
+            }
+        }
+
+        #endregion
         #endregion
 
         #region Command
@@ -191,7 +207,7 @@ namespace IndovinaCanzoni.ViewModel
         public RelayCommand AnswerCommand { get; private set; }
         private bool CanAnswer()
         {
-            return true;
+            return !_answered;
         }
 
         private void Answer()
@@ -199,8 +215,11 @@ namespace IndovinaCanzoni.ViewModel
             //gestione della risposta dell'utente
             System.Windows.MessageBox.Show(string.Format("L'utente ha risposto : {0} - {1}", _answerTitle, _answerArtist));
 
+            Answered = true;
+
             ArtistAnswerResult = CurrentProduct.Name.Equals(_answerArtist);
             TitleAnswerResult = CurrentProduct.Performers[0].Name.Equals(_answerArtist);
+
         }
         #endregion
 
@@ -223,6 +242,8 @@ namespace IndovinaCanzoni.ViewModel
 
             ArtistAnswerResult = null;
             TitleAnswerResult = null;
+
+            Answered = false;
         }
 
         #endregion
@@ -245,6 +266,7 @@ namespace IndovinaCanzoni.ViewModel
             _answerTitle = string.Empty;
 
             _isPlaying = false;
+            _answered = false;
         }
 
         #region Timer

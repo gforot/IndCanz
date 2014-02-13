@@ -7,6 +7,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:converters="clr-namespace:IndovinaCanzoni.Converters"
+    xmlns:telerik="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.Primitives"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
@@ -45,7 +46,15 @@
                 <ColumnDefinition Width="50"/>
             </Grid.ColumnDefinitions>
             <MediaElement x:Name="player" AutoPlay="{Binding IsPlaying}" Source="{Binding SourceUri, Mode=TwoWay}" />
-            <Button Grid.ColumnSpan="2" Content="{Binding Path=LocalizedResources.Play, Source={StaticResource LocalizedStrings}}" Command="{Binding PlayCommand}" />
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.ColumnSpan="2">
+                <telerik:RadImageButton  
+                                    Command="{Binding PlayCommand}" 
+                                    ButtonShape="Rectangle"
+                                    RestStateImageSource="/images/media_play.png" HorizontalAlignment="Center" 
+                                    VerticalAlignment="Center" 
+                                    Margin="5" 
+                                    />
+            </StackPanel>
             <TextBox Grid.Row="1" x:Name="txTitle" Text="{Binding AnswerTitle}" />
             <Image  Grid.Row="1" Grid.Column="1"  Source="{Binding TitleAnswerResult, Converter={StaticResource resultToImageConverter}}" Width="30" Height="30" />
             
