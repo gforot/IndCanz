@@ -117,20 +117,26 @@ namespace IndovinaCanzoni
         //}
 
         // Sample code for building a localized ApplicationBar
-        //private void BuildLocalizedApplicationBar()
-        //{
-        //    // Set the page's ApplicationBar to a new instance of ApplicationBar.
-        //    ApplicationBar = new ApplicationBar();
+        private void BuildLocalizedApplicationBar()
+        {
+            // Set the page's ApplicationBar to a new instance of ApplicationBar.
+            ApplicationBar = new ApplicationBar();
 
-        //    // Create a new button and set the text value to the localized string from AppResources.
-        //    ApplicationBarIconButton appBarButton = new ApplicationBarIconButton(new Uri("/Assets/AppBar/appbar.add.rest.png", UriKind.Relative));
-        //    appBarButton.Text = AppResources.AppBarButtonText;
-        //    ApplicationBar.Buttons.Add(appBarButton);
+            // Create a new button and set the text value to the localized string from AppResources.
+            ApplicationBarIconButton aboutButton = new ApplicationBarIconButton(new Uri("/Assets/AppBar/questionmark.png", UriKind.Relative));
+            aboutButton.Text = AppResources.AppBarAboutButtonTxt;
+            aboutButton.Click += aboutButton_Click;
+            ApplicationBar.Buttons.Add(aboutButton);
 
-        //    // Create a new menu item with the localized string from AppResources.
-        //    ApplicationBarMenuItem appBarMenuItem = new ApplicationBarMenuItem(AppResources.AppBarMenuItemText);
-        //    ApplicationBar.MenuItems.Add(appBarMenuItem);
-        //}
+            //// Create a new menu item with the localized string from AppResources.
+            //ApplicationBarMenuItem appBarMenuItem = new ApplicationBarMenuItem(AppResources.AppBarMenuItemText);
+            //ApplicationBar.MenuItems.Add(appBarMenuItem);
+        }
+
+        private void aboutButton_Click(object sender, EventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/src/Gui/AboutPage.xaml", UriKind.Relative));
+        }
 
         protected async override void OnNavigatedTo(NavigationEventArgs e)
         {

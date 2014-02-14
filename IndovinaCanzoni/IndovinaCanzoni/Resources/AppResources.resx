@@ -179,4 +179,10 @@
   <data name="Author" xml:space="preserve">
     <value>By Andrea Rota</value>
   </data>
+  <data name="AppBarAboutButtonTxt" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="AppBarFeedbackTxt" xml:space="preserve">
+    <value>Send Feedback</value>
+  </data>
 </root>

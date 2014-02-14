@@ -79,11 +79,29 @@ namespace IndovinaCanzoni.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to About.
+        /// </summary>
+        public static string AppBarAboutButtonTxt {
+            get {
+                return ResourceManager.GetString("AppBarAboutButtonTxt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to add.
         /// </summary>
         public static string AppBarButtonText {
             get {
                 return ResourceManager.GetString("AppBarButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Send Feedback.
+        /// </summary>
+        public static string AppBarFeedbackTxt {
+            get {
+                return ResourceManager.GetString("AppBarFeedbackTxt", resourceCulture);
             }
         }
         

@@ -6,6 +6,8 @@
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+    xmlns:cimbalino="clr-namespace:Cimbalino.Phone.Toolkit.Behaviors;assembly=Cimbalino.Phone.Toolkit"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
@@ -17,6 +19,20 @@
     <Grid x:Name="LayoutRoot" Background="Transparent">
         <Grid.Resources>
             <SolidColorBrush Color="Red" x:Key="redColor" />
+            <!-- Caratteristiche comuni delle TextBlock-->
+            <Style x:Name="commonTextBlockStyle" TargetType="TextBlock">
+                <Setter Property="Margin" Value="5" />
+            </Style>
+
+            <Style x:Name="appTitleStyle" TargetType="TextBlock" BasedOn="{StaticResource commonTextBlockStyle}">
+                <Setter Property="Foreground" Value="{StaticResource redColor}" />
+            </Style>
+
+            <Style x:Name="byTextStyle" TargetType="TextBlock" BasedOn="{StaticResource commonTextBlockStyle}">
+                <Setter Property="FontStyle" Value="Italic" />
+                <Setter Property="FontSize" Value="18" />
+            </Style>
+
         </Grid.Resources>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -31,12 +47,24 @@
 
         <!--ContentPanel - place additional content here-->
         <StackPanel x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-            <TextBlock x:Name="txAppName" Foreground="{StaticResource redColor}" Text="{Binding LocalizedResources.ApplicationTitle, Source={StaticResource LocalizedStrings}}" />
-            <TextBlock x:Name="txBy" Text="{Binding LocalizedResources.Author, Source={StaticResource LocalizedStrings}}" />
+            <TextBlock x:Name="txAppName" Style="{StaticResource appTitleStyle}" Text="{Binding LocalizedResources.ApplicationTitle, Source={StaticResource LocalizedStrings}}" />
+            <TextBlock x:Name="txBy" Style="{StaticResource byTextStyle}" Text="{Binding LocalizedResources.Author, Source={StaticResource LocalizedStrings}}" />
 
             <TextBlock x:Name="txDescription" Text="{Binding LocalizedResources.AppDescription, Source={StaticResource LocalizedStrings}}"
                        TextWrapping="Wrap" Margin="0,20,0,0"/>
         </StackPanel>
+
+        <i:Interaction.Behaviors>
+            <cimbalino:ApplicationBarBehavior>
+                <cimbalino:ApplicationBarIconButton Command="{Binding AboutCommand, Mode=OneTime}" 
+                                                    IconUri="/Images/questionmark.png" 
+                                                    Text="About" />
+                <cimbalino:ApplicationBarBehavior.MenuItems>
+                    <cimbalino:ApplicationBarMenuItem Command="{Binding AboutCommand, Mode=OneTime}" 
+                                                      Text="About"/>
+                </cimbalino:ApplicationBarBehavior.MenuItems>
+            </cimbalino:ApplicationBarBehavior>
+        </i:Interaction.Behaviors>
     </Grid>
 
 </phone:PhoneApplicationPage>
