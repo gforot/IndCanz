@@ -28,11 +28,6 @@ namespace IndovinaCanzoni.ViewModel
     {
         private INavigationService _navigationService;
 
-        #region Events
-
-        public event EventHandler GenreSelected;
-
-        #endregion
 
         #region Properties
 
@@ -67,17 +62,12 @@ namespace IndovinaCanzoni.ViewModel
 
         private void SelectGenre()
         {
-            if (GenreSelected != null)
-            {
-                GenreSelected(this, new EventArgs());    
-            }
-
             IndovinaCanzoni.App.SelectedGenre = SelectedGenre;
 
 
 
             //Messaggio Genreselected
-            MessengerInstance.Send<Message>(new Message("genreSelected"));
+            MessengerInstance.Send<Message>(new Message(IndovinaCanzoni.Utils.Messages.GenreSelected));
 
             //Navigazione
             _navigationService.NavigateTo(new Uri("/src/Gui/ScoresPage.xaml", UriKind.Relative));

@@ -27,11 +27,6 @@ namespace IndovinaCanzoni.ViewModel
         private DispatcherTimer _dispatcherTimer;
         private INavigationService _navigationService;
         
-        #region Events
-        public event EventHandler PlayRequested;
-        public event EventHandler StopRequested;
-        #endregion
-
         #region Properties
 
         public string SelectedGenre
@@ -222,7 +217,7 @@ namespace IndovinaCanzoni.ViewModel
 
         private void Play()
         {
-            MessengerInstance.Send<Message>(new Message("play"));
+            MessengerInstance.Send<Message>(new Message(IndovinaCanzoni.Utils.Messages.Play));
             IsPlaying = true;
             _dispatcherTimer.Start();
         }
@@ -330,7 +325,7 @@ namespace IndovinaCanzoni.ViewModel
         #region Timer
         private void _dispatcherTimer_Tick(object sender, EventArgs e)
         {
-            MessengerInstance.Send<Message>(new Message("play"));
+            MessengerInstance.Send<Message>(new Message(IndovinaCanzoni.Utils.Messages.Stop));
             _dispatcherTimer.Stop();
             IsPlaying = false;
         }
@@ -340,7 +335,7 @@ namespace IndovinaCanzoni.ViewModel
         {
             switch (message.Key)
             {
-                case "genreSelected":
+                case IndovinaCanzoni.Utils.Messages.GenreSelected:
                     await Init();
                     break;
             }

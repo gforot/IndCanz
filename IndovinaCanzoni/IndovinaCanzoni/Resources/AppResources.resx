@@ -185,4 +185,10 @@
   <data name="AppBarFeedbackTxt" xml:space="preserve">
     <value>Send Feedback</value>
   </data>
+  <data name="Rate" xml:space="preserve">
+    <value>Rate</value>
+  </data>
+  <data name="SendFeedback" xml:space="preserve">
+    <value>Send Feedback</value>
+  </data>
 </root>

@@ -10,6 +10,7 @@ namespace IndovinaCanzoni.ViewModel
     public class AboutPageViewModel : ViewModelBase
     {
         public RelayCommand SendFeedbackCommand { get; private set; }
+        public RelayCommand RateCommand { get; private set; }
 
         /// <summary>
         /// The application manifest.
@@ -31,6 +32,7 @@ namespace IndovinaCanzoni.ViewModel
             IMarketplaceReviewService marketplaceReviewService)
         {
             SendFeedbackCommand = new RelayCommand(SendFeedback);
+            RateCommand = new RelayCommand(Rate);
 
             _emailComposeService = emailComposerService;
             _applicationManifest = applicationManifestService.GetApplicationManifest();
