@@ -8,6 +8,8 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:converters="clr-namespace:IndovinaCanzoni.Converters"
     xmlns:telerik="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.Primitives"
+    xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+    xmlns:cimbalino="clr-namespace:Cimbalino.Phone.Toolkit.Behaviors;assembly=Cimbalino.Phone.Toolkit"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
@@ -80,6 +82,14 @@
             <Button Grid.ColumnSpan="2" Grid.Row="3" Content="{Binding Path=LocalizedResources.Answer, Source={StaticResource LocalizedStrings}}" Command="{Binding AnswerCommand}" />
             <Button Grid.ColumnSpan="2" Grid.Row="4" Content="{Binding Path=LocalizedResources.Next, Source={StaticResource LocalizedStrings}}" Command="{Binding MoveNextCommand}" />
         </Grid>
+
+        <i:Interaction.Behaviors>
+            <cimbalino:ApplicationBarBehavior>
+                <cimbalino:ApplicationBarIconButton Command="{Binding AboutCommand, Mode=OneTime}" 
+                                                    IconUri="/Images/questionmark.png" 
+                                                    Text="{Binding Path=LocalizedResources.AppBarAboutButtonTxt, Source={StaticResource LocalizedStrings}}" />
+            </cimbalino:ApplicationBarBehavior>
+        </i:Interaction.Behaviors>
     </Grid>
 
 </phone:PhoneApplicationPage>

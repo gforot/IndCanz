@@ -105,6 +105,7 @@
       <DependentUpon>ScoresPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="src\Model\MusicClientAPI.cs" />
+    <Compile Include="src\Model\PlayMessage.cs" />
     <Compile Include="src\Model\ScoreItem.cs" />
     <Compile Include="src\Utils\LocalizedStrings.cs" />
     <Compile Include="MainPage.xaml.cs">

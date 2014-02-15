@@ -9,6 +9,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Threading;
 using IndovinaCanzoni.Utils;
+using IndovinaCanzoni.Messages;
+using Cimbalino.Phone.Toolkit.Services;
 
 namespace IndovinaCanzoni.ViewModel
 {
@@ -22,6 +24,7 @@ namespace IndovinaCanzoni.ViewModel
         #endregion
 
         private DispatcherTimer _dispatcherTimer;
+        private INavigationService _navigationService;
         
         #region Events
         public event EventHandler PlayRequested;
@@ -218,12 +221,21 @@ namespace IndovinaCanzoni.ViewModel
 
         private void Play()
         {
+            MessengerInstance.Send<PlayMessage>(new PlayMessage());
+
             if (PlayRequested != null)
             {
                 PlayRequested(this, new EventArgs());
                 IsPlaying = true;
                 _dispatcherTimer.Start();
             }
+        }
+
+        public RelayCommand AboutCommand { get; private set; }
+
+        private void About()
+        {
+            _navigationService.NavigateTo(new Uri("/src/Gui/AboutPage.xaml", UriKind.Relative));
         }
         #endregion
 
@@ -294,8 +306,10 @@ namespace IndovinaCanzoni.ViewModel
 
         #endregion
 
-        public GamePageViewModel()
+        public GamePageViewModel(INavigationService navigationService)
         {
+            _navigationService = navigationService;
+
             PlayCommand = new RelayCommand(Play, CanPlay);
             MoveNextCommand = new RelayCommand(MoveNext, CanMoveNext);
             AnswerCommand = new RelayCommand(Answer, CanAnswer);

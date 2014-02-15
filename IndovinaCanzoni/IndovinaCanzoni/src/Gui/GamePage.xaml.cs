@@ -9,6 +9,8 @@ using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using IndovinaCanzoni.ViewModel;
 using IndovinaCanzoni.Resources;
+using GalaSoft.MvvmLight.Messaging;
+using IndovinaCanzoni.Messages;
 
 namespace IndovinaCanzoni.src.Gui
 {
@@ -20,15 +22,17 @@ namespace IndovinaCanzoni.src.Gui
         {
             InitializeComponent();
 
-            //creazione viewModel
-            _vm = new GamePageViewModel();
-            _vm.PlayRequested += _vm_PlayRequested;
-            _vm.StopRequested += _vm_StopRequested;
+            ////creazione viewModel
+            //_vm = new GamePageViewModel();
+            //_vm.PlayRequested += _vm_PlayRequested;
+            //_vm.StopRequested += _vm_StopRequested;
             
-            //imposto il DataContext
-            DataContext = _vm;
+            ////imposto il DataContext
+            //DataContext = _vm;
 
-            BuildLocalizedApplicationBar();
+            //BuildLocalizedApplicationBar();
+
+            Messenger.Default.Register<PlayMessage>(this, OnPlayMessage);
         }
 
         private void BuildLocalizedApplicationBar()
@@ -67,6 +71,11 @@ namespace IndovinaCanzoni.src.Gui
         {
             base.OnNavigatedTo(e);
             await _vm.Init();
+        }
+
+        public void OnPlayMessage(PlayMessage message)
+        {
+
         }
     }
 }
