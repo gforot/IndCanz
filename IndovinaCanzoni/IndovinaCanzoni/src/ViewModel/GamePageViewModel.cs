@@ -11,6 +11,7 @@ using System.Windows.Threading;
 using IndovinaCanzoni.Utils;
 using IndovinaCanzoni.Messages;
 using Cimbalino.Phone.Toolkit.Services;
+using GalaSoft.MvvmLight.Messaging;
 
 namespace IndovinaCanzoni.ViewModel
 {
@@ -221,14 +222,9 @@ namespace IndovinaCanzoni.ViewModel
 
         private void Play()
         {
-            MessengerInstance.Send<PlayMessage>(new PlayMessage());
-
-            if (PlayRequested != null)
-            {
-                PlayRequested(this, new EventArgs());
-                IsPlaying = true;
-                _dispatcherTimer.Start();
-            }
+            MessengerInstance.Send<Message>(new Message("play"));
+            IsPlaying = true;
+            _dispatcherTimer.Start();
         }
 
         public RelayCommand AboutCommand { get; private set; }
@@ -327,19 +323,28 @@ namespace IndovinaCanzoni.ViewModel
             _answered = false;
 
             _currentScore = 0;
+
+            Messenger.Default.Register<Message>(this, OnMessageReceived);
         }
 
         #region Timer
         private void _dispatcherTimer_Tick(object sender, EventArgs e)
         {
+            MessengerInstance.Send<Message>(new Message("play"));
             _dispatcherTimer.Stop();
             IsPlaying = false;
-            if (StopRequested != null)
-            {
-                StopRequested(this, new EventArgs());
-            }
         }
         #endregion
+
+        private async void OnMessageReceived(Message message)
+        {
+            switch (message.Key)
+            {
+                case "genreSelected":
+                    await Init();
+                    break;
+            }
+        }
 
         public async Task Init()
         {

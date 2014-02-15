@@ -8,7 +8,8 @@
     xmlns:rateMyApp="clr-namespace:RateMyApp.Controls;assembly=RateMyApp"
     xmlns:telerikInput="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.Input"
     xmlns:telerikPrimitives="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.Primitives"
-    
+    xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+    xmlns:cimbalino="clr-namespace:Cimbalino.Phone.Toolkit.Behaviors;assembly=Cimbalino.Phone.Toolkit"
     x:Class="IndovinaCanzoni.MainPage"
     mc:Ignorable="d"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
@@ -84,6 +85,13 @@
 			rateMyApp:FeedbackOverlay.FeedbackTo="rotandrea@gmail.com"
 			rateMyApp:FeedbackOverlay.ApplicationName="IndovinaCanzoni"
 			rateMyApp:FeedbackOverlay.CompanyName="gforot"/>
+        <i:Interaction.Behaviors>
+            <cimbalino:ApplicationBarBehavior>
+                <cimbalino:ApplicationBarIconButton Command="{Binding AboutCommand, Mode=OneTime}" 
+                                                    IconUri="/Assets/AppBar/questionmark.png" 
+                                                    Text="{Binding Path=LocalizedResources.AppBarAboutButtonTxt, Source={StaticResource LocalizedStrings}}" />
+            </cimbalino:ApplicationBarBehavior>
+        </i:Interaction.Behaviors>
     </Grid>
 
 </phone:PhoneApplicationPage>

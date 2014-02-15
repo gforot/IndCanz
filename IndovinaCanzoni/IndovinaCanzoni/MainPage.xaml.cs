@@ -27,25 +27,9 @@ namespace IndovinaCanzoni
         {
             InitializeComponent();
 
-            _vm = new MainViewModel();
-            _vm.GenreSelected += _vm_GenreSelected;    
-            
-            DataContext = _vm;
-
-            // Sample code to localize the ApplicationBar
-            //BuildLocalizedApplicationBar();
-
             CreateTiles();
 
             FeedbackOverlay.VisibilityChanged += FeedbackOverlay_VisibilityChanged;
-        }
-
-        private void _vm_GenreSelected(object sender, EventArgs e)
-        {
-            IndovinaCanzoni.App.SelectedGenre = _vm.SelectedGenre;
-
-            //navigazione verso pagina punteggi
-            NavigationService.Navigate(new Uri("/src/Gui/ScoresPage.xaml", UriKind.Relative));
         }
 
         #region Rate My App
@@ -116,35 +100,9 @@ namespace IndovinaCanzoni
         //    var artists = await client.GetTopArtistsAsync();
         //}
 
-        // Sample code for building a localized ApplicationBar
-        private void BuildLocalizedApplicationBar()
-        {
-            // Set the page's ApplicationBar to a new instance of ApplicationBar.
-            ApplicationBar = new ApplicationBar();
 
-            // Create a new button and set the text value to the localized string from AppResources.
-            ApplicationBarIconButton aboutButton = new ApplicationBarIconButton(new Uri("/Assets/AppBar/questionmark.png", UriKind.Relative));
-            aboutButton.Text = AppResources.AppBarAboutButtonTxt;
-            aboutButton.Click += aboutButton_Click;
-            ApplicationBar.Buttons.Add(aboutButton);
 
-            //// Create a new menu item with the localized string from AppResources.
-            //ApplicationBarMenuItem appBarMenuItem = new ApplicationBarMenuItem(AppResources.AppBarMenuItemText);
-            //ApplicationBar.MenuItems.Add(appBarMenuItem);
-        }
 
-        private void aboutButton_Click(object sender, EventArgs e)
-        {
-            NavigationService.Navigate(new Uri("/src/Gui/AboutPage.xaml", UriKind.Relative));
-        }
-
-        protected async override void OnNavigatedTo(NavigationEventArgs e)
-        {
-            base.OnNavigatedTo(e);
-
-            //quando arrivo sulla pagina vado a leggere i generi disponibili
-            await _vm.GetGenres();
-        }
 
 
     }

@@ -6,6 +6,9 @@ using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using IndovinaCanzoni.Model;
 using Nokia.Music.Types;
+using IndovinaCanzoni.Messages;
+using Cimbalino.Phone.Toolkit.Services;
+
 
 namespace IndovinaCanzoni.ViewModel
 {
@@ -23,6 +26,8 @@ namespace IndovinaCanzoni.ViewModel
     /// </summary>
     public class MainViewModel : ViewModelBase
     {
+        private INavigationService _navigationService;
+
         #region Events
 
         public event EventHandler GenreSelected;
@@ -66,8 +71,24 @@ namespace IndovinaCanzoni.ViewModel
             {
                 GenreSelected(this, new EventArgs());    
             }
+
+            IndovinaCanzoni.App.SelectedGenre = SelectedGenre;
+
+
+
+            //Messaggio Genreselected
+            MessengerInstance.Send<Message>(new Message("genreSelected"));
+
+            //Navigazione
+            _navigationService.NavigateTo(new Uri("/src/Gui/ScoresPage.xaml", UriKind.Relative));
         }
 
+        public RelayCommand AboutCommand { get; private set; }
+
+        private void About()
+        {
+            _navigationService.NavigateTo(new Uri("/src/Gui/AboutPage.xaml", UriKind.Relative));
+        }
         #endregion
 
         #region Constructor
@@ -75,10 +96,15 @@ namespace IndovinaCanzoni.ViewModel
         /// <summary>
         /// Initializes a new instance of the MainViewModel class.
         /// </summary>
-        public MainViewModel()
+        public MainViewModel(INavigationService navigationService)
         {
+            _navigationService = navigationService;
             Genres = new ObservableCollection<Genre>();
             SelectGenreCommand = new RelayCommand(SelectGenre, CanSelectGenre);
+            AboutCommand = new RelayCommand(About);
+
+            MessengerInstance.Register<Message>(this, OnMessageReceived);
+            MessengerInstance.Send<Message>(new Message("getGenres"));
         }
         #endregion
 
@@ -95,5 +121,13 @@ namespace IndovinaCanzoni.ViewModel
         }
 
         #endregion
+
+        private async void OnMessageReceived(Message message)
+        {
+            if (message.Key=="getGenres") 
+            {
+                await GetGenres();
+            }
+        }
     }
 }

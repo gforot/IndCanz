@@ -32,7 +32,7 @@ namespace IndovinaCanzoni.src.Gui
 
             //BuildLocalizedApplicationBar();
 
-            Messenger.Default.Register<PlayMessage>(this, OnPlayMessage);
+            Messenger.Default.Register<Message>(this, OnPlayMessage);
         }
 
         private void BuildLocalizedApplicationBar()
@@ -73,9 +73,17 @@ namespace IndovinaCanzoni.src.Gui
             await _vm.Init();
         }
 
-        public void OnPlayMessage(PlayMessage message)
+        public void OnPlayMessage(Message message)
         {
-
+            switch (message.Key)
+            {
+                case "play":
+                    player.Play();
+                    break;
+                case "stop":
+                    player.Stop();
+                    break;
+            }
         }
     }
 }

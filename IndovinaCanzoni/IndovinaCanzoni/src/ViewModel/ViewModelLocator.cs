@@ -47,6 +47,11 @@ namespace IndovinaCanzoni.ViewModel
                 SimpleIoc.Default.Register<IEmailComposeService, EmailComposeService>();
             }
 
+            if (!SimpleIoc.Default.IsRegistered<INavigationService>())
+            {
+                SimpleIoc.Default.Register<INavigationService, NavigationService>();
+            }
+
             SimpleIoc.Default.Register<MainViewModel>();
             SimpleIoc.Default.Register<GamePageViewModel>();
             SimpleIoc.Default.Register<AboutPageViewModel>();
