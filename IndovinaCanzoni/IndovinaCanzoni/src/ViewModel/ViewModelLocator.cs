@@ -12,6 +12,7 @@
   See http://www.galasoft.ch/mvvm
 */
 
+using Cimbalino.Phone.Toolkit.Services;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Ioc;
 using Microsoft.Practices.ServiceLocation;
@@ -31,25 +32,60 @@ namespace IndovinaCanzoni.ViewModel
         {
             ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
 
-            ////if (ViewModelBase.IsInDesignModeStatic)
-            ////{
-            ////    // Create design time view services and models
-            ////    SimpleIoc.Default.Register<IDataService, DesignDataService>();
-            ////}
-            ////else
-            ////{
-            ////    // Create run time view services and models
-            ////    SimpleIoc.Default.Register<IDataService, DataService>();
-            ////}
+            if (!SimpleIoc.Default.IsRegistered<IMarketplaceReviewService>())
+            {
+                SimpleIoc.Default.Register<IMarketplaceReviewService, MarketplaceReviewService>();
+            }
 
-            //SimpleIoc.Default.Register<MainViewModel>();
+            if (!SimpleIoc.Default.IsRegistered<IApplicationManifestService>())
+            {
+                SimpleIoc.Default.Register<IApplicationManifestService, ApplicationManifestService>();
+            }
+
+            if (!SimpleIoc.Default.IsRegistered<IEmailComposeService>())
+            {
+                SimpleIoc.Default.Register<IEmailComposeService, EmailComposeService>();
+            }
+
+            SimpleIoc.Default.Register<MainViewModel>();
+            SimpleIoc.Default.Register<GamePageViewModel>();
+            SimpleIoc.Default.Register<AboutPageViewModel>();
+            SimpleIoc.Default.Register<ScoresPageViewModel>();
         }
 
-        public MainViewModel Main
+        /// <summary>
+        /// Gets the about view model.
+        /// </summary>
+        public AboutPageViewModel AboutPageViewModel
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<AboutPageViewModel>();
+            }
+        }
+
+        public MainViewModel MainViewModel
         {
             get
             {
                 return ServiceLocator.Current.GetInstance<MainViewModel>();
+            }
+        }
+
+        public GamePageViewModel GamePageViewModel
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<GamePageViewModel>();
+            }
+        }
+
+
+        public ScoresPageViewModel ScoresPageViewModel
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<ScoresPageViewModel>();
             }
         }
         

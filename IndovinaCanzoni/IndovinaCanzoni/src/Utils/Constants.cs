@@ -8,6 +8,8 @@
         /// </summary>
         public const bool IsNetworkAvailable = true;
 
+        public const string FeedbackEmailAddress = "gforot@hotmail.it";
+
         #region Applications Ids
         public const string ApplicationId = "IndovinaCanzoni";
         public const string ClientId = "27b11ebf882bc5888af6a279a75b59a0";
