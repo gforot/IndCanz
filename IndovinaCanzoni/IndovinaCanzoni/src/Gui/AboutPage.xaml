@@ -57,12 +57,14 @@
 
         <i:Interaction.Behaviors>
             <cimbalino:ApplicationBarBehavior>
-                <cimbalino:ApplicationBarIconButton Command="{Binding RateCommand, Mode=OneTime}" 
-                                                    IconUri="/Images/questionmark.png" 
-                                                    Text="{Binding Path=LocalizedResources.AppBarAboutButtonTxt, Source={StaticResource LocalizedStrings}}" />
                 <cimbalino:ApplicationBarIconButton Command="{Binding SendFeedbackCommand, Mode=OneTime}" 
-                                                    IconUri="/Images/questionmark.png" 
+                                                    IconUri="/Assets/AppBar/questionmark.png" 
                                                     Text="{Binding Path=LocalizedResources.SendFeedback, Source={StaticResource LocalizedStrings}}" />
+
+                <cimbalino:ApplicationBarIconButton Command="{Binding RateCommand, Mode=OneTime}" 
+                                                    IconUri="/Assets/AppBar/questionmark.png" 
+                                                    Text="{Binding Path=LocalizedResources.Rate, Source={StaticResource LocalizedStrings}}" />
+
             </cimbalino:ApplicationBarBehavior>
         </i:Interaction.Behaviors>
     </Grid>

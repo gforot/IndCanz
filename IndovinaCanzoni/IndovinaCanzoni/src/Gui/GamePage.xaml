@@ -86,7 +86,7 @@
         <i:Interaction.Behaviors>
             <cimbalino:ApplicationBarBehavior>
                 <cimbalino:ApplicationBarIconButton Command="{Binding AboutCommand, Mode=OneTime}" 
-                                                    IconUri="/Images/questionmark.png" 
+                                                    IconUri="/Assets/AppBar/questionmark.png" 
                                                     Text="{Binding Path=LocalizedResources.AppBarAboutButtonTxt, Source={StaticResource LocalizedStrings}}" />
             </cimbalino:ApplicationBarBehavior>
         </i:Interaction.Behaviors>
