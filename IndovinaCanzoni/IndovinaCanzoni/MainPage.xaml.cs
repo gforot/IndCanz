@@ -66,44 +66,5 @@ namespace IndovinaCanzoni
         }
         #endregion
 
-        //private async void Button_Click(object sender, RoutedEventArgs e)
-        //{
-        //    //LaunchTask task = new LaunchTask();
-        //    //task.Show();
-        //    MusicClient client = new MusicClient(Constants.ClientId, "it",null);
-        //    //MusicClient client = new MusicClient(Constants.ClientId);
-
-
-
-        //    ListResponse<MusicItem> result = await client.SearchAsync("love");
-        //    int count = -100;
-        //    if (result.Result != null) 
-        //    {
-        //        count = result.Result.Count;
-        //    }
-        //    result = await client.SearchAsync("Green Day");
-        //    if (result.Result != null)
-        //    {
-        //        count = result.Result.Count;
-        //    }
-        //    result = await client.SearchAsync("Ligabue");
-        //    if (result.Result != null)
-        //    {
-        //        count = result.Result.Count;
-        //    }
-        //    result = await client.SearchAsync("U2");
-        //    if (result.Result != null)
-        //    {
-        //        count = result.Result.Count;
-        //    }
-
-        //    var artists = await client.GetTopArtistsAsync();
-        //}
-
-
-
-
-
-
     }
 }

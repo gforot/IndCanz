@@ -3,13 +3,14 @@ using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using IndovinaCanzoni.Model;
 using System;
+using Cimbalino.Phone.Toolkit.Services;
 
 namespace IndovinaCanzoni.ViewModel
 {
     public class ScoresPageViewModel : ViewModelBase
     {
+        private INavigationService _navigationService;
 
-        public event EventHandler PlayRequested;
         #region Properties
 
         public ObservableCollection<ScoreItem> ScoreItems { get; private set; }
@@ -26,19 +27,25 @@ namespace IndovinaCanzoni.ViewModel
 
         private void Play()
         {
-            if (PlayRequested != null)
-            {
-                PlayRequested(this, new EventArgs());
-            }
+            _navigationService.NavigateTo(new Uri("/src/Gui/GamePage.xaml", UriKind.Relative));
+        }
+
+        public RelayCommand AboutCommand { get; private set; }
+
+        private void About()
+        {
+            _navigationService.NavigateTo(new Uri("/src/Gui/AboutPage.xaml", UriKind.Relative));
         }
         #endregion
 
         #region Constructor
 
-        public ScoresPageViewModel()
+        public ScoresPageViewModel(INavigationService navigationService)
         {
+            _navigationService = navigationService;
             ScoreItems = Data.DataLayer.GetInstance().LoadScoreItems(App.SelectedGenre.Id);
             PlayCommand = new RelayCommand(Play, CanPlay);
+            AboutCommand = new RelayCommand(About);
         }
         #endregion
     }

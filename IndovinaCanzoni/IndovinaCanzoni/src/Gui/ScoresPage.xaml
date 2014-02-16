@@ -6,6 +6,9 @@
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+    xmlns:cimbalino="clr-namespace:Cimbalino.Phone.Toolkit.Behaviors;assembly=Cimbalino.Phone.Toolkit"
+
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
@@ -67,6 +70,15 @@
             <ListBox x:Name="lbScores" ItemsSource="{Binding ScoreItems}" ItemTemplate="{StaticResource scoreItemTemplate}" />
             <Button x:Name="btnPlay" Content="{Binding Path=LocalizedResources.Play, Source={StaticResource LocalizedStrings}}" Grid.Row="1" Command="{Binding PlayCommand}" />
         </Grid>
+
+        <i:Interaction.Behaviors>
+            <cimbalino:ApplicationBarBehavior>
+                <cimbalino:ApplicationBarIconButton Command="{Binding AboutCommand, Mode=OneTime}" 
+                                                    IconUri="/Assets/AppBar/questionmark.png" 
+                                                    Text="{Binding Path=LocalizedResources.AppBarAboutButtonTxt, Source={StaticResource LocalizedStrings}}" />
+            </cimbalino:ApplicationBarBehavior>
+        </i:Interaction.Behaviors>
+
     </Grid>
 
 </phone:PhoneApplicationPage>
