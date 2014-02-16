@@ -16,14 +16,11 @@ namespace IndovinaCanzoni.src.Gui
 {
     public partial class GamePage : PhoneApplicationPage
     {
-        private GamePageViewModel _vm;
-
         public GamePage()
         {
             InitializeComponent();
             Messenger.Default.Register<Message>(this, OnMessageReceived);
         }
-
 
         public void OnMessageReceived(Message message)
         {
@@ -36,6 +33,13 @@ namespace IndovinaCanzoni.src.Gui
                     player.Stop();
                     break;
             }
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+
+            Messenger.Default.Send<Message>(new Message(IndovinaCanzoni.Utils.Messages.InitProductList));
         }
     }
 }

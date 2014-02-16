@@ -5,6 +5,7 @@ namespace IndovinaCanzoni.Utils
     {
         public const string Play = "Play";
         public const string Stop = "Stop";
-        public const string GenreSelected = "GenreSelected";
+        public const string Init = "Init";
+        public const string InitProductList = "InitProductList";
     }
 }

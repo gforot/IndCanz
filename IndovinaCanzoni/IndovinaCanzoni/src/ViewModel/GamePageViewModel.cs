@@ -319,8 +319,8 @@ namespace IndovinaCanzoni.ViewModel
 
             _currentScore = 0;
 
-            Messenger.Default.Register<Message>(this, OnMessageReceived);
-        }
+            MessengerInstance.Register<Message>(this, OnMessageReceived);
+       }
 
         #region Timer
         private void _dispatcherTimer_Tick(object sender, EventArgs e)
@@ -335,7 +335,7 @@ namespace IndovinaCanzoni.ViewModel
         {
             switch (message.Key)
             {
-                case IndovinaCanzoni.Utils.Messages.GenreSelected:
+                case IndovinaCanzoni.Utils.Messages.InitProductList:
                     await Init();
                     break;
             }
@@ -346,5 +346,7 @@ namespace IndovinaCanzoni.ViewModel
             //Leggo i prodotti relativi al genere selezionato.
             Products = await MusicClientAPI.GetInstance().GetListOfTracksByGenreAsync(App.SelectedGenre);
         }
+
+        
     }
 }

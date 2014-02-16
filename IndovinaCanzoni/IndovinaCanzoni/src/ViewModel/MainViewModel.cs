@@ -64,11 +64,6 @@ namespace IndovinaCanzoni.ViewModel
         {
             IndovinaCanzoni.App.SelectedGenre = SelectedGenre;
 
-
-
-            //Messaggio Genreselected
-            MessengerInstance.Send<Message>(new Message(IndovinaCanzoni.Utils.Messages.GenreSelected));
-
             //Navigazione
             _navigationService.NavigateTo(new Uri("/src/Gui/ScoresPage.xaml", UriKind.Relative));
         }
