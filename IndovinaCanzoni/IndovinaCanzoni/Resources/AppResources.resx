@@ -203,4 +203,10 @@
   <data name="YourScoreIs" xml:space="preserve">
     <value>Your Score Is:</value>
   </data>
+  <data name="SeeScores" xml:space="preserve">
+    <value>See Scores</value>
+  </data>
+  <data name="Results" xml:space="preserve">
+    <value>Results</value>
+  </data>
 </root>

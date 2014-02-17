@@ -379,6 +379,7 @@ namespace IndovinaCanzoni.ViewModel
                     {
                         _availableProductIndexes.Add(i);
                     }
+                    GetNextIndex();
                     break;
             }
         }
