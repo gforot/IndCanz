@@ -7,10 +7,8 @@ using Cimbalino.Phone.Toolkit.Services;
 
 namespace IndovinaCanzoni.ViewModel
 {
-    public class ScoresPageViewModel : ViewModelBase
+    public class ScoresPageViewModel : ViewModelCommon
     {
-        private INavigationService _navigationService;
-
         #region Properties
 
         public ObservableCollection<ScoreItem> ScoreItems { get; private set; }
@@ -27,22 +25,22 @@ namespace IndovinaCanzoni.ViewModel
 
         private void Play()
         {
-            _navigationService.NavigateTo(new Uri("/src/Gui/GamePage.xaml", UriKind.Relative));
+            NavigationService.NavigateTo(new Uri("/src/Gui/GamePage.xaml", UriKind.Relative));
         }
 
         public RelayCommand AboutCommand { get; private set; }
 
         private void About()
         {
-            _navigationService.NavigateTo(new Uri("/src/Gui/AboutPage.xaml", UriKind.Relative));
+            NavigationService.NavigateTo(new Uri("/src/Gui/AboutPage.xaml", UriKind.Relative));
         }
         #endregion
 
         #region Constructor
 
         public ScoresPageViewModel(INavigationService navigationService)
+            : base(navigationService)
         {
-            _navigationService = navigationService;
             ScoreItems = Data.DataLayer.GetInstance().LoadScoreItems(App.SelectedGenre.Id);
             PlayCommand = new RelayCommand(Play, CanPlay);
             AboutCommand = new RelayCommand(About);

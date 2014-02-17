@@ -123,6 +123,7 @@
     <Compile Include="src\ViewModel\GamePageViewModel.cs" />
     <Compile Include="src\ViewModel\MainViewModel.cs" />
     <Compile Include="src\ViewModel\ScoresPageViewModel.cs" />
+    <Compile Include="src\ViewModel\ViewModelCommon.cs" />
     <Compile Include="src\ViewModel\ViewModelLocator.cs" />
   </ItemGroup>
   <ItemGroup>

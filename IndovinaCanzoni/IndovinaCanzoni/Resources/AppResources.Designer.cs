@@ -142,6 +142,24 @@ namespace IndovinaCanzoni.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to My Feedback.
+        /// </summary>
+        public static string FeedbackSubject {
+            get {
+                return ResourceManager.GetString("FeedbackSubject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Application {0}\n Version: {1}.
+        /// </summary>
+        public static string FeedbackText {
+            get {
+                return ResourceManager.GetString("FeedbackText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Game Page.
         /// </summary>
         public static string GamePageTitle {

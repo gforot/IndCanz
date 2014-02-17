@@ -1,34 +1,20 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Net;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Navigation;
+using IndovinaCanzoni.Resources;
+using IndovinaCanzoni.ViewModel;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
-using IndovinaCanzoni.Resources;
-using Nokia.Music.Tasks;
-using Nokia.Music;
-using IndovinaCanzoni.Utils;
-using Nokia.Music.Types;
-using System.Globalization;
-using IndovinaCanzoni.ViewModel;
-using IndovinaCanzoni.Model;
 
 namespace IndovinaCanzoni
 {
     public partial class MainPage : PhoneApplicationPage
     {
-        MainViewModel _vm;
-
         // Constructor
         public MainPage()
         {
             InitializeComponent();
-
             CreateTiles();
-
             FeedbackOverlay.VisibilityChanged += FeedbackOverlay_VisibilityChanged;
         }
 
@@ -65,6 +51,5 @@ namespace IndovinaCanzoni
             }
         }
         #endregion
-
     }
 }

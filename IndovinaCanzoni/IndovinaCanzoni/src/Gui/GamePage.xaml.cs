@@ -1,16 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Navigation;
-using Microsoft.Phone.Controls;
-using Microsoft.Phone.Shell;
-using IndovinaCanzoni.ViewModel;
-using IndovinaCanzoni.Resources;
+﻿using System.Windows.Navigation;
 using GalaSoft.MvvmLight.Messaging;
 using IndovinaCanzoni.Messages;
+using Microsoft.Phone.Controls;
 
 namespace IndovinaCanzoni.src.Gui
 {
@@ -38,7 +29,6 @@ namespace IndovinaCanzoni.src.Gui
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-
             Messenger.Default.Send<Message>(new Message(IndovinaCanzoni.Utils.Messages.InitProductList));
         }
     }

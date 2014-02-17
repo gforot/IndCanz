@@ -1,8 +1,4 @@
-﻿using IndovinaCanzoni.ViewModel;
-using Microsoft.Phone.Controls;
-using System;
-using Microsoft.Phone.Shell;
-using IndovinaCanzoni.Resources;
+﻿using Microsoft.Phone.Controls;
 
 namespace IndovinaCanzoni.src.Gui
 {

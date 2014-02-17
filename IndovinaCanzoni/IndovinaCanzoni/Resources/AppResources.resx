@@ -191,4 +191,10 @@
   <data name="SendFeedback" xml:space="preserve">
     <value>Send Feedback</value>
   </data>
+  <data name="FeedbackSubject" xml:space="preserve">
+    <value>My Feedback</value>
+  </data>
+  <data name="FeedbackText" xml:space="preserve">
+    <value>Application {0}\n Version: {1}</value>
+  </data>
 </root>

@@ -1,21 +1,18 @@
-﻿using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Command;
-using IndovinaCanzoni.Model;
-using Nokia.Music.Types;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Threading;
-using IndovinaCanzoni.Utils;
-using IndovinaCanzoni.Messages;
 using Cimbalino.Phone.Toolkit.Services;
-using GalaSoft.MvvmLight.Messaging;
+using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
+using IndovinaCanzoni.Messages;
+using IndovinaCanzoni.Model;
+using IndovinaCanzoni.Utils;
+using Nokia.Music.Types;
 
 namespace IndovinaCanzoni.ViewModel
 {
-    public class GamePageViewModel : ViewModelBase
+    public class GamePageViewModel : ViewModelCommon
     {
         #region Constants
         //durata dell'ascolto del brano.
@@ -25,7 +22,6 @@ namespace IndovinaCanzoni.ViewModel
         #endregion
 
         private DispatcherTimer _dispatcherTimer;
-        private INavigationService _navigationService;
         
         #region Properties
 
@@ -226,7 +222,7 @@ namespace IndovinaCanzoni.ViewModel
 
         private void About()
         {
-            _navigationService.NavigateTo(new Uri("/src/Gui/AboutPage.xaml", UriKind.Relative));
+            NavigationService.NavigateTo(new Uri("/src/Gui/AboutPage.xaml", UriKind.Relative));
         }
         #endregion
 
@@ -298,9 +294,8 @@ namespace IndovinaCanzoni.ViewModel
         #endregion
 
         public GamePageViewModel(INavigationService navigationService)
+            : base(navigationService)
         {
-            _navigationService = navigationService;
-
             PlayCommand = new RelayCommand(Play, CanPlay);
             MoveNextCommand = new RelayCommand(MoveNext, CanMoveNext);
             AnswerCommand = new RelayCommand(Answer, CanAnswer);

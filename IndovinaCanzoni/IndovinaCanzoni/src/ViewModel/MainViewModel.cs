@@ -24,7 +24,7 @@ namespace IndovinaCanzoni.ViewModel
     /// See http://www.galasoft.ch/mvvm
     /// </para>
     /// </summary>
-    public class MainViewModel : ViewModelBase
+    public class MainViewModel : ViewModelCommon
     {
         private INavigationService _navigationService;
 
@@ -65,14 +65,14 @@ namespace IndovinaCanzoni.ViewModel
             IndovinaCanzoni.App.SelectedGenre = SelectedGenre;
 
             //Navigazione
-            _navigationService.NavigateTo(new Uri("/src/Gui/ScoresPage.xaml", UriKind.Relative));
+            NavigationService.NavigateTo(new Uri("/src/Gui/ScoresPage.xaml", UriKind.Relative));
         }
 
         public RelayCommand AboutCommand { get; private set; }
 
         private void About()
         {
-            _navigationService.NavigateTo(new Uri("/src/Gui/AboutPage.xaml", UriKind.Relative));
+            NavigationService.NavigateTo(new Uri("/src/Gui/AboutPage.xaml", UriKind.Relative));
         }
         #endregion
 
@@ -82,8 +82,8 @@ namespace IndovinaCanzoni.ViewModel
         /// Initializes a new instance of the MainViewModel class.
         /// </summary>
         public MainViewModel(INavigationService navigationService)
+            : base (navigationService)
         {
-            _navigationService = navigationService;
             Genres = new ObservableCollection<Genre>();
             SelectGenreCommand = new RelayCommand(SelectGenre, CanSelectGenre);
             AboutCommand = new RelayCommand(About);
