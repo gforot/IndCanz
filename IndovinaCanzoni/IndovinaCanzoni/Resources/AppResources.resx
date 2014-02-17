@@ -197,4 +197,10 @@
   <data name="FeedbackText" xml:space="preserve">
     <value>Application {0}\n Version: {1}</value>
   </data>
+  <data name="PlayAgain" xml:space="preserve">
+    <value>Play Again</value>
+  </data>
+  <data name="YourScoreIs" xml:space="preserve">
+    <value>Your Score Is:</value>
+  </data>
 </root>

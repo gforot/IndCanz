@@ -101,11 +101,14 @@
     <Compile Include="src\Gui\GamePage.xaml.cs">
       <DependentUpon>GamePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="src\Gui\ResultPage.xaml.cs">
+      <DependentUpon>ResultPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="src\Gui\ScoresPage.xaml.cs">
       <DependentUpon>ScoresPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="src\Model\MusicClientAPI.cs" />
-    <Compile Include="src\Model\PlayMessage.cs" />
+    <Compile Include="src\Model\Message.cs" />
     <Compile Include="src\Model\ScoreItem.cs" />
     <Compile Include="src\Utils\LocalizedStrings.cs" />
     <Compile Include="MainPage.xaml.cs">
@@ -122,6 +125,7 @@
     <Compile Include="src\ViewModel\AboutPageViewModel.cs" />
     <Compile Include="src\ViewModel\GamePageViewModel.cs" />
     <Compile Include="src\ViewModel\MainViewModel.cs" />
+    <Compile Include="src\ViewModel\ResultPageViewModel.cs" />
     <Compile Include="src\ViewModel\ScoresPageViewModel.cs" />
     <Compile Include="src\ViewModel\ViewModelCommon.cs" />
     <Compile Include="src\ViewModel\ViewModelLocator.cs" />
@@ -140,6 +144,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="src\Gui\GamePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="src\Gui\ResultPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

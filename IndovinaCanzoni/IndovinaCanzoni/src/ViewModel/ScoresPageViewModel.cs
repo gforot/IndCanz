@@ -11,7 +11,7 @@ namespace IndovinaCanzoni.ViewModel
     {
         #region Properties
 
-        public ObservableCollection<ScoreItem> ScoreItems { get; private set; }
+        public static ObservableCollection<ScoreItem> ScoreItems { get; private set; }
 
         #endregion
 

@@ -5,9 +5,11 @@ using System.Windows.Threading;
 using Cimbalino.Phone.Toolkit.Services;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+using IndovinaCanzoni.Data;
 using IndovinaCanzoni.Messages;
 using IndovinaCanzoni.Model;
 using IndovinaCanzoni.Utils;
+using Microsoft.Phone.Shell;
 using Nokia.Music.Types;
 
 namespace IndovinaCanzoni.ViewModel
@@ -21,7 +23,10 @@ namespace IndovinaCanzoni.ViewModel
         const int _secondsOfTimer = 3;
         #endregion
 
+        private readonly List<int> _availableProductIndexes;
         private DispatcherTimer _dispatcherTimer;
+        private readonly Random _randomizer;
+        private int _numberOfAnswers;
         
         #region Properties
 
@@ -200,6 +205,16 @@ namespace IndovinaCanzoni.ViewModel
         }
 
         #endregion
+
+        public int GuessedBoth{get;set;}
+        public int GuessedAuthors{get;set;}
+        public int GuessedTitle{get;set;}
+        
+
+        public bool IsGameFinished
+        {
+            get { return _numberOfAnswers >= 10; }
+        }
         #endregion
 
         #region Command
@@ -237,7 +252,6 @@ namespace IndovinaCanzoni.ViewModel
         {
             //gestione della risposta dell'utente
             System.Windows.MessageBox.Show(string.Format("L'utente ha risposto : {0} - {1}", _answerTitle, _answerArtist));
-
             Answered = true;
 
             ArtistAnswerResult = CurrentProduct.Name.Equals(_answerTitle);
@@ -248,21 +262,42 @@ namespace IndovinaCanzoni.ViewModel
             {
                 if (ArtistAnswerResult.Value && TitleAnswerResult.Value)
                 {
+                    GuessedBoth++;
                     //entrambe le risposte corrette
                     CurrentScore += Constants.GuessBothPoints;
                 }
                 else if (ArtistAnswerResult.Value)
                 {
                     //solo artista
+                    GuessedAuthors++;
                     CurrentScore += Constants.GuessAuthorPoints;
                 }
                 else if (TitleAnswerResult.Value)
                 {
+                    GuessedTitle++;
                     //solo titolo
                     CurrentScore += Constants.GuessTitlePoints;
                 }
             }
             #endregion
+
+            _numberOfAnswers++;
+
+            if (IsGameFinished)
+            {
+                ScoreItem newScore = new ScoreItem()
+                {
+                    GuessedAuthors = GuessedAuthors,
+                    GuessedBoth = GuessedBoth,
+                    GuessedTitles = GuessedTitle
+                };
+                ScoresPageViewModel.ScoreItems.Add(newScore);
+
+                DataLayer.GetInstance().SaveScoreItems(App.SelectedGenre.Id, ScoresPageViewModel.ScoreItems);
+
+                PhoneApplicationService.Current.State.Add("scoreItems", newScore);
+                NavigationService.NavigateTo(new Uri("/src/Gui/ResultPage.xaml", UriKind.Relative));
+            }
         }
         #endregion
 
@@ -272,13 +307,13 @@ namespace IndovinaCanzoni.ViewModel
 
         private bool CanMoveNext()
         {
-            return _answered;
+            return _answered && !IsGameFinished;
         }
 
         private void MoveNext()
         {
             //mi sposto sulla canzone successiva.
-            Index++;
+            GetNextIndex();
 
             AnswerArtist = string.Empty;
             AnswerTitle = string.Empty;
@@ -313,8 +348,14 @@ namespace IndovinaCanzoni.ViewModel
             _answered = false;
 
             _currentScore = 0;
+            _numberOfAnswers = 0;
 
             MessengerInstance.Register<Message>(this, OnMessageReceived);
+            _availableProductIndexes = new List<int>();
+            _randomizer = new Random();
+            GuessedTitle = 0;
+            GuessedAuthors = 0;
+            GuessedBoth = 0;
        }
 
         #region Timer
@@ -331,17 +372,24 @@ namespace IndovinaCanzoni.ViewModel
             switch (message.Key)
             {
                 case IndovinaCanzoni.Utils.Messages.InitProductList:
-                    await Init();
+                    Products = await MusicClientAPI.GetInstance().GetListOfTracksByGenreAsync(App.SelectedGenre);
+
+                    _availableProductIndexes.Clear();
+                    for (int i = 0; i < Products.Count; i++)
+                    {
+                        _availableProductIndexes.Add(i);
+                    }
                     break;
             }
         }
 
-        public async Task Init()
+        private int GetNextIndex()
         {
-            //Leggo i prodotti relativi al genere selezionato.
-            Products = await MusicClientAPI.GetInstance().GetListOfTracksByGenreAsync(App.SelectedGenre);
+            int idx = _randomizer.Next(_availableProductIndexes.Count);
+            Index = _availableProductIndexes[idx];
+            _availableProductIndexes.RemoveAt(idx);
+            return Index;
         }
 
-        
     }
 }

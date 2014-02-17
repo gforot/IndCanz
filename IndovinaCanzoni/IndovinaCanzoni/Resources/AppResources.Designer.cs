@@ -223,6 +223,15 @@ namespace IndovinaCanzoni.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Play Again.
+        /// </summary>
+        public static string PlayAgain {
+            get {
+                return ResourceManager.GetString("PlayAgain", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Rate.
         /// </summary>
         public static string Rate {
@@ -291,6 +300,15 @@ namespace IndovinaCanzoni.Resources {
         public static string SendFeedback {
             get {
                 return ResourceManager.GetString("SendFeedback", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your Score Is:.
+        /// </summary>
+        public static string YourScoreIs {
+            get {
+                return ResourceManager.GetString("YourScoreIs", resourceCulture);
             }
         }
     }
