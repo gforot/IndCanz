@@ -56,6 +56,7 @@ namespace IndovinaCanzoni.ViewModel
             SimpleIoc.Default.Register<GamePageViewModel>();
             SimpleIoc.Default.Register<AboutPageViewModel>();
             SimpleIoc.Default.Register<ScoresPageViewModel>();
+            SimpleIoc.Default.Register<ResultPageViewModel>();
         }
 
         /// <summary>
@@ -91,6 +92,14 @@ namespace IndovinaCanzoni.ViewModel
             get
             {
                 return ServiceLocator.Current.GetInstance<ScoresPageViewModel>();
+            }
+        }
+
+        public ResultPageViewModel ResultPageViewModel
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<ResultPageViewModel>();
             }
         }
         

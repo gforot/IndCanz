@@ -16,7 +16,17 @@ namespace IndovinaCanzoni.ViewModel
 
         private ScoreItem _score;
 
-        public int Score { get { return _score.Score; } }
+        public int Score 
+        { 
+            get 
+            {
+                if (IsInDesignMode)
+                {
+                    return 5800;
+                }
+                return _score.Score; 
+            } 
+        }
 
         #region Commands
         public RelayCommand NewGameCommand { get; private set; }

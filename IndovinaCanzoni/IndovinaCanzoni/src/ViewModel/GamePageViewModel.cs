@@ -251,12 +251,12 @@ namespace IndovinaCanzoni.ViewModel
         private void Answer()
         {
             //gestione della risposta dell'utente
-            System.Windows.MessageBox.Show(string.Format("L'utente ha risposto : {0} - {1}", _answerTitle, _answerArtist));
             Answered = true;
 
             ArtistAnswerResult = CurrentProduct.Name.Equals(_answerTitle);
             TitleAnswerResult = CurrentProduct.Performers[0].Name.Equals(_answerArtist);
 
+            TitleAnswerResult = true;
             #region Punteggio
             if ((ArtistAnswerResult.HasValue) && (TitleAnswerResult.HasValue))
             {
