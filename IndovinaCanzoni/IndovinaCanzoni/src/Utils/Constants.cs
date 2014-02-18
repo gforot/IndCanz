@@ -22,5 +22,7 @@
         public const int GuessAuthorPoints = 25;
         public const int HintDecreasePoints = 10;
         #endregion
+
+        public const string ResultsFolderName = "results";
     }
 }

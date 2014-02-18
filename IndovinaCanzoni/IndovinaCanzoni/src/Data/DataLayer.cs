@@ -6,6 +6,7 @@ using System.IO.IsolatedStorage;
 using System.Xml.Serialization;
 using IndovinaCanzoni.Model;
 using IndovinaCanzoni.Utils;
+using Nokia.Music.Types;
 namespace IndovinaCanzoni.Data
 {
     public class DataLayer
@@ -36,9 +37,10 @@ namespace IndovinaCanzoni.Data
             ObservableCollection<ScoreItem> items = new ObservableCollection<ScoreItem>();
             using (IsolatedStorageFile isf = IsolatedStorageFile.GetUserStoreForApplication())
             {
-                if (isf.FileExists(idGenre))
+                string fileName = GetFileName(idGenre);
+                if (isf.FileExists(fileName))
                 {
-                    using (IsolatedStorageFileStream isfs = isf.OpenFile(idGenre, FileMode.Open))
+                    using (IsolatedStorageFileStream isfs = isf.OpenFile(fileName, FileMode.Open))
                     {
                         Type t = typeof(ObservableCollection<ScoreItem>);
                         XmlSerializer ser = new XmlSerializer(t);
@@ -58,13 +60,46 @@ namespace IndovinaCanzoni.Data
         {
             using (var store = IsolatedStorageFile.GetUserStoreForApplication())
             {
-                using (var stream = new IsolatedStorageFileStream(idGenre,
+                if (!store.DirectoryExists(Constants.ResultsFolderName))
+                {
+                    store.CreateDirectory(Constants.ResultsFolderName);
+                }
+                
+                using (var stream = new IsolatedStorageFileStream(GetFileName(idGenre),
                                                                   FileMode.Create,
                                                                   FileAccess.Write,
                                                                   store))
                 {
                     XmlSerializer serializer = new XmlSerializer(typeof(ObservableCollection<ScoreItem>));
                     serializer.Serialize(stream, items);
+                }
+            }
+        }
+
+        private string GetFileName(string idGenre)
+        {
+            return string.Format("{0}/{1}", Constants.ResultsFolderName, idGenre);
+        }
+
+        public void ClearResults()
+        {
+            using (var store = IsolatedStorageFile.GetUserStoreForApplication())
+            {
+                if (store.DirectoryExists(Constants.ResultsFolderName))
+                {
+                    store.DeleteDirectory(Constants.ResultsFolderName);
+                }
+            }
+        }
+
+        public void ClearResults(string idGenre)
+        {
+            using (var store = IsolatedStorageFile.GetUserStoreForApplication())
+            {
+                string fileName = GetFileName(idGenre);
+                if (store.FileExists(fileName))
+                {
+                    store.DeleteFile(fileName);
                 }
             }
         }
