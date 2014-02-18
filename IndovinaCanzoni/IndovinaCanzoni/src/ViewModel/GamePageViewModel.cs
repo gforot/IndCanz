@@ -371,17 +371,30 @@ namespace IndovinaCanzoni.ViewModel
         {
             switch (message.Key)
             {
-                case IndovinaCanzoni.Utils.Messages.InitProductList:
-                    Products = await MusicClientAPI.GetInstance().GetListOfTracksByGenreAsync(App.SelectedGenre);
-
-                    _availableProductIndexes.Clear();
-                    for (int i = 0; i < Products.Count; i++)
-                    {
-                        _availableProductIndexes.Add(i);
-                    }
-                    GetNextIndex();
+                case IndovinaCanzoni.Utils.Messages.NewGame:
+                    await NewGame();
                     break;
             }
+        }
+
+        private async Task NewGame()
+        {
+            AnswerArtist = string.Empty;
+            AnswerTitle = string.Empty;
+            ArtistAnswerResult = null;
+            TitleAnswerResult = null;
+            GuessedTitle = 0;
+            GuessedAuthors = 0;
+            GuessedBoth = 0;
+
+            Products = await MusicClientAPI.GetInstance().GetListOfTracksByGenreAsync(App.SelectedGenre);
+
+            _availableProductIndexes.Clear();
+            for (int i = 0; i < Products.Count; i++)
+            {
+                _availableProductIndexes.Add(i);
+            }
+            GetNextIndex();
         }
 
         private int GetNextIndex()

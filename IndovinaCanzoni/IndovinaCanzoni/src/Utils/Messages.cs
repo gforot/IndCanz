@@ -6,7 +6,6 @@ namespace IndovinaCanzoni.Utils
         public const string Play = "Play";
         public const string Stop = "Stop";
         public const string Init = "Init";
-        public const string InitProductList = "InitProductList";
         public const string NewGame = "NewGame";
     }
 }

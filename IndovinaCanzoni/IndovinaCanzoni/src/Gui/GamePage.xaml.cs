@@ -29,7 +29,7 @@ namespace IndovinaCanzoni.src.Gui
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            Messenger.Default.Send<Message>(new Message(IndovinaCanzoni.Utils.Messages.InitProductList));
+            Messenger.Default.Send<Message>(new Message(IndovinaCanzoni.Utils.Messages.NewGame));
         }
     }
 }
