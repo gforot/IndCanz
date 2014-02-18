@@ -30,11 +30,17 @@ namespace IndovinaCanzoni.ViewModel
 
         #region Commands
         public RelayCommand NewGameCommand { get; private set; }
+        public RelayCommand SeeScoresCommand { get; private set; }
 
         private void NewGame()
         {
             MessengerInstance.Send<Message>(new Message(IndovinaCanzoni.Utils.Messages.NewGame));
             NavigationService.NavigateTo("/src/Gui/GamePage.xaml");
+        }
+
+        private void SeeScores()
+        {
+            NavigationService.NavigateTo("/src/Gui/ScoresPage.xaml");
         }
 
         #endregion
@@ -45,6 +51,7 @@ namespace IndovinaCanzoni.ViewModel
             : base(navigationService)
         {
             NewGameCommand = new RelayCommand(NewGame);
+            SeeScoresCommand = new RelayCommand(SeeScores);
 
             _score = (ScoreItem) PhoneApplicationService.Current.State["scoreItems"];
         }
