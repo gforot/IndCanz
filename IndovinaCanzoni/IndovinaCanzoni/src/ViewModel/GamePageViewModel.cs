@@ -246,6 +246,29 @@ namespace IndovinaCanzoni.ViewModel
 
         #endregion
 
+        #region Constructor
+
+        public GamePageViewModel(INavigationService navigationService)
+            : base(navigationService)
+        {
+            MessengerInstance.Register<Message>(this, OnMessageReceived);
+
+            PlayCommand = new RelayCommand(Play, CanPlay);
+            MoveNextCommand = new RelayCommand(MoveNext, CanMoveNext);
+            AnswerCommand = new RelayCommand(Answer, CanAnswer);
+
+            _dispatcherTimer = new DispatcherTimer();
+            _dispatcherTimer.Interval = new TimeSpan(0, 0, _secondsOfTimer);
+            _dispatcherTimer.Tick += _dispatcherTimer_Tick;
+
+            _randomizer = new Random();
+            _availableProductIndexes = new List<int>();
+
+            ResetPropertiesValue();
+        }
+
+        #endregion
+
         #region Command
         #region PlayCommand
         public RelayCommand PlayCommand { get; private set; }
@@ -362,35 +385,7 @@ namespace IndovinaCanzoni.ViewModel
 
         #endregion
 
-        public GamePageViewModel(INavigationService navigationService)
-            : base(navigationService)
-        {
-            PlayCommand = new RelayCommand(Play, CanPlay);
-            MoveNextCommand = new RelayCommand(MoveNext, CanMoveNext);
-            AnswerCommand = new RelayCommand(Answer, CanAnswer);
 
-            _dispatcherTimer = new DispatcherTimer();
-            _dispatcherTimer.Interval = new TimeSpan(0, 0, _secondsOfTimer);
-            _dispatcherTimer.Tick += _dispatcherTimer_Tick;
-
-            _index = 0;
-
-            _answerArtist = string.Empty;
-            _answerTitle = string.Empty;
-
-            _isPlaying = false;
-            _answered = false;
-
-            _currentScore = 0;
-            _numberOfAnswers = 0;
-
-            MessengerInstance.Register<Message>(this, OnMessageReceived);
-            _availableProductIndexes = new List<int>();
-            _randomizer = new Random();
-            GuessedTitle = 0;
-            GuessedAuthors = 0;
-            GuessedBoth = 0;
-       }
 
         #region Timer
         private void _dispatcherTimer_Tick(object sender, EventArgs e)
@@ -413,16 +408,7 @@ namespace IndovinaCanzoni.ViewModel
 
         private async Task NewGame()
         {
-            AnswerArtist = string.Empty;
-            AnswerTitle = string.Empty;
-            RightArtist = string.Empty;
-            RightTitle = string.Empty;
-            ArtistAnswerResult = null;
-            TitleAnswerResult = null;
-            GuessedTitle = 0;
-            GuessedAuthors = 0;
-            GuessedBoth = 0;
-            _numberOfAnswers = 0;
+            ResetPropertiesValue();
 
             Products = await MusicClientAPI.GetInstance().GetListOfTracksByGenreAsync(App.SelectedGenre);
 
@@ -440,6 +426,28 @@ namespace IndovinaCanzoni.ViewModel
             Index = _availableProductIndexes[idx];
             _availableProductIndexes.RemoveAt(idx);
             return Index;
+        }
+
+        private void ResetPropertiesValue()
+        {
+            AnswerArtist = string.Empty;
+            AnswerTitle = string.Empty;
+            RightArtist = string.Empty;
+            RightTitle = string.Empty;
+            ArtistAnswerResult = null;
+            TitleAnswerResult = null;
+            GuessedTitle = 0;
+            GuessedAuthors = 0;
+            GuessedBoth = 0;
+            _numberOfAnswers = 0;
+            _currentScore = 0;
+            _index = 0;
+            _isPlaying = false;
+            _answered = false;
+            if (_availableProductIndexes != null)
+            {
+                _availableProductIndexes.Clear();
+            }
         }
 
     }

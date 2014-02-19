@@ -29,7 +29,7 @@
                 <Setter Property="VerticalAlignment" Value="Center" />
             </Style>
             <DataTemplate x:Key="scoreItemTemplate">
-                <Border BorderBrush="#FF75DCB2" BorderThickness="1" CornerRadius="5" Margin="5" Padding="5"  >
+                <Border BorderBrush="#FF75DCB2" BorderThickness="1" CornerRadius="5" Margin="5" Padding="5" VerticalAlignment="Center" HorizontalAlignment="Center"  >
                 	<Border.Background>
                 		<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                 			<GradientStop Color="#FF4C5559" Offset="0"/>
@@ -73,7 +73,7 @@
                 <RowDefinition />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
-            <ListBox x:Name="lbScores" ItemsSource="{Binding ScoreItems}" ItemTemplate="{StaticResource scoreItemTemplate}" />
+            <ListBox x:Name="lbScores" ItemsSource="{Binding ScoreItems}" ItemTemplate="{StaticResource scoreItemTemplate}" HorizontalContentAlignment="Stretch" />
             <Button x:Name="btnPlay" Content="{Binding Path=LocalizedResources.Play, Source={StaticResource LocalizedStrings}}" Grid.Row="1" Command="{Binding PlayCommand}" />
         </Grid>
 
