@@ -209,4 +209,10 @@
   <data name="Results" xml:space="preserve">
     <value>Results</value>
   </data>
+  <data name="AppBarClearResultsForGenreTxt" xml:space="preserve">
+    <value>Clear Results For Genre</value>
+  </data>
+  <data name="AppBarClearResultsTxt" xml:space="preserve">
+    <value>Clear Results</value>
+  </data>
 </root>

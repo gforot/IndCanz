@@ -97,6 +97,24 @@ namespace IndovinaCanzoni.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Clear Results For Genre.
+        /// </summary>
+        public static string AppBarClearResultsForGenreTxt {
+            get {
+                return ResourceManager.GetString("AppBarClearResultsForGenreTxt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Clear Results.
+        /// </summary>
+        public static string AppBarClearResultsTxt {
+            get {
+                return ResourceManager.GetString("AppBarClearResultsTxt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Send Feedback.
         /// </summary>
         public static string AppBarFeedbackTxt {

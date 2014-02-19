@@ -56,6 +56,8 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
                 <RowDefinition />
                 <RowDefinition />
                 <RowDefinition />
@@ -76,11 +78,12 @@
             </StackPanel>
             <TextBox Grid.Row="1" x:Name="txTitle" Text="{Binding AnswerTitle, Mode=TwoWay}" />
             <Image  Grid.Row="1" Grid.Column="1"  Source="{Binding TitleAnswerResult, Converter={StaticResource resultToImageConverter}}" Width="30" Height="30" />
-            
-            <TextBox Grid.Row="2" x:Name="txArtist" Text="{Binding AnswerArtist, Mode=TwoWay}" />
-            <Image Grid.Row="2" Grid.Column="1" Source="{Binding ArtistAnswerResult, Converter={StaticResource resultToImageConverter}}" Width="30" Height="30" />
-            <Button Grid.ColumnSpan="2" Grid.Row="3" Content="{Binding Path=LocalizedResources.Answer, Source={StaticResource LocalizedStrings}}" Command="{Binding AnswerCommand}" />
-            <Button Grid.ColumnSpan="2" Grid.Row="4" Content="{Binding Path=LocalizedResources.Next, Source={StaticResource LocalizedStrings}}" Command="{Binding MoveNextCommand}" />
+            <TextBlock Foreground="Green" Grid.Row="2" Text="{Binding RightTitle}" />
+            <TextBox Grid.Row="3" x:Name="txArtist" Text="{Binding AnswerArtist, Mode=TwoWay}" />
+            <TextBlock Foreground="Green" Grid.Row="4" Text="{Binding RightArtist}" />
+            <Image Grid.Row="3" Grid.Column="1" Source="{Binding ArtistAnswerResult, Converter={StaticResource resultToImageConverter}}" Width="30" Height="30" />
+            <Button Grid.ColumnSpan="2" Grid.Row="5" Content="{Binding Path=LocalizedResources.Answer, Source={StaticResource LocalizedStrings}}" Command="{Binding AnswerCommand}" />
+            <Button Grid.ColumnSpan="2" Grid.Row="6" Content="{Binding Path=LocalizedResources.Next, Source={StaticResource LocalizedStrings}}" Command="{Binding MoveNextCommand}" />
         </Grid>
 
         <i:Interaction.Behaviors>

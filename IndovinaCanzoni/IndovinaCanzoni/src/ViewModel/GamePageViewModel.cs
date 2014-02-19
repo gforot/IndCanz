@@ -215,6 +215,35 @@ namespace IndovinaCanzoni.ViewModel
         {
             get { return _numberOfAnswers >= 10; }
         }
+
+        #region RightTitle
+        private string _rightTitlePrpName = "RightTitle";
+        private string _rightTitle;
+        public string RightTitle
+        {
+            get { return _rightTitle; }
+            set
+            {
+                _rightTitle = value;
+                RaisePropertyChanged(_rightTitlePrpName);
+            }
+        }
+        #endregion
+
+        #region RightArtist
+        private string _rightArtistPrpName = "RightArtist";
+        private string _rightArtist;
+        public string RightArtist
+        {
+            get { return _rightArtist; }
+            set
+            {
+                _rightArtist = value;
+                RaisePropertyChanged(_rightArtistPrpName);
+            }
+        }
+        #endregion
+
         #endregion
 
         #region Command
@@ -253,10 +282,12 @@ namespace IndovinaCanzoni.ViewModel
             //gestione della risposta dell'utente
             Answered = true;
 
-            ArtistAnswerResult = CurrentProduct.Name.Equals(_answerTitle);
-            TitleAnswerResult = CurrentProduct.Performers[0].Name.Equals(_answerArtist);
+            RightTitle = CurrentProduct.Name;
+            RightArtist = CurrentProduct.Performers[0].Name;
+            
+            TitleAnswerResult = CurrentProduct.Name.Equals(_answerTitle, StringComparison.InvariantCultureIgnoreCase);
+            ArtistAnswerResult = CurrentProduct.Performers[0].Name.Equals(_answerArtist, StringComparison.InvariantCultureIgnoreCase);
 
-            TitleAnswerResult = true;
             #region Punteggio
             if ((ArtistAnswerResult.HasValue) && (TitleAnswerResult.HasValue))
             {
@@ -314,6 +345,9 @@ namespace IndovinaCanzoni.ViewModel
         {
             //mi sposto sulla canzone successiva.
             GetNextIndex();
+
+            RightArtist = string.Empty;
+            RightTitle = string.Empty;
 
             AnswerArtist = string.Empty;
             AnswerTitle = string.Empty;
@@ -381,11 +415,14 @@ namespace IndovinaCanzoni.ViewModel
         {
             AnswerArtist = string.Empty;
             AnswerTitle = string.Empty;
+            RightArtist = string.Empty;
+            RightTitle = string.Empty;
             ArtistAnswerResult = null;
             TitleAnswerResult = null;
             GuessedTitle = 0;
             GuessedAuthors = 0;
             GuessedBoth = 0;
+            _numberOfAnswers = 0;
 
             Products = await MusicClientAPI.GetInstance().GetListOfTracksByGenreAsync(App.SelectedGenre);
 

@@ -58,11 +58,11 @@
         <i:Interaction.Behaviors>
             <cimbalino:ApplicationBarBehavior>
                 <cimbalino:ApplicationBarIconButton Command="{Binding SendFeedbackCommand, Mode=OneTime}" 
-                                                    IconUri="/Assets/AppBar/questionmark.png" 
+                                                    IconUri="/Assets/AppBar/feature.email.png" 
                                                     Text="{Binding Path=LocalizedResources.SendFeedback, Source={StaticResource LocalizedStrings}}" />
 
                 <cimbalino:ApplicationBarIconButton Command="{Binding RateCommand, Mode=OneTime}" 
-                                                    IconUri="/Assets/AppBar/questionmark.png" 
+                                                    IconUri="/Assets/AppBar/like.png" 
                                                     Text="{Binding Path=LocalizedResources.Rate, Source={StaticResource LocalizedStrings}}" />
 
             </cimbalino:ApplicationBarBehavior>
