@@ -53,7 +53,7 @@ namespace IndovinaCanzoni.ViewModel
             NewGameCommand = new RelayCommand(NewGame);
             SeeScoresCommand = new RelayCommand(SeeScores);
 
-            _score = (ScoreItem) PhoneApplicationService.Current.State["scoreItems"];
+            _score = App.GetCurrentScoreItem();
         }
 
 

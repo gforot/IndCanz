@@ -349,7 +349,7 @@ namespace IndovinaCanzoni.ViewModel
 
                 DataLayer.GetInstance().SaveScoreItems(App.SelectedGenre.Id, ScoresPageViewModel.ScoreItems);
 
-                PhoneApplicationService.Current.State.Add("scoreItems", newScore);
+                App.SaveCurrentScore(newScore);
                 NavigationService.NavigateTo(new Uri("/src/Gui/ResultPage.xaml", UriKind.Relative));
             }
         }

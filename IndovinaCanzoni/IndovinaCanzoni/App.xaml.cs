@@ -227,5 +227,25 @@ namespace IndovinaCanzoni
                 throw;
             }
         }
+
+        private const string _scoreItems = "scoreItems";
+
+        internal static void SaveCurrentScore(ScoreItem scoreitem)
+        {
+
+            if (PhoneApplicationService.Current.State.ContainsKey(_scoreItems))
+            {
+                PhoneApplicationService.Current.State[_scoreItems] = scoreitem;
+            }
+            else
+            {
+                PhoneApplicationService.Current.State.Add(_scoreItems, scoreitem);
+            }
+        }
+
+        internal static ScoreItem GetCurrentScoreItem()
+        {
+            return (ScoreItem)PhoneApplicationService.Current.State["scoreItems"];
+        }
     }
 }
