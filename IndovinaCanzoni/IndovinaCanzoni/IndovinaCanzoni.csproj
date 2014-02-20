@@ -107,9 +107,12 @@
     <Compile Include="src\Gui\ScoresPage.xaml.cs">
       <DependentUpon>ScoresPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="src\Model\AuthorResponse.cs" />
     <Compile Include="src\Model\MusicClientAPI.cs" />
     <Compile Include="src\Model\Message.cs" />
+    <Compile Include="src\Model\ResponseBase.cs" />
     <Compile Include="src\Model\ScoreItem.cs" />
+    <Compile Include="src\Model\TitleResponse.cs" />
     <Compile Include="src\Utils\LocalizedStrings.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
