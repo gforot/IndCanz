@@ -34,12 +34,14 @@ namespace IndovinaCanzoni.ViewModel
 
         private void NewGame()
         {
+            ResetCurrentScore();
             MessengerInstance.Send<Message>(new Message(IndovinaCanzoni.Utils.Messages.NewGame));
             NavigationService.NavigateTo("/src/Gui/GamePage.xaml");
         }
 
         private void SeeScores()
         {
+            ResetCurrentScore();
             NavigationService.NavigateTo("/src/Gui/ScoresPage.xaml");
         }
 
@@ -53,12 +55,14 @@ namespace IndovinaCanzoni.ViewModel
             NewGameCommand = new RelayCommand(NewGame);
             SeeScoresCommand = new RelayCommand(SeeScores);
 
-            _score = App.GetCurrentScoreItem();
+            _score = App.CurrentScore;
         }
-
-
 
         #endregion
 
+        private void ResetCurrentScore()
+        {
+            App.CurrentScore = null;
+        }
     }
 }

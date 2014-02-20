@@ -18,9 +18,15 @@
     DataContext="{Binding MainViewModel, Source={StaticResource Locator}}"
     SupportedOrientations="Portrait" Orientation="Portrait"
     shell:SystemTray.IsVisible="True">
+    <phone:PhoneApplicationPage.Background>
+        <ImageBrush Stretch="UniformToFill" ImageSource="/images/background/background.jpg"/>
+    </phone:PhoneApplicationPage.Background>
 
     <!--LayoutRoot is the root grid where all page content is placed-->
-    <Grid x:Name="LayoutRoot" Background="Transparent">
+    <Grid x:Name="LayoutRoot" Opacity="0.8">
+        <Grid.Background>
+            <ImageBrush Stretch="UniformToFill" ImageSource="/images/background/background.jpg"/>
+        </Grid.Background>
         <Grid.Resources>
             <DataTemplate x:Key="genreTemplate">
                 <Border>
@@ -28,6 +34,7 @@
                 </Border>
             </DataTemplate>
         </Grid.Resources>
+
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>

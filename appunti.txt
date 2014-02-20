@@ -1,7 +1,7 @@
 http://www.dvlup.com/Challenge/346
 
-The Nokia MixRadio API give you access to millions of music tracks. In this challenge you will create a ‘name that tune’ style game, 
-which will keep any user guessing for ages.
+The Nokia MixRadio API give you access to millions of music tracks. 
+In this challenge you will create a ‘name that tune’ style game, which will keep any user guessing for ages.
 
 The game must include the following features:
 

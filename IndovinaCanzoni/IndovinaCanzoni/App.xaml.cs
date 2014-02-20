@@ -14,6 +14,7 @@ namespace IndovinaCanzoni
 {
     public partial class App : Application
     {
+        public static ScoreItem CurrentScore { get; set; }
         public static Genre SelectedGenre { get; set; }
 
         /// <summary>
@@ -63,11 +64,9 @@ namespace IndovinaCanzoni
 
         // Code to execute when the application is launching (eg, from Start)
         // This code will not execute when the application is reactivated
-        private async void Application_Launching(object sender, LaunchingEventArgs e)
+        private void Application_Launching(object sender, LaunchingEventArgs e)
         {
-            //inizializzazione della classe MusicClient
-            //dopo questa chiamata è disponibile il flag IsServiceAvailable.
-            //await MusicClientAPI.GetInstance().Init();
+
         }
 
         // Code to execute when the application is activated (brought to foreground)
@@ -81,12 +80,19 @@ namespace IndovinaCanzoni
         // This code will not execute when the application is closing
         private void Application_Deactivated(object sender, DeactivatedEventArgs e)
         {
+            ShowNokiaMixRadioAttribution();
         }
 
         // Code to execute when the application is closing (eg, user hit Back)
         // This code will not execute when the application is deactivated
         private void Application_Closing(object sender, ClosingEventArgs e)
         {
+            ShowNokiaMixRadioAttribution();
+        }
+
+        private void ShowNokiaMixRadioAttribution()
+        {
+            MessageBox.Show("Show nokia mix radio attribution and link.");
         }
 
         // Code to execute if a navigation fails
@@ -228,24 +234,6 @@ namespace IndovinaCanzoni
             }
         }
 
-        private const string _scoreItems = "scoreItems";
-
-        internal static void SaveCurrentScore(ScoreItem scoreitem)
-        {
-
-            if (PhoneApplicationService.Current.State.ContainsKey(_scoreItems))
-            {
-                PhoneApplicationService.Current.State[_scoreItems] = scoreitem;
-            }
-            else
-            {
-                PhoneApplicationService.Current.State.Add(_scoreItems, scoreitem);
-            }
-        }
-
-        internal static ScoreItem GetCurrentScoreItem()
-        {
-            return (ScoreItem)PhoneApplicationService.Current.State["scoreItems"];
-        }
+        
     }
 }
