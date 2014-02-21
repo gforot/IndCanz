@@ -215,4 +215,7 @@
   <data name="AppBarClearResultsTxt" xml:space="preserve">
     <value>Clear Results</value>
   </data>
+  <data name="RePlay" xml:space="preserve">
+    <value>Replay</value>
+  </data>
 </root>

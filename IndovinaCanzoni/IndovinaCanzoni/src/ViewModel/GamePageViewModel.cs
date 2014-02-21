@@ -1,15 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Threading;
 using Cimbalino.Phone.Toolkit.Services;
-using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using IndovinaCanzoni.Data;
 using IndovinaCanzoni.Messages;
 using IndovinaCanzoni.Model;
+using IndovinaCanzoni.src.Utils;
 using IndovinaCanzoni.Utils;
-using Microsoft.Phone.Shell;
 using Nokia.Music.Types;
 
 namespace IndovinaCanzoni.ViewModel
@@ -27,13 +27,109 @@ namespace IndovinaCanzoni.ViewModel
         private DispatcherTimer _dispatcherTimer;
         private readonly Random _randomizer;
         private int _numberOfAnswers;
+        private List<Artist> _artists;
         
         #region Properties
 
+        #region Title1
+        private const string _title1PrpName = "Title1";
+        private TitleResponse _title1;
+        public TitleResponse Title1
+        {
+            get { return _title1; }
+            set
+            {
+                _title1 = value;
+                RaisePropertyChanged(_title1PrpName);
+            }
+        }
+
+        #endregion
+
+        #region Title2
+        private const string _title2PrpName = "Title2";
+        private TitleResponse _title2;
+        public TitleResponse Title2
+        {
+            get { return _title2; }
+            set
+            {
+                _title2 = value;
+                RaisePropertyChanged(_title2PrpName);
+            }
+        }
+
+        #endregion
+
+        #region Title3
+        private const string _title3PrpName = "Title3";
+        private TitleResponse _title3;
+        public TitleResponse Title3
+        {
+            get { return _title3; }
+            set
+            {
+                _title3 = value;
+                RaisePropertyChanged(_title3PrpName);
+            }
+        }
+
+        #endregion
+
+        #region Artist1
+
+        private const string _artist1PrpName = "Artist1";
+        private ArtistResponse _artist1;
+        public ArtistResponse Artist1
+        {
+            get { return _artist1; }
+            set
+            {
+                _artist1 = value;
+                RaisePropertyChanged(_artist1PrpName);
+            }
+        }
+
+        #endregion
+
+        #region Artist2
+
+        private const string _artist2PrpName = "Artist2";
+        private ArtistResponse _artist2;
+        public ArtistResponse Artist2
+        {
+            get { return _artist2; }
+            set
+            {
+                _artist2 = value;
+                RaisePropertyChanged(_artist2PrpName);
+            }
+        }
+
+        #endregion
+
+        #region Artist3
+
+        private const string _artist3PrpName = "Artist3";
+        private ArtistResponse _artist3;
+        public ArtistResponse Artist3
+        {
+            get { return _artist3; }
+            set
+            {
+                _artist3 = value;
+                RaisePropertyChanged(_artist3PrpName);
+            }
+        }
+
+        #endregion
+
+        #region SelectedGenre
         public string SelectedGenre
         {
             get { return App.SelectedGenre.Name; }
         }
+        #endregion
 
         #region Products
         private const string _productsPrpName = "Products";
@@ -87,34 +183,6 @@ namespace IndovinaCanzoni.ViewModel
         
         #endregion
 
-        #region AnswerTitle
-        private string _answerTitlePrpName = "AnswerTitle";
-        private string _answerTitle;
-        public string AnswerTitle
-        {
-            get { return _answerTitle; }
-            set
-            {
-                _answerTitle = value;
-                RaisePropertyChanged(_answerTitlePrpName);
-            }
-        }
-        #endregion
-
-        #region AnswerArtist
-        private string _answerArtistPrpName = "AnswerArtist";
-        private string _answerArtist;
-        public string AnswerArtist
-        {
-            get { return _answerArtist; }
-            set
-            {
-                _answerArtist = value;
-                RaisePropertyChanged(_answerArtistPrpName);
-            }
-        }
-        #endregion
-
         #region CurrentProduct
 
         private const string _currentProductPrpName = "CurrentProduct";
@@ -140,50 +208,37 @@ namespace IndovinaCanzoni.ViewModel
         }
         #endregion
 
-        #region ArtistAnswerResult
-        private const string _artistAnswerResultPrpName = "ArtistAnswerResult";
-        private bool? _artistAnswerResult;
+        #region ArtistAnswerDone
 
-        public bool? ArtistAnswerResult
+        private const string _artistAnswerDonePrpName = "ArtistAnswerDone";
+
+        private bool _artistAnswerDone;
+
+        public bool ArtistAnswerDone
         {
-            get { return _artistAnswerResult; }
+            get { return _artistAnswerDone; }
             set
             {
-                _artistAnswerResult = value;
-                RaisePropertyChanged(_artistAnswerResultPrpName);
-            }
-        }
-        #endregion
-
-        #region TitleAnswerResult
-        private string _titleAnswerResultPrpName = "TitleAnswerResult";
-        private bool? _titleAnswerResult;
-
-        public bool? TitleAnswerResult
-        {
-            get { return _titleAnswerResult; }
-            set
-            {
-                _titleAnswerResult = value;
-                RaisePropertyChanged(_titleAnswerResultPrpName);
+                _artistAnswerDone = value;
+                RaisePropertyChanged(_artistAnswerDonePrpName);
             }
         }
 
         #endregion
 
-        #region Answered
+        #region TitleAnswerDone
 
-        private const string _answeredPrpName = "Answered";
-        private bool _answered;
-        public bool Answered
+        private const string _titleAnswerDonePrpName = "TitleAnswerDone";
+
+        private bool _titleAnswerDone;
+
+        public bool TitleAnswerDone
         {
-            get { return _answered; }
+            get { return _titleAnswerDone; }
             set
             {
-                _answered = value;
-                RaisePropertyChanged(_answeredPrpName);
-                AnswerCommand.RaiseCanExecuteChanged();
-                MoveNextCommand.RaiseCanExecuteChanged();
+                _titleAnswerDone = value;
+                RaisePropertyChanged(_titleAnswerDonePrpName);
             }
         }
 
@@ -216,33 +271,6 @@ namespace IndovinaCanzoni.ViewModel
             get { return _numberOfAnswers >= 10; }
         }
 
-        #region RightTitle
-        private string _rightTitlePrpName = "RightTitle";
-        private string _rightTitle;
-        public string RightTitle
-        {
-            get { return _rightTitle; }
-            set
-            {
-                _rightTitle = value;
-                RaisePropertyChanged(_rightTitlePrpName);
-            }
-        }
-        #endregion
-
-        #region RightArtist
-        private string _rightArtistPrpName = "RightArtist";
-        private string _rightArtist;
-        public string RightArtist
-        {
-            get { return _rightArtist; }
-            set
-            {
-                _rightArtist = value;
-                RaisePropertyChanged(_rightArtistPrpName);
-            }
-        }
-        #endregion
 
         #endregion
 
@@ -253,9 +281,12 @@ namespace IndovinaCanzoni.ViewModel
         {
             MessengerInstance.Register<Message>(this, OnMessageReceived);
 
-            PlayCommand = new RelayCommand(Play, CanPlay);
+            RePlayCommand = new RelayCommand(RePlay, CanRePlay);
             MoveNextCommand = new RelayCommand(MoveNext, CanMoveNext);
-            AnswerCommand = new RelayCommand(Answer, CanAnswer);
+            AboutCommand = new RelayCommand(About);
+
+            ArtistResponseCommand = new RelayCommand<ArtistResponse>((a)=>ArtistResponse(a), (a)=>CanArtistResponse(a));
+            TitleResponseCommand = new RelayCommand<TitleResponse>((a) => TitleResponse(a), (a) => CanTitleResponse(a));
 
             _dispatcherTimer = new DispatcherTimer();
             _dispatcherTimer.Interval = new TimeSpan(0, 0, _secondsOfTimer);
@@ -270,20 +301,7 @@ namespace IndovinaCanzoni.ViewModel
         #endregion
 
         #region Command
-        #region PlayCommand
-        public RelayCommand PlayCommand { get; private set; }
-
-        private bool CanPlay()
-        {
-            return true;
-        }
-
-        private void Play()
-        {
-            MessengerInstance.Send<Message>(new Message(IndovinaCanzoni.Utils.Messages.Play));
-            IsPlaying = true;
-            _dispatcherTimer.Start();
-        }
+        #region AboutCommand
 
         public RelayCommand AboutCommand { get; private set; }
 
@@ -293,66 +311,22 @@ namespace IndovinaCanzoni.ViewModel
         }
         #endregion
 
-        #region AnswerCommand
-        public RelayCommand AnswerCommand { get; private set; }
-        private bool CanAnswer()
+        #region RePlayCommand
+        public RelayCommand RePlayCommand { get; private set; }
+
+        private bool CanRePlay()
         {
-            return !_answered;
+            return !IsPlaying;
         }
 
-        private void Answer()
+        private void RePlay()
         {
-            //gestione della risposta dell'utente
-            Answered = true;
-
-            RightTitle = CurrentProduct.Name;
-            RightArtist = CurrentProduct.Performers[0].Name;
-            
-            TitleAnswerResult = CurrentProduct.Name.Equals(_answerTitle, StringComparison.InvariantCultureIgnoreCase);
-            ArtistAnswerResult = CurrentProduct.Performers[0].Name.Equals(_answerArtist, StringComparison.InvariantCultureIgnoreCase);
-
-            #region Punteggio
-            if ((ArtistAnswerResult.HasValue) && (TitleAnswerResult.HasValue))
-            {
-                if (ArtistAnswerResult.Value && TitleAnswerResult.Value)
-                {
-                    GuessedBoth++;
-                    //entrambe le risposte corrette
-                    CurrentScore += Constants.GuessBothPoints;
-                }
-                else if (ArtistAnswerResult.Value)
-                {
-                    //solo artista
-                    GuessedAuthors++;
-                    CurrentScore += Constants.GuessAuthorPoints;
-                }
-                else if (TitleAnswerResult.Value)
-                {
-                    GuessedTitle++;
-                    //solo titolo
-                    CurrentScore += Constants.GuessTitlePoints;
-                }
-            }
-            #endregion
-
-            _numberOfAnswers++;
-
-            if (IsGameFinished)
-            {
-                ScoreItem newScore = new ScoreItem()
-                {
-                    GuessedAuthors = GuessedAuthors,
-                    GuessedBoth = GuessedBoth,
-                    GuessedTitles = GuessedTitle
-                };
-                ScoresPageViewModel.ScoreItems.Add(newScore);
-
-                DataLayer.GetInstance().SaveScoreItems(App.SelectedGenre.Id, ScoresPageViewModel.ScoreItems);
-
-                App.CurrentScore = newScore;
-                NavigationService.NavigateTo(new Uri("/src/Gui/ResultPage.xaml", UriKind.Relative));
-            }
+            MessengerInstance.Send<Message>(new Message(IndovinaCanzoni.Utils.Messages.RePlay));
+            IsPlaying = true;
+            _dispatcherTimer.Start();
         }
+
+
         #endregion
 
         #region NextCommand
@@ -361,31 +335,49 @@ namespace IndovinaCanzoni.ViewModel
 
         private bool CanMoveNext()
         {
-            return _answered && !IsGameFinished;
+            return !IsGameFinished;
         }
 
         private void MoveNext()
         {
             //mi sposto sulla canzone successiva.
             GetNextIndex();
-
-            RightArtist = string.Empty;
-            RightTitle = string.Empty;
-
-            AnswerArtist = string.Empty;
-            AnswerTitle = string.Empty;
-
-            ArtistAnswerResult = null;
-            TitleAnswerResult = null;
-
-            Answered = false;
         }
 
         #endregion
 
+        #region TitleResponseCommand
+
+        public RelayCommand<TitleResponse> TitleResponseCommand { get; private set; }
+
+        private bool CanTitleResponse(TitleResponse titleResponse)
+        {
+            return true;
+        }
+
+        private void TitleResponse(TitleResponse titleResponse)
+        {
+            titleResponse.IsSelected = true;
+        }
         #endregion
 
+        #region ArtistResponseCommand
 
+        public RelayCommand<ArtistResponse> ArtistResponseCommand { get; private set; }
+
+        private bool CanArtistResponse(ArtistResponse artist)
+        {
+            return true;
+        }
+
+        private void ArtistResponse(ArtistResponse artist)
+        {
+            artist.IsSelected = true;
+            
+        }
+        #endregion
+
+        #endregion
 
         #region Timer
         private void _dispatcherTimer_Tick(object sender, EventArgs e)
@@ -412,6 +404,14 @@ namespace IndovinaCanzoni.ViewModel
 
             Products = await MusicClientAPI.GetInstance().GetListOfTracksByGenreAsync(App.SelectedGenre);
 
+            IEnumerable<Artist> artists = from pt 
+                          in Products 
+                          where pt.Performers.Count()>0 
+                          select pt.Performers[0];
+            _artists = new List<Artist>(artists.Distinct<Artist>(new ArtistsComparer()));
+
+
+
             _availableProductIndexes.Clear();
             for (int i = 0; i < Products.Count; i++)
             {
@@ -425,17 +425,22 @@ namespace IndovinaCanzoni.ViewModel
             int idx = _randomizer.Next(_availableProductIndexes.Count);
             Index = _availableProductIndexes[idx];
             _availableProductIndexes.RemoveAt(idx);
+
+            List<Product> wrongProducts = GetWrongResponses(CurrentProduct);
+            Title1 = new TitleResponse(CurrentProduct.Name, true);
+            Title2 = new TitleResponse(wrongProducts[0].Name, false);
+            Title3 = new TitleResponse(wrongProducts[1].Name, false);
+
+            List<Artist> wrongArtists = GetWrongArtists(CurrentProduct.Performers[0]);
+            Artist1 = new ArtistResponse(CurrentProduct.Performers[0].Name, true);
+            Artist2 = new ArtistResponse(wrongArtists[0].Name, false);
+            Artist3 = new ArtistResponse(wrongArtists[1].Name, false);
+
             return Index;
         }
 
         private void ResetPropertiesValue()
         {
-            AnswerArtist = string.Empty;
-            AnswerTitle = string.Empty;
-            RightArtist = string.Empty;
-            RightTitle = string.Empty;
-            ArtistAnswerResult = null;
-            TitleAnswerResult = null;
             GuessedTitle = 0;
             GuessedAuthors = 0;
             GuessedBoth = 0;
@@ -443,12 +448,70 @@ namespace IndovinaCanzoni.ViewModel
             _currentScore = 0;
             _index = 0;
             _isPlaying = false;
-            _answered = false;
             if (_availableProductIndexes != null)
             {
                 _availableProductIndexes.Clear();
             }
         }
 
+        private List<Product> GetWrongResponses(Product rightResponse)
+        {
+            if ((Products == null) || (Products.Count < 3))
+            {
+                return new List<Product>();
+            }
+
+            Product w1 = null;
+            while (w1 == null)
+            {
+                int i = _randomizer.Next(Products.Count);
+                if (!Products[i].Name.Equals(rightResponse.Name))
+                {
+                    w1 = Products[i];
+                }
+            }
+
+            Product w2 = null;
+            while (w2 == null)
+            {
+                int i = _randomizer.Next(Products.Count);
+                if ((!Products[i].Name.Equals(rightResponse.Name))&&
+                    (!Products[i].Name.Equals(w1.Name)))
+                {
+                    w2 = Products[i];
+                }
+            }
+            return new List<Product>() { w1, w2 };
+        }
+
+        private List<Artist> GetWrongArtists(Artist rightResponse)
+        {
+            if ((Products == null) || (Products.Count < 3))
+            {
+                return new List<Artist>();
+            }
+
+            Artist a1 = null;
+            while (a1 == null)
+            {
+                int i = _randomizer.Next(Products.Count);
+                if (!Products[i].Performers[0].Name.Equals(rightResponse.Name))
+                {
+                    a1 = Products[i].Performers[0];
+                }
+            }
+
+            Artist a2 = null;
+            while (a2 == null)
+            {
+                int i = _randomizer.Next(Products.Count);
+                if ((!Products[i].Performers[0].Name.Equals(rightResponse.Name)) &&
+                    (!Products[i].Performers[0].Name.Equals(a1.Name)))
+                {
+                    a2 = Products[i].Performers[0];
+                }
+            }
+            return new List<Artist>() { a1, a2 };
+        }
     }
 }

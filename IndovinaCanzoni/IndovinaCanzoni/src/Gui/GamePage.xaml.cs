@@ -1,6 +1,7 @@
 ﻿using System.Windows.Navigation;
 using GalaSoft.MvvmLight.Messaging;
 using IndovinaCanzoni.Messages;
+using IndovinaCanzoni.Utils;
 using Microsoft.Phone.Controls;
 
 namespace IndovinaCanzoni.src.Gui
@@ -17,11 +18,17 @@ namespace IndovinaCanzoni.src.Gui
         {
             switch (message.Key)
             {
-                case IndovinaCanzoni.Utils.Messages.Play:
-                    player.Play();
+                case IndovinaCanzoni.Utils.Messages.RePlay:
+                    if (Constants.IsNetworkAvailable)
+                    {
+                        player.Play();
+                    }
                     break;
                 case IndovinaCanzoni.Utils.Messages.Stop:
-                    player.Stop();
+                    if (Constants.IsNetworkAvailable)
+                    {
+                        player.Stop();
+                    }
                     break;
             }
         }

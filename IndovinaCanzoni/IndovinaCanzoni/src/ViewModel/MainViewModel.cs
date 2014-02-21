@@ -8,6 +8,7 @@ using IndovinaCanzoni.Model;
 using Nokia.Music.Types;
 using IndovinaCanzoni.Messages;
 using Cimbalino.Phone.Toolkit.Services;
+using IndovinaCanzoni.Utils;
 
 
 namespace IndovinaCanzoni.ViewModel
@@ -26,8 +27,6 @@ namespace IndovinaCanzoni.ViewModel
     /// </summary>
     public class MainViewModel : ViewModelCommon
     {
-        private INavigationService _navigationService;
-
 
         #region Properties
 
@@ -53,6 +52,7 @@ namespace IndovinaCanzoni.ViewModel
 
         #region Commands
 
+        #region SelectGenre
         public RelayCommand SelectGenreCommand { get; private set; }
 
         private bool CanSelectGenre()
@@ -64,16 +64,22 @@ namespace IndovinaCanzoni.ViewModel
         {
             IndovinaCanzoni.App.SelectedGenre = SelectedGenre;
 
+            //Messaggio di Genere selezionato.
+            MessengerInstance.Send<Message>(new Message(IndovinaCanzoni.Utils.Messages.SelectedGenreModified));
+
             //Navigazione
             NavigationService.NavigateTo(new Uri("/src/Gui/ScoresPage.xaml", UriKind.Relative));
         }
+        #endregion
 
+        #region About
         public RelayCommand AboutCommand { get; private set; }
 
         private void About()
         {
             NavigationService.NavigateTo(new Uri("/src/Gui/AboutPage.xaml", UriKind.Relative));
         }
+        #endregion
         #endregion
 
         #region Constructor
@@ -89,7 +95,7 @@ namespace IndovinaCanzoni.ViewModel
             AboutCommand = new RelayCommand(About);
 
             MessengerInstance.Register<Message>(this, OnMessageReceived);
-            MessengerInstance.Send<Message>(new Message("getGenres"));
+            MessengerInstance.Send<Message>(new Message(IndovinaCanzoni.Utils.Messages.GetGenres));
         }
         #endregion
 
@@ -109,7 +115,7 @@ namespace IndovinaCanzoni.ViewModel
 
         private async void OnMessageReceived(Message message)
         {
-            if (message.Key=="getGenres") 
+            if (message.Key == IndovinaCanzoni.Utils.Messages.GetGenres)
             {
                 await GetGenres();
             }

@@ -94,6 +94,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="src\Converters\ResultToImageConverter.cs" />
+    <Compile Include="src\Converters\ResponseToBackgroundConverter.cs" />
     <Compile Include="src\Data\DataLayer.cs" />
     <Compile Include="src\Gui\AboutPage.xaml.cs">
       <DependentUpon>AboutPage.xaml</DependentUpon>
@@ -107,12 +108,13 @@
     <Compile Include="src\Gui\ScoresPage.xaml.cs">
       <DependentUpon>ScoresPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="src\Model\AuthorResponse.cs" />
+    <Compile Include="src\Model\ArtistResponse.cs" />
     <Compile Include="src\Model\MusicClientAPI.cs" />
     <Compile Include="src\Model\Message.cs" />
     <Compile Include="src\Model\ResponseBase.cs" />
     <Compile Include="src\Model\ScoreItem.cs" />
     <Compile Include="src\Model\TitleResponse.cs" />
+    <Compile Include="src\Utils\ArtistsComparer.cs" />
     <Compile Include="src\Utils\LocalizedStrings.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
