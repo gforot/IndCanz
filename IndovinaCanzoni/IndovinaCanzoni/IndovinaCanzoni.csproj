@@ -109,6 +109,7 @@
       <DependentUpon>ScoresPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="src\Model\ArtistResponse.cs" />
+    <Compile Include="src\Model\ButtonColor.cs" />
     <Compile Include="src\Model\MusicClientAPI.cs" />
     <Compile Include="src\Model\Message.cs" />
     <Compile Include="src\Model\ResponseBase.cs" />

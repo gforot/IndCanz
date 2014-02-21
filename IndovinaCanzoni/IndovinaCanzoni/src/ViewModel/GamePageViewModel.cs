@@ -46,6 +46,54 @@ namespace IndovinaCanzoni.ViewModel
 
         #endregion
 
+        #region Title1State
+        private const string _title1StatePrpName = "Title1State";
+        public ResponseState Title1State { get { return GetTitleState(Title1); } }
+        #endregion
+
+        #region Title2State
+        private const string _title2StatePrpName = "Title2State";
+        public ResponseState Title2State { get { return GetTitleState(Title2); } }
+        #endregion
+
+        #region Title3State
+        private const string _title3StatePrpName = "Title3State";
+        public ResponseState Title3State { get { return GetTitleState(Title3); } }
+        #endregion
+
+        #region Artist1State
+        private const string _artist1StatePrpName = "Artist1State";
+        public ResponseState Artist1State { get { return GetTitleState(Artist1); } }
+        #endregion
+
+        #region Artist2State
+        private const string _artist2StatePrpName = "Artist2State";
+        public ResponseState Artist2State { get { return GetTitleState(Artist2); } }
+        #endregion
+
+        #region Title3State
+        private const string _artist3StatePrpName = "Artist3State";
+        public ResponseState Artist3State { get { return GetTitleState(Artist3); } }
+        #endregion
+
+        private ResponseState GetTitleState(ResponseBase response)
+        {
+            if (!TitleAnswerDone)
+            {
+                return ResponseState.Normal;
+            }
+            if (response.IsCorrect)
+            {
+                return ResponseState.Correct;
+            }
+            if (response.IsSelected)
+            {
+                return ResponseState.Wrong;
+            }
+            return ResponseState.Normal;
+            
+        }
+
         #region Title2
         private const string _title2PrpName = "Title2";
         private TitleResponse _title2;
@@ -221,6 +269,11 @@ namespace IndovinaCanzoni.ViewModel
             {
                 _artistAnswerDone = value;
                 RaisePropertyChanged(_artistAnswerDonePrpName);
+                RaisePropertyChanged(_artist1StatePrpName);
+                RaisePropertyChanged(_artist2StatePrpName);
+                RaisePropertyChanged(_artist3StatePrpName);
+
+                ArtistResponseCommand.RaiseCanExecuteChanged();
             }
         }
 
@@ -239,6 +292,11 @@ namespace IndovinaCanzoni.ViewModel
             {
                 _titleAnswerDone = value;
                 RaisePropertyChanged(_titleAnswerDonePrpName);
+                RaisePropertyChanged(_title1StatePrpName);
+                RaisePropertyChanged(_title2StatePrpName);
+                RaisePropertyChanged(_title3StatePrpName);
+
+                TitleResponseCommand.RaiseCanExecuteChanged();
             }
         }
 
@@ -352,12 +410,13 @@ namespace IndovinaCanzoni.ViewModel
 
         private bool CanTitleResponse(TitleResponse titleResponse)
         {
-            return true;
+            return !TitleAnswerDone;
         }
 
         private void TitleResponse(TitleResponse titleResponse)
         {
             titleResponse.IsSelected = true;
+            TitleAnswerDone = true;
         }
         #endregion
 
@@ -367,13 +426,13 @@ namespace IndovinaCanzoni.ViewModel
 
         private bool CanArtistResponse(ArtistResponse artist)
         {
-            return true;
+            return !ArtistAnswerDone;
         }
 
         private void ArtistResponse(ArtistResponse artist)
         {
             artist.IsSelected = true;
-            
+            ArtistAnswerDone = true;
         }
         #endregion
 
@@ -435,6 +494,9 @@ namespace IndovinaCanzoni.ViewModel
             Artist1 = new ArtistResponse(CurrentProduct.Performers[0].Name, true);
             Artist2 = new ArtistResponse(wrongArtists[0].Name, false);
             Artist3 = new ArtistResponse(wrongArtists[1].Name, false);
+
+            ArtistAnswerDone = false;
+            TitleAnswerDone = false;
 
             return Index;
         }
