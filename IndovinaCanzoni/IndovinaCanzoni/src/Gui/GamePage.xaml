@@ -95,8 +95,8 @@
                         <RowDefinition />
                     </Grid.RowDefinitions>
                     <Button Background="{Binding Artist1State, Converter={StaticResource responseToBackgroundConverter}}"  Style="{StaticResource responseButtonStyle}" Content="{Binding Artist1.Artist}" Command="{Binding ArtistResponseCommand}" CommandParameter="{Binding Artist1}" />
-                    <Button Background="{Binding Artist1State, Converter={StaticResource responseToBackgroundConverter}}" Grid.Row="1" Style="{StaticResource responseButtonStyle}" Content="{Binding Artist2.Artist}" Command="{Binding ArtistResponseCommand}" CommandParameter="{Binding Artist2}" />
-                    <Button Background="{Binding Artist1State, Converter={StaticResource responseToBackgroundConverter}}" Grid.Row="2" Style="{StaticResource responseButtonStyle}" Content="{Binding Artist3.Artist}" Command="{Binding ArtistResponseCommand}" CommandParameter="{Binding Artist3}" />
+                    <Button Background="{Binding Artist2State, Converter={StaticResource responseToBackgroundConverter}}" Grid.Row="1" Style="{StaticResource responseButtonStyle}" Content="{Binding Artist2.Artist}" Command="{Binding ArtistResponseCommand}" CommandParameter="{Binding Artist2}" />
+                    <Button Background="{Binding Artist3State, Converter={StaticResource responseToBackgroundConverter}}" Grid.Row="2" Style="{StaticResource responseButtonStyle}" Content="{Binding Artist3.Artist}" Command="{Binding ArtistResponseCommand}" CommandParameter="{Binding Artist3}" />
                 </Grid>
             </Border>
             <Button Grid.ColumnSpan="2" Grid.Row="3" x:Name="replayButton" Content="{Binding Path=LocalizedResources.RePlay, Source={StaticResource LocalizedStrings}}" Command="{Binding PlayCommand}" />

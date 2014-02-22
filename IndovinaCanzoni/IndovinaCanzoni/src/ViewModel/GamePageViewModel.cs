@@ -63,17 +63,17 @@ namespace IndovinaCanzoni.ViewModel
 
         #region Artist1State
         private const string _artist1StatePrpName = "Artist1State";
-        public ResponseState Artist1State { get { return GetTitleState(Artist1); } }
+        public ResponseState Artist1State { get { return GetArtistState(Artist1); } }
         #endregion
 
         #region Artist2State
         private const string _artist2StatePrpName = "Artist2State";
-        public ResponseState Artist2State { get { return GetTitleState(Artist2); } }
+        public ResponseState Artist2State { get { return GetArtistState(Artist2); } }
         #endregion
 
         #region Title3State
         private const string _artist3StatePrpName = "Artist3State";
-        public ResponseState Artist3State { get { return GetTitleState(Artist3); } }
+        public ResponseState Artist3State { get { return GetArtistState(Artist3); } }
         #endregion
 
         private ResponseState GetTitleState(ResponseBase response)
@@ -92,6 +92,24 @@ namespace IndovinaCanzoni.ViewModel
             }
             return ResponseState.Normal;
             
+        }
+
+        private ResponseState GetArtistState(ResponseBase response)
+        {
+            if (!ArtistAnswerDone)
+            {
+                return ResponseState.Normal;
+            }
+            if (response.IsCorrect)
+            {
+                return ResponseState.Correct;
+            }
+            if (response.IsSelected)
+            {
+                return ResponseState.Wrong;
+            }
+            return ResponseState.Normal;
+
         }
 
         #region Title2
@@ -410,13 +428,16 @@ namespace IndovinaCanzoni.ViewModel
 
         private bool CanTitleResponse(TitleResponse titleResponse)
         {
-            return !TitleAnswerDone;
+            return true;
         }
 
         private void TitleResponse(TitleResponse titleResponse)
         {
-            titleResponse.IsSelected = true;
-            TitleAnswerDone = true;
+            if (!TitleAnswerDone)
+            {
+                titleResponse.IsSelected = true;
+                TitleAnswerDone = true;
+            }
         }
         #endregion
 
@@ -426,13 +447,16 @@ namespace IndovinaCanzoni.ViewModel
 
         private bool CanArtistResponse(ArtistResponse artist)
         {
-            return !ArtistAnswerDone;
+            return true;
         }
 
         private void ArtistResponse(ArtistResponse artist)
         {
-            artist.IsSelected = true;
-            ArtistAnswerDone = true;
+            if (!ArtistAnswerDone)
+            {
+                artist.IsSelected = true;
+                ArtistAnswerDone = true;
+            }
         }
         #endregion
 
