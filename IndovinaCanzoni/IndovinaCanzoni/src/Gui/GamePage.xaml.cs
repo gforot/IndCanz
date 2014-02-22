@@ -18,7 +18,7 @@ namespace IndovinaCanzoni.src.Gui
         {
             switch (message.Key)
             {
-                case IndovinaCanzoni.Utils.Messages.RePlay:
+                case IndovinaCanzoni.Utils.Messages.Play:
                     if (Constants.IsNetworkAvailable)
                     {
                         player.Play();

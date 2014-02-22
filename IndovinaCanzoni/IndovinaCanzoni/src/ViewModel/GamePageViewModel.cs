@@ -339,7 +339,7 @@ namespace IndovinaCanzoni.ViewModel
         {
             MessengerInstance.Register<Message>(this, OnMessageReceived);
 
-            RePlayCommand = new RelayCommand(RePlay, CanRePlay);
+            PlayCommand = new RelayCommand(Play, CanPlay);
             MoveNextCommand = new RelayCommand(MoveNext, CanMoveNext);
             AboutCommand = new RelayCommand(About);
 
@@ -370,16 +370,16 @@ namespace IndovinaCanzoni.ViewModel
         #endregion
 
         #region RePlayCommand
-        public RelayCommand RePlayCommand { get; private set; }
+        public RelayCommand PlayCommand { get; private set; }
 
-        private bool CanRePlay()
+        private bool CanPlay()
         {
             return !IsPlaying;
         }
 
-        private void RePlay()
+        private void Play()
         {
-            MessengerInstance.Send<Message>(new Message(IndovinaCanzoni.Utils.Messages.RePlay));
+            MessengerInstance.Send<Message>(new Message(IndovinaCanzoni.Utils.Messages.Play));
             IsPlaying = true;
             _dispatcherTimer.Start();
         }
@@ -497,6 +497,8 @@ namespace IndovinaCanzoni.ViewModel
 
             ArtistAnswerDone = false;
             TitleAnswerDone = false;
+
+            Play();
 
             return Index;
         }

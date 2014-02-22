@@ -99,7 +99,7 @@
                     <Button Background="{Binding Artist1State, Converter={StaticResource responseToBackgroundConverter}}" Grid.Row="2" Style="{StaticResource responseButtonStyle}" Content="{Binding Artist3.Artist}" Command="{Binding ArtistResponseCommand}" CommandParameter="{Binding Artist3}" />
                 </Grid>
             </Border>
-            <Button Grid.ColumnSpan="2" Grid.Row="3" x:Name="replayButton" Content="{Binding Path=LocalizedResources.RePlay, Source={StaticResource LocalizedStrings}}" Command="{Binding RePlayCommand}" />
+            <Button Grid.ColumnSpan="2" Grid.Row="3" x:Name="replayButton" Content="{Binding Path=LocalizedResources.RePlay, Source={StaticResource LocalizedStrings}}" Command="{Binding PlayCommand}" />
             <Button Grid.ColumnSpan="2" Grid.Row="4" Content="{Binding Path=LocalizedResources.Next, Source={StaticResource LocalizedStrings}}" Command="{Binding MoveNextCommand}" />
         </Grid>
 
