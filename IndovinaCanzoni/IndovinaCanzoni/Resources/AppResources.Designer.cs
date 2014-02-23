@@ -205,15 +205,6 @@ namespace IndovinaCanzoni.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Both.
-        /// </summary>
-        public static string GuessedBoth {
-            get {
-                return ResourceManager.GetString("GuessedBoth", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Songs.
         /// </summary>
         public static string GuessedSong {

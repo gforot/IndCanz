@@ -47,10 +47,6 @@
                                 <TextBlock Text="{Binding Path=LocalizedResources.GuessedAuthor, Source={StaticResource LocalizedStrings}}" />
                                 <TextBlock Text="{Binding GuessedAuthors}" Style="{StaticResource smallPointsStyle}" />
                             </StackPanel>
-                            <StackPanel x:Name="bothPanel">
-                                <TextBlock Text="{Binding Path=LocalizedResources.GuessedBoth, Source={StaticResource LocalizedStrings}}" />
-                                <TextBlock Text="{Binding GuessedBoth}" Style="{StaticResource smallPointsStyle}" />
-                            </StackPanel>
                         </StackPanel>
                     </StackPanel>
                 </Border>

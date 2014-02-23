@@ -337,7 +337,6 @@ namespace IndovinaCanzoni.ViewModel
 
         #endregion
 
-        public int GuessedBoth{get;set;}
         public int GuessedAuthors{get;set;}
         public int GuessedTitle{get;set;}
         
@@ -437,6 +436,10 @@ namespace IndovinaCanzoni.ViewModel
             {
                 titleResponse.IsSelected = true;
                 TitleAnswerDone = true;
+                if (titleResponse.IsCorrect)
+                {
+                    CurrentScore += Constants.GuessTitlePoints;
+                }
             }
         }
         #endregion
@@ -456,6 +459,10 @@ namespace IndovinaCanzoni.ViewModel
             {
                 artist.IsSelected = true;
                 ArtistAnswerDone = true;
+                if (artist.IsCorrect)
+                {
+                    CurrentScore += Constants.GuessAuthorPoints;
+                }
             }
         }
         #endregion
@@ -531,7 +538,6 @@ namespace IndovinaCanzoni.ViewModel
         {
             GuessedTitle = 0;
             GuessedAuthors = 0;
-            GuessedBoth = 0;
             _numberOfAnswers = 0;
             _currentScore = 0;
             _index = 0;

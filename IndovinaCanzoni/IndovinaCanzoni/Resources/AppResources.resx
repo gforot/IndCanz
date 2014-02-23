@@ -140,9 +140,6 @@
   <data name="GuessedAuthors" xml:space="preserve">
     <value>Authors</value>
   </data>
-  <data name="GuessedBoth" xml:space="preserve">
-    <value>Both</value>
-  </data>
   <data name="GuessedSong" xml:space="preserve">
     <value>Songs</value>
   </data>
