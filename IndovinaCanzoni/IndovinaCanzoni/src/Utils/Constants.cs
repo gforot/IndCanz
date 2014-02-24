@@ -23,5 +23,7 @@
         #endregion
 
         public const string ResultsFolderName = "results";
+
+        public const int NumberOfSongsPerMatch = 10;
     }
 }

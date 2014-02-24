@@ -340,7 +340,7 @@ namespace IndovinaCanzoni.ViewModel
 
         public bool IsGameFinished
         {
-            get { return _numberOfAnswers >= 10; }
+            get { return _numberOfAnswers >= Constants.NumberOfSongsPerMatch; }
         }
 
 
@@ -599,6 +599,30 @@ namespace IndovinaCanzoni.ViewModel
                 }
             }
             return new List<Artist>() { a1, a2 };
+        }
+
+        /// <summary>
+        /// Torna l'artista selezionato dall'utente
+        /// </summary>
+        /// <returns></returns>
+        private ArtistResponse GetSelectedArtist()
+        {
+            if (Artist1.IsSelected) return Artist1;
+            if (Artist2.IsSelected) return Artist2;
+            if (Artist3.IsSelected) return Artist3;
+            return null;
+        }
+
+        /// <summary>
+        /// Torna l'artista selezionato dall'utente
+        /// </summary>
+        /// <returns></returns>
+        private TitleResponse GetSelectedTitle()
+        {
+            if (Title1.IsSelected) return Title1;
+            if (Title2.IsSelected) return Title2;
+            if (Title3.IsSelected) return Title3;
+            return null;
         }
     }
 }
