@@ -43,9 +43,9 @@
                                 <TextBlock Text="{Binding Path=LocalizedResources.GuessedSong, Source={StaticResource LocalizedStrings}}"/>
                                 <TextBlock Text="{Binding GuessedTitles}" HorizontalAlignment="Center" Style="{StaticResource smallPointsStyle}" />
                             </StackPanel>
-                            <StackPanel x:Name="authorsPanel">
-                                <TextBlock Text="{Binding Path=LocalizedResources.GuessedAuthor, Source={StaticResource LocalizedStrings}}" />
-                                <TextBlock Text="{Binding GuessedAuthors}" Style="{StaticResource smallPointsStyle}" />
+                            <StackPanel x:Name="artistsPanel">
+                                <TextBlock Text="{Binding Path=LocalizedResources.GuessedArtists, Source={StaticResource LocalizedStrings}}" />
+                                <TextBlock Text="{Binding GuessedArtists}" Style="{StaticResource smallPointsStyle}" />
                             </StackPanel>
                         </StackPanel>
                     </StackPanel>

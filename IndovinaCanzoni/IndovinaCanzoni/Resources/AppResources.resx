@@ -137,8 +137,8 @@
   <data name="Answer" xml:space="preserve">
     <value>Answer</value>
   </data>
-  <data name="GuessedAuthors" xml:space="preserve">
-    <value>Authors</value>
+  <data name="GuessedArtists" xml:space="preserve">
+    <value>Artists</value>
   </data>
   <data name="GuessedSong" xml:space="preserve">
     <value>Songs</value>

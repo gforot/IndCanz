@@ -12,7 +12,7 @@ namespace IndovinaCanzoni.Model
         {
             get
             {
-                return GuessedAuthors * Constants.GuessAuthorPoints +
+                return GuessedArtists * Constants.GuessArtistPoints +
                     GuessedTitles * Constants.GuessTitlePoints;
             }
         }
@@ -21,16 +21,16 @@ namespace IndovinaCanzoni.Model
             RaisePropertyChanged(_scorePrpName);
         }
         #endregion
-        #region GuessedAuthors
-        private string _guessedAuthorsPrpName = "GuessedAuthors";
-        private int _guessedAuthors;
-        public int GuessedAuthors
+        #region GuessedArtists
+        private string _guessedArtistsPrpName = "GuessedArtists";
+        private int _guessedArtists;
+        public int GuessedArtists
         {
-            get { return _guessedAuthors; }
+            get { return _guessedArtists; }
             set
             {
-                _guessedAuthors = value;
-                RaisePropertyChanged(_guessedAuthorsPrpName);
+                _guessedArtists = value;
+                RaisePropertyChanged(_guessedArtistsPrpName);
                 RaiseScoreChanged();
             }
         }

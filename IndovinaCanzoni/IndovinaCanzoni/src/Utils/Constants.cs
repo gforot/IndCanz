@@ -18,7 +18,7 @@
 
         #region Punteggio
         public const int GuessTitlePoints = 60;
-        public const int GuessAuthorPoints = 40;
+        public const int GuessArtistPoints = 40;
         public const int HintDecreasePoints = 10;
         #endregion
 

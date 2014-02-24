@@ -196,11 +196,11 @@ namespace IndovinaCanzoni.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Authors.
+        ///   Looks up a localized string similar to Artists.
         /// </summary>
-        public static string GuessedAuthors {
+        public static string GuessedArtists {
             get {
-                return ResourceManager.GetString("GuessedAuthors", resourceCulture);
+                return ResourceManager.GetString("GuessedArtists", resourceCulture);
             }
         }
         

@@ -337,9 +337,6 @@ namespace IndovinaCanzoni.ViewModel
 
         #endregion
 
-        public int GuessedAuthors{get;set;}
-        public int GuessedTitle{get;set;}
-        
 
         public bool IsGameFinished
         {
@@ -461,7 +458,7 @@ namespace IndovinaCanzoni.ViewModel
                 ArtistAnswerDone = true;
                 if (artist.IsCorrect)
                 {
-                    CurrentScore += Constants.GuessAuthorPoints;
+                    CurrentScore += Constants.GuessArtistPoints;
                 }
             }
         }
@@ -500,8 +497,6 @@ namespace IndovinaCanzoni.ViewModel
                           select pt.Performers[0];
             _artists = new List<Artist>(artists.Distinct<Artist>(new ArtistsComparer()));
 
-
-
             _availableProductIndexes.Clear();
             for (int i = 0; i < Products.Count; i++)
             {
@@ -536,8 +531,6 @@ namespace IndovinaCanzoni.ViewModel
 
         private void ResetPropertiesValue()
         {
-            GuessedTitle = 0;
-            GuessedAuthors = 0;
             _numberOfAnswers = 0;
             _currentScore = 0;
             _index = 0;
