@@ -215,4 +215,13 @@
   <data name="RePlay" xml:space="preserve">
     <value>Replay</value>
   </data>
+  <data name="HighScoreUser" xml:space="preserve">
+    <value>CPU</value>
+  </data>
+  <data name="DefaultUser" xml:space="preserve">
+    <value>Player</value>
+  </data>
+  <data name="User" xml:space="preserve">
+    <value>User</value>
+  </data>
 </root>

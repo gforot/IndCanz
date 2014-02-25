@@ -50,6 +50,19 @@ namespace IndovinaCanzoni.Model
             }
         }
         #endregion
+        #region User
+        private string _userPrpName = "User";
+        private string _user;
+        public string User
+        {
+            get { return _user; }
+            set
+            {
+                _user = value;
+                RaisePropertyChanged(_userPrpName);
+            }
+        }
+        #endregion
         #endregion
 
         public ScoreItem()

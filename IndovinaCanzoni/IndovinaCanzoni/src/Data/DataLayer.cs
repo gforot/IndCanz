@@ -52,6 +52,13 @@ namespace IndovinaCanzoni.Data
                         }
                     }
                 }
+                else
+                {
+                    foreach (ScoreItem item in HighScores.CreateDefaultHighScores())
+                    {
+                        items.Add(item);
+                    }
+                }
             }
             return items;
         }

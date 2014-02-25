@@ -1,18 +1,16 @@
-﻿using System.Collections.ObjectModel;
-using GalaSoft.MvvmLight;
+﻿using System;
+using System.Collections.ObjectModel;
+using Cimbalino.Phone.Toolkit.Services;
 using GalaSoft.MvvmLight.Command;
 using IndovinaCanzoni.Model;
-using System;
-using Cimbalino.Phone.Toolkit.Services;
+using IndovinaCanzoni.Utils;
 
 namespace IndovinaCanzoni.ViewModel
 {
     public class ScoresPageViewModel : ViewModelCommon
     {
         #region Properties
-
-        public static ObservableCollection<ScoreItem> ScoreItems { get; private set; }
-
+        public static ObservableCollection<ScoreItem> HighScores { get; private set; }
         #endregion
 
         #region Command
@@ -25,14 +23,14 @@ namespace IndovinaCanzoni.ViewModel
 
         private void Play()
         {
-            NavigationService.NavigateTo(new Uri("/src/Gui/GamePage.xaml", UriKind.Relative));
+            NavigationService.NavigateTo(new Uri(PageAddresses.GamePage, UriKind.Relative));
         }
 
         public RelayCommand AboutCommand { get; private set; }
 
         private void About()
         {
-            NavigationService.NavigateTo(new Uri("/src/Gui/AboutPage.xaml", UriKind.Relative));
+            NavigationService.NavigateTo(new Uri(PageAddresses.AboutPage, UriKind.Relative));
         }
         #endregion
 
@@ -41,9 +39,10 @@ namespace IndovinaCanzoni.ViewModel
         public ScoresPageViewModel(INavigationService navigationService)
             : base(navigationService)
         {
-            ScoreItems = Data.DataLayer.GetInstance().LoadScoreItems(App.SelectedGenre.Id);
             PlayCommand = new RelayCommand(Play, CanPlay);
             AboutCommand = new RelayCommand(About);
+
+            HighScores = IndovinaCanzoni.App.HighScores;
         }
         #endregion
     }

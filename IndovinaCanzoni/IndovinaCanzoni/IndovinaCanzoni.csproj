@@ -116,6 +116,7 @@
     <Compile Include="src\Model\ScoreItem.cs" />
     <Compile Include="src\Model\TitleResponse.cs" />
     <Compile Include="src\Utils\ArtistsComparer.cs" />
+    <Compile Include="src\Utils\HighScores.cs" />
     <Compile Include="src\Utils\LocalizedStrings.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
@@ -128,6 +129,7 @@
     </Compile>
     <Compile Include="src\Utils\Constants.cs" />
     <Compile Include="src\Utils\Messages.cs" />
+    <Compile Include="src\Utils\PageAddresses.cs" />
     <Compile Include="src\ViewModel\AboutPageViewModel.cs" />
     <Compile Include="src\ViewModel\GamePageViewModel.cs" />
     <Compile Include="src\ViewModel\MainViewModel.cs" />

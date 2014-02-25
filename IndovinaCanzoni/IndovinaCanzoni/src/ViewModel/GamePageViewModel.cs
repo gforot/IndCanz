@@ -36,7 +36,14 @@ namespace IndovinaCanzoni.ViewModel
         private TitleResponse _title1;
         public TitleResponse Title1
         {
-            get { return _title1; }
+            get 
+            {
+                if (IsInDesignMode)
+                {
+                    return new TitleResponse("Titolo 1 di prova", false); ;
+                }
+                return _title1; 
+            }
             set
             {
                 _title1 = value;
@@ -117,7 +124,12 @@ namespace IndovinaCanzoni.ViewModel
         private TitleResponse _title2;
         public TitleResponse Title2
         {
-            get { return _title2; }
+            get {
+                if (IsInDesignMode)
+                {
+                    return new TitleResponse("Titolo 2 di prova", false);
+                }
+                return _title2; }
             set
             {
                 _title2 = value;
@@ -132,7 +144,14 @@ namespace IndovinaCanzoni.ViewModel
         private TitleResponse _title3;
         public TitleResponse Title3
         {
-            get { return _title3; }
+            get 
+            {
+                if (IsInDesignMode)
+                {
+                    return new TitleResponse("Titolo 3 di prova", false);
+                }
+                return _title3; 
+            }
             set
             {
                 _title3 = value;
@@ -148,7 +167,14 @@ namespace IndovinaCanzoni.ViewModel
         private ArtistResponse _artist1;
         public ArtistResponse Artist1
         {
-            get { return _artist1; }
+            get 
+            {
+                if (IsInDesignMode)
+                {
+                    return new ArtistResponse("Artista 1 di prova", false);
+                }
+                return _artist1; 
+            }
             set
             {
                 _artist1 = value;
@@ -164,7 +190,14 @@ namespace IndovinaCanzoni.ViewModel
         private ArtistResponse _artist2;
         public ArtistResponse Artist2
         {
-            get { return _artist2; }
+            get 
+            {
+                if (IsInDesignMode)
+                {
+                    return new ArtistResponse("Artista 2 di prova", false);
+                }
+                return _artist2; 
+            }
             set
             {
                 _artist2 = value;
@@ -180,7 +213,14 @@ namespace IndovinaCanzoni.ViewModel
         private ArtistResponse _artist3;
         public ArtistResponse Artist3
         {
-            get { return _artist3; }
+            get 
+            {
+                if (IsInDesignMode)
+                {
+                    return new ArtistResponse("Artista 3 di prova", false);
+                }
+                return _artist3; 
+            }
             set
             {
                 _artist3 = value;
@@ -323,19 +363,14 @@ namespace IndovinaCanzoni.ViewModel
         #region CurrentScore
 
         private const string _currentScorePrpName = "CurrentScore";
-        private int _currentScore;
-
         public int CurrentScore
         {
-            get { return _currentScore; }
-            set
-            {
-                _currentScore = value;
-                RaisePropertyChanged(_currentScorePrpName);
-            }
+            get { return IndovinaCanzoni.App.CurrentScore==null ? 0 :IndovinaCanzoni.App.CurrentScore.Score; }
         }
 
         #endregion
+
+
 
 
         public bool IsGameFinished
@@ -379,7 +414,7 @@ namespace IndovinaCanzoni.ViewModel
 
         private void About()
         {
-            NavigationService.NavigateTo(new Uri("/src/Gui/AboutPage.xaml", UriKind.Relative));
+            NavigationService.NavigateTo(new Uri(PageAddresses.AboutPage, UriKind.Relative));
         }
         #endregion
 
@@ -412,6 +447,16 @@ namespace IndovinaCanzoni.ViewModel
 
         private void MoveNext()
         {
+            _numberOfAnswers++;
+
+            if (IsGameFinished)
+            {
+                //[TODO] creare punteggio attuale
+
+
+                base.NavigationService.NavigateTo(PageAddresses.ResultsPage);
+            }
+
             //mi sposto sulla canzone successiva.
             GetNextIndex();
         }
@@ -435,7 +480,8 @@ namespace IndovinaCanzoni.ViewModel
                 TitleAnswerDone = true;
                 if (titleResponse.IsCorrect)
                 {
-                    CurrentScore += Constants.GuessTitlePoints;
+                    IndovinaCanzoni.App.CurrentScore.GuessedTitles++;
+                    RaisePropertyChanged(_currentScorePrpName);
                 }
             }
         }
@@ -458,7 +504,8 @@ namespace IndovinaCanzoni.ViewModel
                 ArtistAnswerDone = true;
                 if (artist.IsCorrect)
                 {
-                    CurrentScore += Constants.GuessArtistPoints;
+                    IndovinaCanzoni.App.CurrentScore.GuessedArtists++;
+                    RaisePropertyChanged(_currentScorePrpName);
                 }
             }
         }
@@ -489,6 +536,8 @@ namespace IndovinaCanzoni.ViewModel
         {
             ResetPropertiesValue();
 
+            
+
             Products = await MusicClientAPI.GetInstance().GetListOfTracksByGenreAsync(App.SelectedGenre);
 
             IEnumerable<Artist> artists = from pt 
@@ -502,6 +551,7 @@ namespace IndovinaCanzoni.ViewModel
             {
                 _availableProductIndexes.Add(i);
             }
+
             GetNextIndex();
         }
 
@@ -531,8 +581,14 @@ namespace IndovinaCanzoni.ViewModel
 
         private void ResetPropertiesValue()
         {
+            IndovinaCanzoni.App.CurrentScore = new ScoreItem()
+            {
+                GuessedArtists = 0,
+                GuessedTitles = 0,
+                User = IndovinaCanzoni.App.User
+            };
+
             _numberOfAnswers = 0;
-            _currentScore = 0;
             _index = 0;
             _isPlaying = false;
             if (_availableProductIndexes != null)

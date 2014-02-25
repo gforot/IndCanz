@@ -6,7 +6,7 @@
         /// True se si vuole testare la effettiva connessione con MixRadio
         /// Altrimenti false.
         /// </summary>
-        public const bool IsNetworkAvailable = true;
+        public const bool IsNetworkAvailable = false;
 
         public const string FeedbackEmailAddress = "gforot@hotmail.it";
 
@@ -21,6 +21,8 @@
         public const int GuessArtistPoints = 40;
         public const int HintDecreasePoints = 10;
         #endregion
+
+
 
         public const string ResultsFolderName = "results";
 

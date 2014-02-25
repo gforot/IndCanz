@@ -7,24 +7,18 @@ using Cimbalino.Phone.Toolkit.Services;
 using GalaSoft.MvvmLight.Command;
 using IndovinaCanzoni.Messages;
 using IndovinaCanzoni.Model;
+using IndovinaCanzoni.Utils;
 using Microsoft.Phone.Shell;
 
 namespace IndovinaCanzoni.ViewModel
 {
     public class ResultPageViewModel : ViewModelCommon
     {
-
-        private ScoreItem _score;
-
         public int Score 
         { 
             get 
             {
-                if (IsInDesignMode)
-                {
-                    return 5800;
-                }
-                return _score.Score; 
+                return App.CurrentScore == null ? 0 : App.CurrentScore.Score;
             } 
         }
 
@@ -36,13 +30,13 @@ namespace IndovinaCanzoni.ViewModel
         {
             ResetCurrentScore();
             MessengerInstance.Send<Message>(new Message(IndovinaCanzoni.Utils.Messages.NewGame));
-            NavigationService.NavigateTo("/src/Gui/GamePage.xaml");
+            NavigationService.NavigateTo(PageAddresses.GamePage);
         }
 
         private void SeeScores()
         {
             ResetCurrentScore();
-            NavigationService.NavigateTo("/src/Gui/ScoresPage.xaml");
+            NavigationService.NavigateTo(PageAddresses.ScoresPage);
         }
 
         #endregion
@@ -54,8 +48,6 @@ namespace IndovinaCanzoni.ViewModel
         {
             NewGameCommand = new RelayCommand(NewGame);
             SeeScoresCommand = new RelayCommand(SeeScores);
-
-            _score = App.CurrentScore;
         }
 
         #endregion

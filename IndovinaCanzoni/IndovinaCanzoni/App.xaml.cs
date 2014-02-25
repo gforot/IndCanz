@@ -9,6 +9,7 @@ using Microsoft.Phone.Shell;
 using IndovinaCanzoni.Resources;
 using IndovinaCanzoni.Model;
 using Nokia.Music.Types;
+using System.Collections.ObjectModel;
 
 namespace IndovinaCanzoni
 {
@@ -16,6 +17,8 @@ namespace IndovinaCanzoni
     {
         public static ScoreItem CurrentScore { get; set; }
         public static Genre SelectedGenre { get; set; }
+        public static ObservableCollection<ScoreItem> HighScores { get; set; }
+        public static string User { get; set; }
 
         /// <summary>
         /// Provides easy access to the root frame of the Phone Application.
@@ -60,6 +63,7 @@ namespace IndovinaCanzoni
                 PhoneApplicationService.Current.UserIdleDetectionMode = IdleDetectionMode.Disabled;
             }
 
+            User = AppResources.DefaultUser;
         }
 
         // Code to execute when the application is launching (eg, from Start)
@@ -80,6 +84,7 @@ namespace IndovinaCanzoni
         // This code will not execute when the application is closing
         private void Application_Deactivated(object sender, DeactivatedEventArgs e)
         {
+            SaveScoreItems();
             ShowNokiaMixRadioAttribution();
         }
 
@@ -87,12 +92,21 @@ namespace IndovinaCanzoni
         // This code will not execute when the application is deactivated
         private void Application_Closing(object sender, ClosingEventArgs e)
         {
+            SaveScoreItems();
             ShowNokiaMixRadioAttribution();
         }
 
         private void ShowNokiaMixRadioAttribution()
         {
             MessageBox.Show("Show nokia mix radio attribution and link.");
+        }
+
+        internal static void SaveScoreItems()
+        {
+            if (HighScores != null)
+            {
+                Data.DataLayer.GetInstance().SaveScoreItems(SelectedGenre.Id, HighScores);
+            }
         }
 
         // Code to execute if a navigation fails

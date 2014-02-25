@@ -48,6 +48,25 @@ namespace IndovinaCanzoni.ViewModel
                 SelectGenreCommand.RaiseCanExecuteChanged();
             }
         }
+
+
+        #region User
+
+        public string User
+        {
+            get
+            {
+                return IndovinaCanzoni.App.User;
+            }
+            set
+            {
+                IndovinaCanzoni.App.User = value;
+                RaisePropertyChanged("User");
+            }
+        }
+
+        #endregion
+
         #endregion
 
         #region Commands
@@ -62,13 +81,14 @@ namespace IndovinaCanzoni.ViewModel
 
         private void SelectGenre()
         {
+            IndovinaCanzoni.App.SaveScoreItems();
+
             IndovinaCanzoni.App.SelectedGenre = SelectedGenre;
 
-            //Messaggio di Genere selezionato.
-            MessengerInstance.Send<Message>(new Message(IndovinaCanzoni.Utils.Messages.SelectedGenreModified));
+            IndovinaCanzoni.App.HighScores = Data.DataLayer.GetInstance().LoadScoreItems(SelectedGenre.Id);
 
             //Navigazione
-            NavigationService.NavigateTo(new Uri("/src/Gui/ScoresPage.xaml", UriKind.Relative));
+            NavigationService.NavigateTo(new Uri(PageAddresses.ScoresPage, UriKind.Relative));
         }
         #endregion
 
@@ -77,7 +97,7 @@ namespace IndovinaCanzoni.ViewModel
 
         private void About()
         {
-            NavigationService.NavigateTo(new Uri("/src/Gui/AboutPage.xaml", UriKind.Relative));
+            NavigationService.NavigateTo(new Uri(PageAddresses.AboutPage, UriKind.Relative));
         }
         #endregion
         #endregion

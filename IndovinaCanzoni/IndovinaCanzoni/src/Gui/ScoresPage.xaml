@@ -69,7 +69,7 @@
                 <RowDefinition />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
-            <ListBox x:Name="lbScores" ItemsSource="{Binding ScoreItems}" ItemTemplate="{StaticResource scoreItemTemplate}" HorizontalContentAlignment="Stretch" />
+            <ListBox x:Name="lbScores" ItemsSource="{Binding HighScores}" ItemTemplate="{StaticResource scoreItemTemplate}" HorizontalContentAlignment="Stretch" />
             <Button x:Name="btnPlay" Content="{Binding Path=LocalizedResources.Play, Source={StaticResource LocalizedStrings}}" Grid.Row="1" Command="{Binding PlayCommand}" />
         </Grid>
 

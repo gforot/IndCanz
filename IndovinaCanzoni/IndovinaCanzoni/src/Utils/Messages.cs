@@ -1,5 +1,4 @@
-﻿
-namespace IndovinaCanzoni.Utils
+﻿namespace IndovinaCanzoni.Utils
 {
     public class Messages
     {
@@ -8,7 +7,6 @@ namespace IndovinaCanzoni.Utils
         public const string Stop = "Stop";
         public const string Init = "Init";
         public const string NewGame = "NewGame";
-        public const string SelectedGenreModified = "SelectedGenreModified";
         public const string GetGenres = "GetGenres";
     }
 }
