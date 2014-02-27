@@ -43,7 +43,7 @@ namespace IndovinaCanzoni.Data
                 {
                     using (IsolatedStorageFileStream isfs = isf.OpenFile(fileName, FileMode.Open))
                     {
-                        Type t = typeof(ObservableCollection<ScoreItem>);
+                        Type t = typeof(List<ScoreItem>);
                         XmlSerializer ser = new XmlSerializer(t);
                         object obj = ser.Deserialize(isfs);
 

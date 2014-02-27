@@ -78,7 +78,14 @@ namespace IndovinaCanzoni
         // This code will not execute when the application is first launched
         private void Application_Activated(object sender, ActivatedEventArgs e)
         {
-            
+            if (e.IsApplicationInstancePreserved)
+            {
+                //Dormant - objects in memory intact
+            }
+            else
+            {
+                // Tombstoned - need to reload
+            }
         }
 
         // Code to execute when the application is deactivated (sent to background)
