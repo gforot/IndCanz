@@ -5,6 +5,7 @@ using Cimbalino.Phone.Toolkit.Services;
 using GalaSoft.MvvmLight.Command;
 using IndovinaCanzoni.Model;
 using IndovinaCanzoni.Utils;
+using System.Windows;
 
 namespace IndovinaCanzoni.ViewModel
 {
@@ -39,6 +40,17 @@ namespace IndovinaCanzoni.ViewModel
         {
             NavigationService.NavigateTo(new Uri(PageAddresses.AboutPage, UriKind.Relative));
         }
+
+
+        public RelayCommand ExitCommand { get; private set; }
+
+        private void Exit()
+        {
+            //salvataggi!
+            App.SaveScoreItems();
+            MessageBox.Show("Mettere qui la attribution");
+            Application.Current.Terminate();
+        }
         #endregion
 
         #region Constructor
@@ -48,6 +60,7 @@ namespace IndovinaCanzoni.ViewModel
         {
             PlayCommand = new RelayCommand(Play, CanPlay);
             AboutCommand = new RelayCommand(About);
+            ExitCommand = new RelayCommand(Exit);
         }
         #endregion
     }
