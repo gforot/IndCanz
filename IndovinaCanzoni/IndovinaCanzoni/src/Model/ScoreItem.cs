@@ -1,9 +1,10 @@
-﻿
+﻿using System;
 using GalaSoft.MvvmLight;
 using IndovinaCanzoni.Utils;
+
 namespace IndovinaCanzoni.Model
 {
-    public class ScoreItem : ViewModelBase
+    public class ScoreItem : ViewModelBase, IComparable
     {
         #region Properties
         #region Score
@@ -69,5 +70,16 @@ namespace IndovinaCanzoni.Model
         {
 
         }
+
+        public int CompareTo(object obj)
+        {
+            return - this.Score.CompareTo((obj as ScoreItem).Score);
+        }
+
+        public override string ToString()
+        {
+            return string.Format("{0} - {1}", User, Score);
+        }
+
     }
 }

@@ -1,5 +1,6 @@
 ﻿
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.IO.IsolatedStorage;
@@ -32,9 +33,9 @@ namespace IndovinaCanzoni.Data
         /// </summary>
         /// <param name="idGenre"></param>
         /// <returns></returns>
-        public ObservableCollection<ScoreItem> LoadScoreItems(string idGenre)
+        public List<ScoreItem> LoadScoreItems(string idGenre)
         {
-            ObservableCollection<ScoreItem> items = new ObservableCollection<ScoreItem>();
+            List<ScoreItem> items = new List<ScoreItem>();
             using (IsolatedStorageFile isf = IsolatedStorageFile.GetUserStoreForApplication())
             {
                 string fileName = GetFileName(idGenre);
@@ -46,9 +47,9 @@ namespace IndovinaCanzoni.Data
                         XmlSerializer ser = new XmlSerializer(t);
                         object obj = ser.Deserialize(isfs);
 
-                        if ((obj != null) && (obj is ObservableCollection<ScoreItem>))
+                        if ((obj != null) && (obj is List<ScoreItem>))
                         {
-                            items = obj as ObservableCollection<ScoreItem>;
+                            items = obj as List<ScoreItem>;
                         }
                     }
                 }
@@ -63,7 +64,7 @@ namespace IndovinaCanzoni.Data
             return items;
         }
 
-        public void SaveScoreItems(string idGenre, ObservableCollection<ScoreItem> items)
+        public void SaveScoreItems(string idGenre, List<ScoreItem> items)
         {
             using (var store = IsolatedStorageFile.GetUserStoreForApplication())
             {
@@ -77,7 +78,7 @@ namespace IndovinaCanzoni.Data
                                                                   FileAccess.Write,
                                                                   store))
                 {
-                    XmlSerializer serializer = new XmlSerializer(typeof(ObservableCollection<ScoreItem>));
+                    XmlSerializer serializer = new XmlSerializer(typeof(List<ScoreItem>));
                     serializer.Serialize(stream, items);
                 }
             }

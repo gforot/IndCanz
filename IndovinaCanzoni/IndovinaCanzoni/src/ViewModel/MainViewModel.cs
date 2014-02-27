@@ -85,7 +85,7 @@ namespace IndovinaCanzoni.ViewModel
 
             IndovinaCanzoni.App.SelectedGenre = SelectedGenre;
 
-            IndovinaCanzoni.App.HighScores = Data.DataLayer.GetInstance().LoadScoreItems(SelectedGenre.Id);
+            IndovinaCanzoni.App.HighScores.SetHighscores(Data.DataLayer.GetInstance().LoadScoreItems(SelectedGenre.Id));
 
             //Navigazione
             NavigationService.NavigateTo(new Uri(PageAddresses.ScoresPage, UriKind.Relative));

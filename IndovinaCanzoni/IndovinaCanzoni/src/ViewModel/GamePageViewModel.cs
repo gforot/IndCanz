@@ -453,6 +453,7 @@ namespace IndovinaCanzoni.ViewModel
             {
                 //[TODO] creare punteggio attuale
 
+                App.HighScores.AddScore(App.CurrentScore);
 
                 base.NavigationService.NavigateTo(PageAddresses.ResultsPage);
             }

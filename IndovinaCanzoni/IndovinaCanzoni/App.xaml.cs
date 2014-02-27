@@ -10,6 +10,7 @@ using IndovinaCanzoni.Resources;
 using IndovinaCanzoni.Model;
 using Nokia.Music.Types;
 using System.Collections.ObjectModel;
+using IndovinaCanzoni.Utils;
 
 namespace IndovinaCanzoni
 {
@@ -17,7 +18,7 @@ namespace IndovinaCanzoni
     {
         public static ScoreItem CurrentScore { get; set; }
         public static Genre SelectedGenre { get; set; }
-        public static ObservableCollection<ScoreItem> HighScores { get; set; }
+        public static HighScores HighScores { get; set; }
         public static string User { get; set; }
 
         /// <summary>
@@ -70,7 +71,7 @@ namespace IndovinaCanzoni
         // This code will not execute when the application is reactivated
         private void Application_Launching(object sender, LaunchingEventArgs e)
         {
-
+            HighScores = new HighScores();
         }
 
         // Code to execute when the application is activated (brought to foreground)
@@ -103,9 +104,9 @@ namespace IndovinaCanzoni
 
         internal static void SaveScoreItems()
         {
-            if (HighScores != null)
+            if ((HighScores != null) && (SelectedGenre!=null))
             {
-                Data.DataLayer.GetInstance().SaveScoreItems(SelectedGenre.Id, HighScores);
+                Data.DataLayer.GetInstance().SaveScoreItems(SelectedGenre.Id, HighScores.Scores);
             }
         }
 

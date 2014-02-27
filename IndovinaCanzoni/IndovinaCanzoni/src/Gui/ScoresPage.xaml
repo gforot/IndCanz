@@ -37,6 +37,7 @@
                 		</LinearGradientBrush>
                 	</Border.Background>
                     <StackPanel>
+                        <TextBlock Text="{Binding User}" Margin="0,2" Style="{StaticResource totalPointsStyle}" />
                         <TextBlock Text="{Binding Score}" Margin="0,2" Style="{StaticResource totalPointsStyle}" />
                         <StackPanel Orientation="Horizontal">
                             <StackPanel x:Name="songPanel">

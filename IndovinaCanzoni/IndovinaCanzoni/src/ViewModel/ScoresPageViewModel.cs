@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using Cimbalino.Phone.Toolkit.Services;
 using GalaSoft.MvvmLight.Command;
@@ -10,7 +11,13 @@ namespace IndovinaCanzoni.ViewModel
     public class ScoresPageViewModel : ViewModelCommon
     {
         #region Properties
-        public static ObservableCollection<ScoreItem> HighScores { get; private set; }
+        public static List<ScoreItem> HighScores
+        {
+            get 
+            { 
+                return App.HighScores.Scores; 
+            }
+        }
         #endregion
 
         #region Command
@@ -41,8 +48,6 @@ namespace IndovinaCanzoni.ViewModel
         {
             PlayCommand = new RelayCommand(Play, CanPlay);
             AboutCommand = new RelayCommand(About);
-
-            HighScores = IndovinaCanzoni.App.HighScores;
         }
         #endregion
     }
