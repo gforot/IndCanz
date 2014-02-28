@@ -44,7 +44,7 @@
             </Grid.RowDefinitions>
             <TextBlock Grid.Row="0" Text="{Binding LocalizedResources.AttributionText, Source={StaticResource LocalizedStrings}}" 
                        Style="{StaticResource attributionTextStyle}" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap" />
-            <HyperlinkButton Grid.Row="1" Content="{Binding LocalizedResources.MixRadio, Source={StaticResource LocalizedStrings}}" NavigateUri="{Binding NokiaMixRadioAddress, Mode=OneTime}" />
+            <HyperlinkButton TargetName="_blank" Grid.Row="1" Content="{Binding LocalizedResources.MixRadio, Source={StaticResource LocalizedStrings}}" NavigateUri="{Binding NokiaMixRadioAddress, Mode=OneTime}" />
             <Button Grid.Row="2" Content="{Binding LocalizedResources.ExitTxt, Source={StaticResource LocalizedStrings}}"
                     Command="{Binding ExitCommand}"/>
         </Grid>

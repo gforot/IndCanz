@@ -49,8 +49,6 @@ namespace IndovinaCanzoni.ViewModel
             App.SaveScoreItems();
 
             NavigationService.NavigateTo(new Uri(PageAddresses.AttributionPage, UriKind.Relative));
-            MessageBox.Show("Mettere qui la attribution");
-            
         }
         #endregion
 
