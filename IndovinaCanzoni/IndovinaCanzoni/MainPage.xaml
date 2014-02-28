@@ -20,7 +20,7 @@
     shell:SystemTray.IsVisible="True">
 
     <!--LayoutRoot is the root grid where all page content is placed-->
-    <Grid x:Name="LayoutRoot" Opacity="0.8">
+    <Grid x:Name="LayoutRoot" Opacity="0.8" Style="{StaticResource rootGridStyle}">
         <Grid.Resources>
             <DataTemplate x:Key="genreTemplate">
                 <Border>
@@ -28,9 +28,6 @@
                 </Border>
             </DataTemplate>
         </Grid.Resources>
-        <Grid.Background>
-            <ImageBrush Stretch="Fill" ImageSource="images/background/background.jpg"/>
-        </Grid.Background>
 
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>

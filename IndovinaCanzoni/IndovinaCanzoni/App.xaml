@@ -3,7 +3,14 @@
   <Application.Resources>
     <local:LocalizedStrings xmlns:local="clr-namespace:IndovinaCanzoni" x:Key="LocalizedStrings" />
     <vm:ViewModelLocator x:Key="Locator" d:IsDataSource="True" xmlns:vm="clr-namespace:IndovinaCanzoni.ViewModel" />
-  </Application.Resources>
+    <Style TargetType="Grid" x:Key="rootGridStyle">
+        <Setter Property="Background">
+            <Setter.Value>
+                <ImageBrush Stretch="Fill" ImageSource="images/background/background.jpg" Opacity="0.75"/>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    </Application.Resources>
   <Application.ApplicationLifetimeObjects>
     <!--Required object that handles lifetime events for the application-->
     <shell:PhoneApplicationService Launching="Application_Launching" Closing="Application_Closing" Activated="Application_Activated" Deactivated="Application_Deactivated" />

@@ -6,5 +6,6 @@
         public const string ResultsPage = "/src/Gui/ResultPage.xaml";
         public const string GamePage = "/src/Gui/GamePage.xaml";
         public const string AboutPage = "/src/Gui/AboutPage.xaml";
+        public const string AttributionPage = "/src/Gui/AttributionPage.xaml";
     }
 }
