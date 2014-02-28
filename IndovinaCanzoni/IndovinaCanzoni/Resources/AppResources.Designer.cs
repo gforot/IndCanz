@@ -151,7 +151,7 @@ namespace IndovinaCanzoni.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Attribution Text.
+        ///   Looks up a localized string similar to This application uses Nokia Mix Radio api..
         /// </summary>
         public static string AttributionText {
             get {
@@ -246,6 +246,15 @@ namespace IndovinaCanzoni.Resources {
         public static string HighScoreUser {
             get {
                 return ResourceManager.GetString("HighScoreUser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nokia Mix Radio.
+        /// </summary>
+        public static string MixRadio {
+            get {
+                return ResourceManager.GetString("MixRadio", resourceCulture);
             }
         }
         

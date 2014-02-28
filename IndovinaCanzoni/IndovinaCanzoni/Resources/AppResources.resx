@@ -225,9 +225,12 @@
     <value>User</value>
   </data>
   <data name="AttributionText" xml:space="preserve">
-    <value>Attribution Text</value>
+    <value>This application uses Nokia Mix Radio api.</value>
   </data>
   <data name="ExitTxt" xml:space="preserve">
     <value>Exit</value>
+  </data>
+  <data name="MixRadio" xml:space="preserve">
+    <value>Nokia Mix Radio</value>
   </data>
 </root>

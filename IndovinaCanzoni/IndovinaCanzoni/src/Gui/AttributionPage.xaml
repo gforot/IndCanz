@@ -18,6 +18,9 @@
     <Grid x:Name="LayoutRoot" Style="{StaticResource rootGridStyle}">
         <Grid.Resources>
             <Style TargetType="TextBlock" x:Key="attributionTextStyle">
+                <Setter Property="FontSize" Value="50" />
+            </Style>
+            <Style TargetType="HyperlinkButton">
                 <Setter Property="FontSize" Value="40" />
             </Style>
         </Grid.Resources>
@@ -35,14 +38,14 @@
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
             <Grid.RowDefinitions>
-                <RowDefinition />
-                <RowDefinition Height="Auto" />
+                <RowDefinition Height="3*" />
+                <RowDefinition Height="*" />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
-            <TextBlock Text="{Binding LocalizedResources.AttributionText, Source={StaticResource LocalizedStrings}}" 
-                       Style="{StaticResource attributionTextStyle}" HorizontalAlignment="Center" VerticalAlignment="Center" />
-            <HyperlinkButton Grid.Row="1" Content="Nokia Mix Radio" NavigateUri="{Binding NokiaMixRadioAddress, Mode=OneTime}" />
-            <Button Content="{Binding LocalizedResources.ExitTxt, Source={StaticResource LocalizedStrings}}"
+            <TextBlock Grid.Row="0" Text="{Binding LocalizedResources.AttributionText, Source={StaticResource LocalizedStrings}}" 
+                       Style="{StaticResource attributionTextStyle}" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap" />
+            <HyperlinkButton Grid.Row="1" Content="{Binding LocalizedResources.MixRadio, Source={StaticResource LocalizedStrings}}" NavigateUri="{Binding NokiaMixRadioAddress, Mode=OneTime}" />
+            <Button Grid.Row="2" Content="{Binding LocalizedResources.ExitTxt, Source={StaticResource LocalizedStrings}}"
                     Command="{Binding ExitCommand}"/>
         </Grid>
     </Grid>
