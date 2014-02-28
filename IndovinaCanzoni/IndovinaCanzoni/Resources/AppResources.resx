@@ -224,4 +224,10 @@
   <data name="User" xml:space="preserve">
     <value>User</value>
   </data>
+  <data name="AttributionText" xml:space="preserve">
+    <value>Attribution Text</value>
+  </data>
+  <data name="ExitTxt" xml:space="preserve">
+    <value>Exit</value>
+  </data>
 </root>

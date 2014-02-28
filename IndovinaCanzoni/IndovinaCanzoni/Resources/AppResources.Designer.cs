@@ -151,6 +151,15 @@ namespace IndovinaCanzoni.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Attribution Text.
+        /// </summary>
+        public static string AttributionText {
+            get {
+                return ResourceManager.GetString("AttributionText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to By Andrea Rota.
         /// </summary>
         public static string Author {
@@ -165,6 +174,15 @@ namespace IndovinaCanzoni.Resources {
         public static string DefaultUser {
             get {
                 return ResourceManager.GetString("DefaultUser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Exit.
+        /// </summary>
+        public static string ExitTxt {
+            get {
+                return ResourceManager.GetString("ExitTxt", resourceCulture);
             }
         }
         

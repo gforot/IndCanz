@@ -29,7 +29,7 @@ namespace IndovinaCanzoni.ViewModel
             NavigationService = navigationService;
         }
 
-        private ViewModelCommon()
+        protected ViewModelCommon()
         {
             ClearResultsCommand = new RelayCommand(ClearResults);
             ClearResultsOfCurrentGenreCommand = new RelayCommand(ClearResultsOfCurrentGenre);

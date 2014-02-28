@@ -17,7 +17,7 @@
     shell:SystemTray.IsVisible="True">
 
     <!--LayoutRoot is the root grid where all page content is placed-->
-    <Grid x:Name="LayoutRoot" Background="Transparent">
+    <Grid x:Name="LayoutRoot" Style="{StaticResource rootGridStyle}">
         <Grid.Resources>
             <SolidColorBrush Color="Red" x:Key="redColor" />
             <!-- Caratteristiche comuni delle TextBlock-->

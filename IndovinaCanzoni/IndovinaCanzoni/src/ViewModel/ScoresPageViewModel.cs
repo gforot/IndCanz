@@ -21,7 +21,7 @@ namespace IndovinaCanzoni.ViewModel
         }
         #endregion
 
-        #region Command
+        #region Commands
         public RelayCommand PlayCommand { get; private set; }
 
         private bool CanPlay()
@@ -46,10 +46,11 @@ namespace IndovinaCanzoni.ViewModel
 
         private void Exit()
         {
-            //salvataggi!
             App.SaveScoreItems();
+
+            NavigationService.NavigateTo(new Uri(PageAddresses.AttributionPage, UriKind.Relative));
             MessageBox.Show("Mettere qui la attribution");
-            Application.Current.Terminate();
+            
         }
         #endregion
 

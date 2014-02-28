@@ -134,6 +134,7 @@
     <Compile Include="src\Utils\Messages.cs" />
     <Compile Include="src\Utils\PageAddresses.cs" />
     <Compile Include="src\ViewModel\AboutPageViewModel.cs" />
+    <Compile Include="src\ViewModel\AttributionPageViewModel.cs" />
     <Compile Include="src\ViewModel\GamePageViewModel.cs" />
     <Compile Include="src\ViewModel\MainViewModel.cs" />
     <Compile Include="src\ViewModel\ResultPageViewModel.cs" />
@@ -188,21 +189,19 @@
     <Content Include="Assets\ApplicationIcon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Assets\Tiles\FlipCycleTileLarge.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Assets\Tiles\FlipCycleTileMedium.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Assets\Tiles\FlipCycleTileSmall.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="Assets\Tiles\IconicTileMediumLarge.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Tiles\IconicTileSmall.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\Tiles\radio_100_100.png" />
+    <Content Include="Assets\Tiles\radio_128_128.png" />
+    <Content Include="Assets\Tiles\radio_159_159.png" />
+    <Content Include="Assets\Tiles\radio_256_256.png" />
+    <Content Include="Assets\Tiles\radio_336_336.png" />
+    <Content Include="Assets\Tiles\radio_64_64.png" />
+    <Content Include="Assets\Tiles\radio_691_336.png" />
     <Content Include="docs\images.txt" />
     <Content Include="docs\todo.txt" />
     <Content Include="icons\tiles\100x100.png" />
@@ -211,10 +210,10 @@
     <Content Include="icons\tiles\202x202.png" />
     <Content Include="icons\tiles\336x336.png" />
     <Resource Include="images\background\background.jpg" />
-    <Content Include="images\check.png" />
-    <Content Include="images\delete.png" />
-    <Content Include="images\media_play.png" />
-    <Content Include="images\questionmark.png" />
+    <Resource Include="images\check.png" />
+    <Resource Include="images\delete.png" />
+    <Resource Include="images\media_play.png" />
+    <Resource Include="images\questionmark.png" />
     <Content Include="README_FIRST.txt" />
     <Content Include="Toolkit.Content\ApplicationBar.Add.png" />
     <Content Include="Toolkit.Content\ApplicationBar.Cancel.png" />

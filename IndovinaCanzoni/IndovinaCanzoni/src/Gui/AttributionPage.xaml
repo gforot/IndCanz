@@ -9,12 +9,13 @@
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
+    DataContext="{Binding AttributionPageViewModel, Source={StaticResource Locator}}"
     SupportedOrientations="Portrait" Orientation="Portrait"
     mc:Ignorable="d"
     shell:SystemTray.IsVisible="True">
 
     <!--LayoutRoot is the root grid where all page content is placed-->
-    <Grid x:Name="LayoutRoot" Background="Transparent">
+    <Grid x:Name="LayoutRoot" Style="{StaticResource rootGridStyle}">
         <Grid.Resources>
             <Style TargetType="TextBlock" x:Key="attributionTextStyle">
                 <Setter Property="FontSize" Value="40" />
@@ -27,12 +28,22 @@
 
         <!--TitlePanel contains the name of the application and page title-->
         <StackPanel Grid.Row="0" Margin="12,17,0,28">
-            <TextBlock Text="{Binding LocalizedResources.ApplicationTitle, Source={StaticResource LocalizedStrings}}" Style="{StaticResource PhoneTextNormalStyle}"/>
+            <TextBlock Text="{Binding LocalizedResources.ApplicationTitle, Source={StaticResource LocalizedStrings}}" 
+                       Style="{StaticResource PhoneTextNormalStyle}"/>
         </StackPanel>
 
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-            <TextBlock Text="Attribution text here" Style="{StaticResource attributionTextStyle}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <TextBlock Text="{Binding LocalizedResources.AttributionText, Source={StaticResource LocalizedStrings}}" 
+                       Style="{StaticResource attributionTextStyle}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+            <HyperlinkButton Grid.Row="1" Content="Nokia Mix Radio" NavigateUri="http://www.windowsphone.com/it-it/store/app/nokia-mixradio/f5874252-1f04-4c3f-a335-4fa3b7b85329" />
+            <Button Content="{Binding LocalizedResources.ExitTxt, Source={StaticResource LocalizedStrings}}"
+                    Command="{Binding ExitCommand}"/>
         </Grid>
     </Grid>
 
