@@ -28,6 +28,9 @@
                 </Border>
             </DataTemplate>
         </Grid.Resources>
+        <Grid.Background>
+            <ImageBrush Stretch="Fill" ImageSource="images/background/background.jpg"/>
+        </Grid.Background>
 
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>

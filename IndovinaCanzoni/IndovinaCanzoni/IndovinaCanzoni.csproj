@@ -203,6 +203,7 @@
     <Content Include="icons\tiles\159x159.png" />
     <Content Include="icons\tiles\202x202.png" />
     <Content Include="icons\tiles\336x336.png" />
+    <Resource Include="images\background\background.jpg" />
     <Content Include="images\check.png" />
     <Content Include="images\delete.png" />
     <Content Include="images\media_play.png" />
