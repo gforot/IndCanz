@@ -41,7 +41,7 @@
             </Grid.RowDefinitions>
             <TextBlock Text="{Binding LocalizedResources.AttributionText, Source={StaticResource LocalizedStrings}}" 
                        Style="{StaticResource attributionTextStyle}" HorizontalAlignment="Center" VerticalAlignment="Center" />
-            <HyperlinkButton Grid.Row="1" Content="Nokia Mix Radio" NavigateUri="http://www.windowsphone.com/it-it/store/app/nokia-mixradio/f5874252-1f04-4c3f-a335-4fa3b7b85329" />
+            <HyperlinkButton Grid.Row="1" Content="Nokia Mix Radio" NavigateUri="{Binding NokiaMixRadioAddress, Mode=OneTime}" />
             <Button Content="{Binding LocalizedResources.ExitTxt, Source={StaticResource LocalizedStrings}}"
                     Command="{Binding ExitCommand}"/>
         </Grid>
