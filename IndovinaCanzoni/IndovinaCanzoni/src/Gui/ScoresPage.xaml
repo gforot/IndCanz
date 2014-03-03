@@ -20,6 +20,10 @@
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Style="{StaticResource rootGridStyle}">
        <Grid.Resources>
+
+            <Style TargetType="ListBoxItem">
+                <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+            </Style>
             <Style TargetType="TextBlock" BasedOn="{StaticResource PhoneTextLargeStyle}" x:Key="totalPointsStyle">
                 <Setter Property="HorizontalAlignment" Value="Center" />
                 <Setter Property="VerticalAlignment" Value="Center" />
@@ -29,7 +33,7 @@
                 <Setter Property="VerticalAlignment" Value="Center" />
             </Style>
             <DataTemplate x:Key="scoreItemTemplate">
-                <Border BorderBrush="#FF75DCB2" BorderThickness="1" CornerRadius="5" Margin="5" Padding="5" VerticalAlignment="Center" HorizontalAlignment="Center"  >
+                <Border HorizontalAlignment="Stretch" BorderBrush="#FF75DCB2" BorderThickness="1" CornerRadius="5" Margin="5" Padding="5" VerticalAlignment="Center" >
                 	<Border.Background>
                 		<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                 			<GradientStop Color="#FF4C5559" Offset="0"/>
@@ -70,7 +74,8 @@
                 <RowDefinition />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
-            <ListBox x:Name="lbScores" ItemsSource="{Binding HighScores}" ItemTemplate="{StaticResource scoreItemTemplate}" HorizontalContentAlignment="Stretch" />
+            <ListBox x:Name="lbScores" ItemsSource="{Binding HighScores}" ItemTemplate="{StaticResource scoreItemTemplate}" HorizontalContentAlignment="Stretch" >
+            </ListBox>
             <Button x:Name="btnPlay" Content="{Binding Path=LocalizedResources.Play, Source={StaticResource LocalizedStrings}}" Grid.Row="1" Command="{Binding PlayCommand}" />
         </Grid>
 
