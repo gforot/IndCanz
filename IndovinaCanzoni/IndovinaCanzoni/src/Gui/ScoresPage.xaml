@@ -33,13 +33,7 @@
                 <Setter Property="VerticalAlignment" Value="Center" />
             </Style>
             <DataTemplate x:Key="scoreItemTemplate">
-                <Border HorizontalAlignment="Stretch" BorderBrush="#FF75DCB2" BorderThickness="1" CornerRadius="5" Margin="5" Padding="5" VerticalAlignment="Center" >
-                	<Border.Background>
-                		<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                			<GradientStop Color="#FF4C5559" Offset="0"/>
-                			<GradientStop Color="#FF97DDF7" Offset="1"/>
-                		</LinearGradientBrush>
-                	</Border.Background>
+                <Border HorizontalAlignment="Stretch" BorderBrush="#FF75DCB2" BorderThickness="1" CornerRadius="5" Margin="5" Padding="5" VerticalAlignment="Center" Background="#FF4198A6" >
                     <StackPanel>
                         <TextBlock Text="{Binding User}" Margin="0,2" Style="{StaticResource totalPointsStyle}" />
                         <TextBlock Text="{Binding Score}" Margin="0,2" Style="{StaticResource totalPointsStyle}" />
