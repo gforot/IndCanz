@@ -15,7 +15,23 @@ namespace IndovinaCanzoni.ViewModel
         public static List<ScoreItem> HighScores
         {
             get 
-            { 
+            {
+                if (IsInDesignModeStatic)
+                {
+                    return new List<ScoreItem>()
+                    {
+                        new ScoreItem(){
+                            User = "gforot",
+                            GuessedTitles = 3,
+                            GuessedArtists = 1
+                        },
+						new ScoreItem(){
+                            User = "Davide",
+                            GuessedTitles =2,
+                            GuessedArtists = 1
+                        }
+                    };
+                }
                 return App.HighScores.Scores; 
             }
         }

@@ -231,9 +231,17 @@ namespace IndovinaCanzoni.ViewModel
         #endregion
 
         #region SelectedGenre
+        private const string _designModeSelectedGenre = "Metal";
         public string SelectedGenre
         {
-            get { return App.SelectedGenre.Name; }
+            get 
+            {
+                if (IsInDesignMode)
+                {
+                    return _designModeSelectedGenre;
+                }
+                return App.SelectedGenre.Name; 
+            }
         }
         #endregion
 

@@ -54,14 +54,20 @@
         <!--TitlePanel contains the name of the application and page title-->
         <StackPanel Grid.Row="0" Margin="7">
             <TextBlock Text="{Binding LocalizedResources.ApplicationTitle, Source={StaticResource LocalizedStrings}}" Style="{StaticResource PhoneTextNormalStyle}"/>
-            <StackPanel x:Name="panelGenre" Orientation="Horizontal">
-                <TextBlock Style="{StaticResource labelStyle}" Text="{Binding Path=LocalizedResources.Genre, Source={StaticResource LocalizedStrings}}" />
-                <TextBlock Style="{StaticResource labelStyle2}" Text="{Binding SelectedGenre}" />
-            </StackPanel>
-            <StackPanel x:Name="panelScore" Orientation="Horizontal">
-                <TextBlock Style="{StaticResource labelStyle}" Text="{Binding Path=LocalizedResources.Score, Source={StaticResource LocalizedStrings}}" />
-                <TextBlock Style="{StaticResource labelStyle2}" Text="{Binding CurrentScore}" />
-            </StackPanel>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <StackPanel x:Name="panelGenre" Orientation="Horizontal">
+                    <TextBlock Style="{StaticResource labelStyle}" Text="{Binding Path=LocalizedResources.Genre, Source={StaticResource LocalizedStrings}}" />
+                    <TextBlock Style="{StaticResource labelStyle2}" Text="{Binding SelectedGenre}" />
+                </StackPanel>
+                <StackPanel Grid.Column="1" x:Name="panelScore" Orientation="Horizontal">
+                    <TextBlock Style="{StaticResource labelStyle}" Text="{Binding Path=LocalizedResources.Score, Source={StaticResource LocalizedStrings}}" />
+                    <TextBlock Style="{StaticResource labelStyle2}" Text="{Binding CurrentScore}" />
+                </StackPanel>
+            </Grid>
             <!--<TextBlock Text="{Binding LocalizedResources.GamePageTitle, Source={StaticResource LocalizedStrings}}" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>-->
         </StackPanel>
 

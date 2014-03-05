@@ -106,7 +106,7 @@ namespace IndovinaCanzoni
 
         private void ShowNokiaMixRadioAttribution()
         {
-            MessageBox.Show("Show nokia mix radio attribution and link.");
+            
         }
 
         internal static void SaveScoreItems()

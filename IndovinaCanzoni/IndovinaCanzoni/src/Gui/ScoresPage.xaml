@@ -27,32 +27,47 @@
             <Style TargetType="TextBlock" BasedOn="{StaticResource PhoneTextLargeStyle}" x:Key="totalPointsStyle">
                 <Setter Property="HorizontalAlignment" Value="Center" />
                 <Setter Property="VerticalAlignment" Value="Center" />
+                <Setter Property="FontSize" Value="30" />
+                <Setter Property="Foreground" Value="Red" />
+                <Setter Property="FontWeight" Value="Bold" />
             </Style>
             <Style TargetType="TextBlock" BasedOn="{StaticResource PhoneTextSmallStyle}" x:Key="smallPointsStyle">
                 <Setter Property="HorizontalAlignment" Value="Center" />
                 <Setter Property="VerticalAlignment" Value="Center" />
+                <Setter Property="FontSize" Value="22" />
+                <Setter Property="Foreground" Value="Green" />
             </Style>
             <DataTemplate x:Key="scoreItemTemplate">
                 <Border HorizontalAlignment="Stretch" BorderBrush="#FF75DCB2" BorderThickness="1" CornerRadius="5" Margin="5" Padding="5" VerticalAlignment="Center" >
                 	<Border.Background>
-                		<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                			<GradientStop Color="#FF4C5559" Offset="0"/>
-                			<GradientStop Color="#FF97DDF7" Offset="1"/>
+                		<LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                			<GradientStop Color="#CCB6B0B0" Offset="0.989"/>
+                			<GradientStop Color="#CCFFFFFF" Offset="0.008"/>
                 		</LinearGradientBrush>
                 	</Border.Background>
                     <StackPanel>
-                        <TextBlock Text="{Binding User}" Margin="0,2" Style="{StaticResource totalPointsStyle}" />
-                        <TextBlock Text="{Binding Score}" Margin="0,2" Style="{StaticResource totalPointsStyle}" />
-                        <StackPanel Orientation="Horizontal">
-                            <StackPanel x:Name="songPanel">
-                                <TextBlock Text="{Binding Path=LocalizedResources.GuessedSong, Source={StaticResource LocalizedStrings}}"/>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="{Binding User}" Margin="0,2" Style="{StaticResource totalPointsStyle}" />
+                            <TextBlock Grid.Column="1" Text="{Binding Score}" Margin="0,2" Style="{StaticResource totalPointsStyle}" />
+                        </Grid>
+                        <Grid>
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition />
+								<ColumnDefinition />
+							</Grid.ColumnDefinitions>
+                            <StackPanel x:Name="songPanel" Orientation="Horizontal" HorizontalAlignment="Center">
+                                <TextBlock Text="{Binding Path=LocalizedResources.GuessedSong, Source={StaticResource LocalizedStrings}}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                 <TextBlock Text="{Binding GuessedTitles}" HorizontalAlignment="Center" Style="{StaticResource smallPointsStyle}" />
                             </StackPanel>
-                            <StackPanel x:Name="artistsPanel">
+                            <StackPanel Grid.Column="1" x:Name="artistsPanel"  Orientation="Horizontal" HorizontalAlignment="Center">
                                 <TextBlock Text="{Binding Path=LocalizedResources.GuessedArtists, Source={StaticResource LocalizedStrings}}" />
                                 <TextBlock Text="{Binding GuessedArtists}" Style="{StaticResource smallPointsStyle}" />
                             </StackPanel>
-                        </StackPanel>
+                        </Grid>
                     </StackPanel>
                 </Border>
             </DataTemplate>
