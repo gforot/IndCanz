@@ -6,10 +6,6 @@ namespace IndovinaCanzoni.Converters
 {
     public class ResponseToBackgroundConverter : IValueConverter
     {
-        private static Color _wrongResponseColor = Colors.Red;
-        private static Color _rightResponseColor = Colors.Green;
-        private static Color _undefinedResponseColor = Colors.Cyan;
-
         public object Convert(object value, System.Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
             if (value is ResponseState)
@@ -23,8 +19,6 @@ namespace IndovinaCanzoni.Converters
                 }
             }
             return App.Current.Resources["undefinedResponseBackground"] as Brush;
-
-   
         }
 
         public object ConvertBack(object value, System.Type targetType, object parameter, System.Globalization.CultureInfo culture)

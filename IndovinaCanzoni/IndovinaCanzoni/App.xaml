@@ -11,8 +11,8 @@
         </Setter>
     </Style>
     <LinearGradientBrush x:Key="backgroundBrush" EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
-        <GradientStop Color="#CCB6B0B0" Offset="0.989"/>
-        <GradientStop Color="#CCFFFFFF" Offset="0.008"/>
+        <GradientStop Color="#CCB6B0B0" Offset="1"/>
+        <GradientStop Color="#CCFFFFFF" Offset="0"/>
     </LinearGradientBrush>
 
     <LinearGradientBrush x:Key="koResponseBackground" EndPoint="0.5,1" StartPoint="0.5,0">
