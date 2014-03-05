@@ -529,6 +529,7 @@ namespace IndovinaCanzoni.ViewModel
 
         private void ArtistReplyWithSr()
         {
+            //Richiesto lo Speech Recognition sull'artista.
 
         }
 

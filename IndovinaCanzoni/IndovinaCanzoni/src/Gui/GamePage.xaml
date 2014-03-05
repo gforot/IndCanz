@@ -57,14 +57,13 @@
                 </Grid.ColumnDefinitions>
                 <StackPanel x:Name="panelGenre" Orientation="Horizontal">
                     <TextBlock Style="{StaticResource labelStyle}" Text="{Binding Path=LocalizedResources.Genre, Source={StaticResource LocalizedStrings}}" />
-                    <TextBlock Style="{StaticResource labelStyle2}" Text="{Binding SelectedGenre}" />
+                    <TextBlock Style="{StaticResource labelStyle2}" Text="{Binding SelectedGenre}" TextWrapping="Wrap" TextTrimming="WordEllipsis"  />
                 </StackPanel>
                 <StackPanel Grid.Column="1" x:Name="panelScore" Orientation="Horizontal">
                     <TextBlock Style="{StaticResource labelStyle}" Text="{Binding Path=LocalizedResources.Score, Source={StaticResource LocalizedStrings}}" />
                     <TextBlock Style="{StaticResource labelStyle2}" Text="{Binding CurrentScore}" />
                 </StackPanel>
             </Grid>
-            <!--<TextBlock Text="{Binding LocalizedResources.GamePageTitle, Source={StaticResource LocalizedStrings}}" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>-->
         </StackPanel>
 
         <!--ContentPanel - place additional content here-->
@@ -97,8 +96,7 @@
                     <Button Background="{Binding Title1State, Converter={StaticResource responseToBackgroundConverter}}" Style="{StaticResource responseButtonStyle}" Content="{Binding Title1.Title}" Command="{Binding TitleResponseCommand}" CommandParameter="{Binding Title1}" />
                     <Button Background="{Binding Title2State, Converter={StaticResource responseToBackgroundConverter}}" Grid.Row="1" Style="{StaticResource responseButtonStyle}" Content="{Binding Title2.Title}" Command="{Binding TitleResponseCommand}" CommandParameter="{Binding Title2}" />
                     <Button Background="{Binding Title3State, Converter={StaticResource responseToBackgroundConverter}}" Grid.Row="2" Style="{StaticResource responseButtonStyle}" Content="{Binding Title3.Title}" Command="{Binding TitleResponseCommand}" CommandParameter="{Binding Title3}" />
-					<Button Grid.Row="1" Grid.Column="1" Content="$SR" Command="{Binding TitleReplyWithSrCommand}" /> 
-
+                    <telerik:RadImageButton Grid.Row="1" Grid.Column="1" Command="{Binding TitleReplyWithSrCommand}" ButtonShape="Image" ButtonType="Custom" HorizontalAlignment="Center" VerticalAlignment="Center" DisabledStateImageSource="/IndovinaCanzoni;component/images/microphone_48_48.png" PressedStateImageSource="/IndovinaCanzoni;component/images/microphone_48_48.png" RestStateImageSource="/IndovinaCanzoni;component/images/microphone_48_48.png" />
                 </Grid>
             </Border>
             <Border x:Name="brdArtist" Grid.Row="2" Grid.ColumnSpan="2" Style="{StaticResource borderStyle}" >
@@ -115,8 +113,8 @@
                     <Button Background="{Binding Artist1State, Converter={StaticResource responseToBackgroundConverter}}"  Style="{StaticResource responseButtonStyle}" Content="{Binding Artist1.Artist}" Command="{Binding ArtistResponseCommand}" CommandParameter="{Binding Artist1}" />
                     <Button Background="{Binding Artist2State, Converter={StaticResource responseToBackgroundConverter}}" Grid.Row="1" Style="{StaticResource responseButtonStyle}" Content="{Binding Artist2.Artist}" Command="{Binding ArtistResponseCommand}" CommandParameter="{Binding Artist2}" />
                     <Button Background="{Binding Artist3State, Converter={StaticResource responseToBackgroundConverter}}" Grid.Row="2" Style="{StaticResource responseButtonStyle}" Content="{Binding Artist3.Artist}" Command="{Binding ArtistResponseCommand}" CommandParameter="{Binding Artist3}" />
-					<Button Grid.Row="1" Grid.Column="1" Content="$SR" Command="{Binding ArtistReplyWithSrCommand}" />
-                </Grid>
+					<telerik:RadImageButton Grid.Row="1" Grid.Column="1" Command="{Binding ArtistReplyWithSrCommand}" ButtonShape="Image" ButtonType="Custom" HorizontalAlignment="Center" VerticalAlignment="Center" DisabledStateImageSource="/IndovinaCanzoni;component/images/microphone_48_48.png" PressedStateImageSource="/IndovinaCanzoni;component/images/microphone_48_48.png" RestStateImageSource="/IndovinaCanzoni;component/images/microphone_48_48.png" />
+				</Grid>
             </Border>
             <Button Grid.ColumnSpan="2" Grid.Row="3" x:Name="replayButton" Content="{Binding Path=LocalizedResources.RePlay, Source={StaticResource LocalizedStrings}}" Command="{Binding PlayCommand}" />
             <Button Grid.ColumnSpan="2" Grid.Row="4" Content="{Binding Path=LocalizedResources.Next, Source={StaticResource LocalizedStrings}}" Command="{Binding MoveNextCommand}" />
