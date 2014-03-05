@@ -34,17 +34,11 @@
             <Style TargetType="TextBlock" BasedOn="{StaticResource PhoneTextSmallStyle}" x:Key="smallPointsStyle">
                 <Setter Property="HorizontalAlignment" Value="Center" />
                 <Setter Property="VerticalAlignment" Value="Center" />
-                <Setter Property="FontSize" Value="22" />
+                <Setter Property="FontSize" Value="24" />
                 <Setter Property="Foreground" Value="Green" />
             </Style>
             <DataTemplate x:Key="scoreItemTemplate">
-                <Border HorizontalAlignment="Stretch" BorderBrush="#FF75DCB2" BorderThickness="1" CornerRadius="5" Margin="5" Padding="5" VerticalAlignment="Center" >
-                	<Border.Background>
-                		<LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
-                			<GradientStop Color="#CCB6B0B0" Offset="0.989"/>
-                			<GradientStop Color="#CCFFFFFF" Offset="0.008"/>
-                		</LinearGradientBrush>
-                	</Border.Background>
+                <Border HorizontalAlignment="Stretch" Background="{StaticResource backgroundBrush}" BorderBrush="#FF75DCB2" BorderThickness="1" CornerRadius="5" Margin="5" Padding="5" VerticalAlignment="Center" >
                     <StackPanel>
                         <Grid>
                             <Grid.ColumnDefinitions>

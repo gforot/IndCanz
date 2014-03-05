@@ -10,6 +10,26 @@
             </Setter.Value>
         </Setter>
     </Style>
+    <LinearGradientBrush x:Key="backgroundBrush" EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+        <GradientStop Color="#CCB6B0B0" Offset="0.989"/>
+        <GradientStop Color="#CCFFFFFF" Offset="0.008"/>
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="koResponseBackground" EndPoint="0.5,1" StartPoint="0.5,0">
+        <GradientStop Color="Red" Offset="0"/>
+        <GradientStop Color="White" Offset="1"/>
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="okResponseBackground" EndPoint="0.5,1" StartPoint="0.5,0">
+        <GradientStop Color="#B211D635" Offset="0"/>
+        <GradientStop Color="White" Offset="1"/>
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="undefinedResponseBackground" EndPoint="0.5,1" StartPoint="0.5,0">
+        <GradientStop Color="#B211D635" Offset="0"/>
+        <GradientStop Color="White" Offset="1"/>
+    </LinearGradientBrush>
+
     </Application.Resources>
   <Application.ApplicationLifetimeObjects>
     <!--Required object that handles lifetime events for the application-->

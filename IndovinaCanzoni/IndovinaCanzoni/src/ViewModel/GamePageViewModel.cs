@@ -399,6 +399,8 @@ namespace IndovinaCanzoni.ViewModel
             PlayCommand = new RelayCommand(Play, CanPlay);
             MoveNextCommand = new RelayCommand(MoveNext, CanMoveNext);
             AboutCommand = new RelayCommand(About);
+            ArtistReplyWithSrCommand = new RelayCommand(ArtistReplyWithSr, CanArtistReplyWithSr);
+            TitleReplyWithSrCommand = new RelayCommand(TitleReplyWithSr, CanTitleReplyWithSr);
 
             ArtistResponseCommand = new RelayCommand<ArtistResponse>((a)=>ArtistResponse(a), (a)=>CanArtistResponse(a));
             TitleResponseCommand = new RelayCommand<TitleResponse>((a) => TitleResponse(a), (a) => CanTitleResponse(a));
@@ -424,6 +426,8 @@ namespace IndovinaCanzoni.ViewModel
         {
             NavigationService.NavigateTo(new Uri(PageAddresses.AboutPage, UriKind.Relative));
         }
+
+
         #endregion
 
         #region RePlayCommand
@@ -518,6 +522,36 @@ namespace IndovinaCanzoni.ViewModel
                 }
             }
         }
+        #endregion
+
+        #region ArtistReplyWithSrCommand
+        public RelayCommand ArtistReplyWithSrCommand { get; private set; }
+
+        private void ArtistReplyWithSr()
+        {
+
+        }
+
+        private bool CanArtistReplyWithSr()
+        {
+            return true;
+        }
+
+        #endregion
+
+        #region ArtistReplyWithSrCommand
+        public RelayCommand TitleReplyWithSrCommand { get; private set; }
+
+        private void TitleReplyWithSr()
+        {
+
+        }
+
+        private bool CanTitleReplyWithSr()
+        {
+            return true;
+        }
+
         #endregion
 
         #endregion

@@ -22,12 +22,9 @@
     <Grid x:Name="LayoutRoot" Style="{StaticResource rootGridStyle}">
         <Grid.Resources>
             <converters:ResponseToBackgroundConverter x:Key="responseToBackgroundConverter" />
-            <SolidColorBrush x:Name="undefinedButtonBackground" Color="Cyan" />
-            <SolidColorBrush x:Name="okButtonBackground" Color="Green" />
-            <SolidColorBrush x:Name="koButtonBackground" Color="Red" />
-            
+           
             <Style x:Key="responseButtonStyle" TargetType="Button">
-                <Setter Property="Background" Value="{StaticResource undefinedButtonBackground}" />
+
             </Style>
 
             <Style x:Key="labelStyle" TargetType="TextBlock">
@@ -38,10 +35,9 @@
                 <Setter Property="FontWeight" Value="Bold" />
             </Style>
             <converters:ResultToImageConverter x:Key="resultToImageConverter" />
-            
             <Style x:Key="borderStyle" TargetType="Border">
                 <Setter Property="BorderThickness" Value="1" />
-                <Setter Property="Background" Value="DarkCyan" />
+                <Setter Property="Background" Value="{StaticResource backgroundBrush}" />
                 <Setter Property="Margin" Value="0,7" />
             </Style>
         </Grid.Resources>
@@ -89,6 +85,10 @@
             </Grid.ColumnDefinitions>
             <Border x:Name="brdTitle" Grid.Row="1" Grid.ColumnSpan="2" Style="{StaticResource borderStyle}" >
                 <Grid>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition />
+						<ColumnDefinition Width="Auto" />
+					</Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition />
                         <RowDefinition />
@@ -97,10 +97,16 @@
                     <Button Background="{Binding Title1State, Converter={StaticResource responseToBackgroundConverter}}" Style="{StaticResource responseButtonStyle}" Content="{Binding Title1.Title}" Command="{Binding TitleResponseCommand}" CommandParameter="{Binding Title1}" />
                     <Button Background="{Binding Title2State, Converter={StaticResource responseToBackgroundConverter}}" Grid.Row="1" Style="{StaticResource responseButtonStyle}" Content="{Binding Title2.Title}" Command="{Binding TitleResponseCommand}" CommandParameter="{Binding Title2}" />
                     <Button Background="{Binding Title3State, Converter={StaticResource responseToBackgroundConverter}}" Grid.Row="2" Style="{StaticResource responseButtonStyle}" Content="{Binding Title3.Title}" Command="{Binding TitleResponseCommand}" CommandParameter="{Binding Title3}" />
+					<Button Grid.Row="1" Grid.Column="1" Content="$SR" Command="{Binding TitleReplyWithSrCommand}" /> 
+
                 </Grid>
             </Border>
             <Border x:Name="brdArtist" Grid.Row="2" Grid.ColumnSpan="2" Style="{StaticResource borderStyle}" >
                 <Grid>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition />
+						<ColumnDefinition Width="Auto" />
+					</Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition />
                         <RowDefinition />
@@ -109,6 +115,7 @@
                     <Button Background="{Binding Artist1State, Converter={StaticResource responseToBackgroundConverter}}"  Style="{StaticResource responseButtonStyle}" Content="{Binding Artist1.Artist}" Command="{Binding ArtistResponseCommand}" CommandParameter="{Binding Artist1}" />
                     <Button Background="{Binding Artist2State, Converter={StaticResource responseToBackgroundConverter}}" Grid.Row="1" Style="{StaticResource responseButtonStyle}" Content="{Binding Artist2.Artist}" Command="{Binding ArtistResponseCommand}" CommandParameter="{Binding Artist2}" />
                     <Button Background="{Binding Artist3State, Converter={StaticResource responseToBackgroundConverter}}" Grid.Row="2" Style="{StaticResource responseButtonStyle}" Content="{Binding Artist3.Artist}" Command="{Binding ArtistResponseCommand}" CommandParameter="{Binding Artist3}" />
+					<Button Grid.Row="1" Grid.Column="1" Content="$SR" Command="{Binding ArtistReplyWithSrCommand}" />
                 </Grid>
             </Border>
             <Button Grid.ColumnSpan="2" Grid.Row="3" x:Name="replayButton" Content="{Binding Path=LocalizedResources.RePlay, Source={StaticResource LocalizedStrings}}" Command="{Binding PlayCommand}" />

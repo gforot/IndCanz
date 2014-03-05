@@ -17,12 +17,13 @@ namespace IndovinaCanzoni.Converters
                 switch ((ResponseState)value)
                 {
                     case ResponseState.Correct:
-                        return new SolidColorBrush(_rightResponseColor);
+                        return App.Current.Resources["okResponseBackground"] as Brush;
                     case ResponseState.Wrong:
-                        return new SolidColorBrush(_wrongResponseColor);
+                        return App.Current.Resources["koResponseBackground"] as Brush;
                 }
             }
-            return new SolidColorBrush(_undefinedResponseColor);
+            return App.Current.Resources["undefinedResponseBackground"] as Brush;
+
    
         }
 
