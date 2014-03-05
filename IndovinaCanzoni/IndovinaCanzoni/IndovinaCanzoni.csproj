@@ -216,8 +216,8 @@
     <Resource Include="images\questionmark.png" />
     <Resource Include="images\microphone_16_16.png" />
     <Resource Include="images\microphone_24_24.png" />
-    <Content Include="images\microphone_32_32.png" />
-    <Content Include="images\microphone_48_48.png" />
+    <Resource Include="images\microphone_32_32.png" />
+    <Resource Include="images\microphone_48_48.png" />
     <Content Include="README_FIRST.txt" />
     <Content Include="Toolkit.Content\ApplicationBar.Add.png" />
     <Content Include="Toolkit.Content\ApplicationBar.Cancel.png" />

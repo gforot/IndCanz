@@ -11,6 +11,7 @@ using IndovinaCanzoni.Model;
 using IndovinaCanzoni.src.Utils;
 using IndovinaCanzoni.Utils;
 using Nokia.Music.Types;
+using Windows.Phone.Speech.Recognition;
 
 namespace IndovinaCanzoni.ViewModel
 {
@@ -527,9 +528,20 @@ namespace IndovinaCanzoni.ViewModel
         #region ArtistReplyWithSrCommand
         public RelayCommand ArtistReplyWithSrCommand { get; private set; }
 
-        private void ArtistReplyWithSr()
+        private async void ArtistReplyWithSr()
         {
             //Richiesto lo Speech Recognition sull'artista.
+            SpeechRecognizerUI recoUi = new SpeechRecognizerUI();
+            //see: http://msdn.microsoft.com/en-us/library/windowsphone/develop/jj206991(v=vs.105).aspx
+
+            string[] artists = new []{Artist1.Artist, Artist2.Artist, Artist3.Artist};
+            recoUi.Recognizer.Grammars.AddGrammarFromList("artists", artists);
+
+            SpeechRecognitionUIResult recoResult = await recoUi.RecognizeWithUIAsync();
+            if (recoResult.RecognitionResult != null)
+            {
+                System.Windows.MessageBox.Show(string.Format("You said {0}.", recoResult.RecognitionResult.Text));
+            }
 
         }
 
@@ -543,9 +555,20 @@ namespace IndovinaCanzoni.ViewModel
         #region ArtistReplyWithSrCommand
         public RelayCommand TitleReplyWithSrCommand { get; private set; }
 
-        private void TitleReplyWithSr()
+        private async void TitleReplyWithSr()
         {
+            //Richiesto lo Speech Recognition sull'artista.
+            SpeechRecognizerUI recoUi = new SpeechRecognizerUI();
+            //see: http://msdn.microsoft.com/en-us/library/windowsphone/develop/jj206991(v=vs.105).aspx
 
+            string[] titles = new[] { Title1.Title, Title2.Title, Title3.Title };
+            recoUi.Recognizer.Grammars.AddGrammarFromList("titles", titles);
+
+            SpeechRecognitionUIResult recoResult = await recoUi.RecognizeWithUIAsync();
+            if (recoResult.RecognitionResult != null)
+            {
+                System.Windows.MessageBox.Show(string.Format("You said {0}.", recoResult.RecognitionResult.Text));
+            }
         }
 
         private bool CanTitleReplyWithSr()
