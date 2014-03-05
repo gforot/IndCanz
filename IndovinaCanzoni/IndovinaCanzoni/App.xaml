@@ -16,19 +16,19 @@
     </LinearGradientBrush>
 
     <LinearGradientBrush x:Key="koResponseBackground" EndPoint="0.5,1" StartPoint="0.5,0">
-        <GradientStop Color="Red" Offset="0"/>
-        <GradientStop Color="White" Offset="1"/>
+                <GradientStop Color="#B2F70808" Offset="0"/>
+                <GradientStop Color="#B2FDCCCC" Offset="1"/>
     </LinearGradientBrush>
 
     <LinearGradientBrush x:Key="okResponseBackground" EndPoint="0.5,1" StartPoint="0.5,0">
-        <GradientStop Color="#B211D635" Offset="0"/>
-        <GradientStop Color="White" Offset="1"/>
-    </LinearGradientBrush>
+            <GradientStop Color="#B211D635" Offset="0"/>
+            <GradientStop Color="#B2FFFFFF" Offset="1"/>
+        </LinearGradientBrush>
 
     <LinearGradientBrush x:Key="undefinedResponseBackground" EndPoint="0.5,1" StartPoint="0.5,0">
-        <GradientStop Color="#B211D635" Offset="0"/>
-        <GradientStop Color="White" Offset="1"/>
-    </LinearGradientBrush>
+            <GradientStop Color="#B215C9F1" Offset="0"/>
+            <GradientStop Color="#B2ADEFFD" Offset="1"/>
+        </LinearGradientBrush>
 
     </Application.Resources>
   <Application.ApplicationLifetimeObjects>
