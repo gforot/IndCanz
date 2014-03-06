@@ -73,14 +73,13 @@
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             <MediaElement x:Name="player" AutoPlay="True"/>
-            <Grid HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0">
+            <Grid VerticalAlignment="Center" Margin="0">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="15*" />
                     <ColumnDefinition Width="40*"/>
                     <ColumnDefinition Width="206*" />
                 </Grid.ColumnDefinitions>
-                <TextBlock Text="{Binding Path=LocalizedResources.User, Source={StaticResource LocalizedStrings}}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,23,0,22" Grid.Column="1"  />
-                <TextBox Grid.Column="2" Text="{Binding User, Mode=TwoWay}" VerticalAlignment="Center" Margin="0,0,10,0" HorizontalAlignment="Right" Width="196" />
+                <TextBlock Text="{Binding Path=LocalizedResources.User, Source={StaticResource LocalizedStrings}}" HorizontalAlignment="Center" VerticalAlignment="Center"   />
+                <TextBox Grid.Column="1" Text="{Binding User, Mode=TwoWay}" VerticalAlignment="Center" Margin="0,0,10,0" HorizontalAlignment="Stretch"  />
             </Grid>
             <telerikInput:RadListPicker Grid.Row="1" ItemsSource="{Binding Genres}"
                                         ItemTemplate="{StaticResource genreTemplate}"

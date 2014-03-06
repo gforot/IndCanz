@@ -44,6 +44,12 @@ namespace IndovinaCanzoni.ViewModel
         private void ClearResults()
         {
             Data.DataLayer.GetInstance().ClearResults();
+            if (App.SelectedGenre != null)
+            {
+                IndovinaCanzoni.App.HighScores.SetHighscores(Data.DataLayer.GetInstance().LoadScoreItems(App.SelectedGenre.Id));
+            }
+
+            RaisePropertyChanged("HighScores");
         }
 
         private void ShowAttributionPage()
