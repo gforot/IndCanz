@@ -540,9 +540,29 @@ namespace IndovinaCanzoni.ViewModel
             SpeechRecognitionUIResult recoResult = await recoUi.RecognizeWithUIAsync();
             if (recoResult.RecognitionResult != null)
             {
-                System.Windows.MessageBox.Show(string.Format("You said {0}.", recoResult.RecognitionResult.Text));
+                ArtistResponse artResponse = GetArtistResponseWithSpeechRecognition(recoResult.RecognitionResult.Text);
+                if (artResponse != null)
+                {
+                    ArtistResponse(artResponse);
+                }
             }
+        }
 
+        private ArtistResponse GetArtistResponseWithSpeechRecognition(string recognizedText)
+        {
+            if (Artist1.Artist.Equals(recognizedText))
+            {
+                return Artist1;
+            }
+            else if (Artist2.Artist.Equals(recognizedText))
+            {
+                return Artist2;
+            }
+            else if (Artist3.Artist.Equals(recognizedText))
+            {
+                return Artist3;
+            }
+            return null;
         }
 
         private bool CanArtistReplyWithSr()
@@ -567,8 +587,29 @@ namespace IndovinaCanzoni.ViewModel
             SpeechRecognitionUIResult recoResult = await recoUi.RecognizeWithUIAsync();
             if (recoResult.RecognitionResult != null)
             {
-                System.Windows.MessageBox.Show(string.Format("You said {0}.", recoResult.RecognitionResult.Text));
+                TitleResponse ttlResponse = GetTitleResponseWithSpeechRecognition(recoResult.RecognitionResult.Text);
+                if (ttlResponse != null)
+                {
+                    TitleResponse(ttlResponse);
+                }
             }
+        }
+
+        private TitleResponse GetTitleResponseWithSpeechRecognition(string recognizedText)
+        {
+            if (Title1.Title.Equals(recognizedText))
+            {
+                return Title1;
+            }
+            else if (Title2.Title.Equals(recognizedText))
+            {
+                return Title2;
+            }
+            else if (Title3.Title.Equals(recognizedText))
+            {
+                return Title3;
+            }
+            return null;
         }
 
         private bool CanTitleReplyWithSr()
