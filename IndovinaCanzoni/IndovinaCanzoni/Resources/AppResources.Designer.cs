@@ -151,6 +151,15 @@ namespace IndovinaCanzoni.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Artist.
+        /// </summary>
+        public static string Artist {
+            get {
+                return ResourceManager.GetString("Artist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to This application uses Nokia Mix Radio api..
         /// </summary>
         public static string AttributionText {
@@ -160,7 +169,7 @@ namespace IndovinaCanzoni.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to By Andrea Rota.
+        ///   Looks up a localized string similar to By gforot.
         /// </summary>
         public static string Author {
             get {
@@ -381,6 +390,15 @@ namespace IndovinaCanzoni.Resources {
         public static string SendFeedback {
             get {
                 return ResourceManager.GetString("SendFeedback", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Title.
+        /// </summary>
+        public static string Title {
+            get {
+                return ResourceManager.GetString("Title", resourceCulture);
             }
         }
         

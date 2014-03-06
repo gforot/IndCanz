@@ -99,17 +99,5 @@ namespace IndovinaCanzoni.Data
                 }
             }
         }
-
-        public void ClearResults(string idGenre)
-        {
-            using (var store = IsolatedStorageFile.GetUserStoreForApplication())
-            {
-                string fileName = GetFileName(idGenre);
-                if (store.FileExists(fileName))
-                {
-                    store.DeleteFile(fileName);
-                }
-            }
-        }
     }
 }

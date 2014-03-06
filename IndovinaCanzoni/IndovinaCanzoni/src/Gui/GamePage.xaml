@@ -24,22 +24,24 @@
             <converters:ResponseToBackgroundConverter x:Key="responseToBackgroundConverter" />
            
             <Style x:Key="responseButtonStyle" TargetType="Button">
-
+                <Setter Property="FontStyle" Value="Normal" />
+                <Setter Property="Foreground" Value="AntiqueWhite" />
+                <Setter Property="BorderBrush" Value="AntiqueWhite" />
+                <Setter Property="BorderThickness" Value="1" />
+                <Setter Property="FontWeight" Value="Light" />
             </Style>
 
-            <Style x:Key="labelStyle" TargetType="TextBlock">
-                <Setter Property="Margin" Value="5" />
-                <Setter Property="FontSize" Value="25" />
-            </Style>
-            <Style x:Key="labelStyle2" TargetType="TextBlock" BasedOn="{StaticResource labelStyle}">
-                <Setter Property="FontWeight" Value="Bold" />
-                <Setter Property="Foreground" Value="LightGreen" />
+
+            <Style x:Key="labelStyleBorderHeader" TargetType="TextBlock" BasedOn="{StaticResource labelStyle2}">
+                <Setter Property="Foreground" Value="LemonChiffon" />
             </Style>
             <converters:ResultToImageConverter x:Key="resultToImageConverter" />
             <Style x:Key="borderStyle" TargetType="Border">
+                <Setter Property="CornerRadius" Value="5" />
                 <Setter Property="BorderThickness" Value="1" />
                 <Setter Property="Background" Value="{StaticResource backgroundBrush}" />
-                <Setter Property="Margin" Value="0,7" />
+                <Setter Property="Margin" Value="2" />
+                <Setter Property="BorderBrush" Value="#FFF0EBEB"/>
             </Style>
         </Grid.Resources>
         <Grid.RowDefinitions>
@@ -52,15 +54,15 @@
         <StackPanel Grid.Row="0" Margin="7">
             <TextBlock Text="{Binding LocalizedResources.ApplicationTitle, Source={StaticResource LocalizedStrings}}" Style="{StaticResource PhoneTextNormalStyle}"/>
             <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
                 <StackPanel x:Name="panelGenre" Orientation="Horizontal">
                     <TextBlock Style="{StaticResource labelStyle}" Text="{Binding Path=LocalizedResources.Genre, Source={StaticResource LocalizedStrings}}" />
-                    <TextBlock Style="{StaticResource labelStyle2}" Text="{Binding SelectedGenre}" TextWrapping="Wrap" TextTrimming="WordEllipsis"  />
+                    <TextBlock Style="{StaticResource labelStyle2}" Text="{Binding SelectedGenre}" TextTrimming="WordEllipsis"  />
                 </StackPanel>
-                <StackPanel Grid.Column="1" x:Name="panelScore" Orientation="Horizontal">
+                <StackPanel Grid.Row="1" x:Name="panelScore" Orientation="Horizontal">
                     <TextBlock Style="{StaticResource labelStyle}" Text="{Binding Path=LocalizedResources.Score, Source={StaticResource LocalizedStrings}}" />
                     <TextBlock Style="{StaticResource labelStyle2}" Text="{Binding CurrentScore}" />
                 </StackPanel>
@@ -73,31 +75,31 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
-            <Border x:Name="brdTitle" Grid.Row="1" Grid.ColumnSpan="2" Style="{StaticResource borderStyle}" >
+            <Border x:Name="brdTitle" Grid.Row="0" Grid.ColumnSpan="2" Style="{StaticResource borderStyle}" >
                 <Grid>
 					<Grid.ColumnDefinitions>
 						<ColumnDefinition />
 						<ColumnDefinition Width="Auto" />
 					</Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
+						<RowDefinition />
                         <RowDefinition />
                         <RowDefinition />
                         <RowDefinition />
                     </Grid.RowDefinitions>
-                    <Button Background="{Binding Title1State, Converter={StaticResource responseToBackgroundConverter}}" Style="{StaticResource responseButtonStyle}" Content="{Binding Title1.Title}" Command="{Binding TitleResponseCommand}" CommandParameter="{Binding Title1}" />
-                    <Button Background="{Binding Title2State, Converter={StaticResource responseToBackgroundConverter}}" Grid.Row="1" Style="{StaticResource responseButtonStyle}" Content="{Binding Title2.Title}" Command="{Binding TitleResponseCommand}" CommandParameter="{Binding Title2}" />
-                    <Button Background="{Binding Title3State, Converter={StaticResource responseToBackgroundConverter}}" Grid.Row="2" Style="{StaticResource responseButtonStyle}" Content="{Binding Title3.Title}" Command="{Binding TitleResponseCommand}" CommandParameter="{Binding Title3}" />
-                    <telerik:RadImageButton Grid.Row="1" Grid.Column="1" Command="{Binding TitleReplyWithSrCommand}" ButtonShape="Image" ButtonType="Custom" HorizontalAlignment="Center" VerticalAlignment="Center" DisabledStateImageSource="/IndovinaCanzoni;component/images/microphone_48_48.png" PressedStateImageSource="/IndovinaCanzoni;component/images/microphone_48_48.png" RestStateImageSource="/IndovinaCanzoni;component/images/microphone_48_48.png" />
+                    <TextBlock Grid.ColumnSpan="2" Style="{StaticResource labelStyleBorderHeader}" Text="{Binding Path=LocalizedResources.Title, Source={StaticResource LocalizedStrings}}"/>
+                    <Button Background="{Binding Title1State, Converter={StaticResource responseToBackgroundConverter}}" Grid.Row="1" Style="{StaticResource responseButtonStyle}" Content="{Binding Title1.Title}" Command="{Binding TitleResponseCommand}" CommandParameter="{Binding Title1}" />
+                    <Button Background="{Binding Title2State, Converter={StaticResource responseToBackgroundConverter}}" Grid.Row="2" Style="{StaticResource responseButtonStyle}" Content="{Binding Title2.Title}" Command="{Binding TitleResponseCommand}" CommandParameter="{Binding Title2}" />
+                    <Button Background="{Binding Title3State, Converter={StaticResource responseToBackgroundConverter}}" Grid.Row="3" Style="{StaticResource responseButtonStyle}" Content="{Binding Title3.Title}" Command="{Binding TitleResponseCommand}" CommandParameter="{Binding Title3}" />
+                    <telerik:RadImageButton Grid.Row="2" Grid.Column="1" Command="{Binding TitleReplyWithSrCommand}" ButtonShape="Image" ButtonType="Custom" HorizontalAlignment="Center" VerticalAlignment="Center" DisabledStateImageSource="/IndovinaCanzoni;component/images/microphone_48_48.png" PressedStateImageSource="/IndovinaCanzoni;component/images/microphone_48_48.png" RestStateImageSource="/IndovinaCanzoni;component/images/microphone_48_48.png" />
                 </Grid>
             </Border>
-            <Border x:Name="brdArtist" Grid.Row="2" Grid.ColumnSpan="2" Style="{StaticResource borderStyle}" >
+            <Border x:Name="brdArtist" Grid.Row="1" Grid.ColumnSpan="2" Style="{StaticResource borderStyle}" >
                 <Grid>
 					<Grid.ColumnDefinitions>
 						<ColumnDefinition />
@@ -107,15 +109,17 @@
                         <RowDefinition />
                         <RowDefinition />
                         <RowDefinition />
+                        <RowDefinition />
                     </Grid.RowDefinitions>
-                    <Button Background="{Binding Artist1State, Converter={StaticResource responseToBackgroundConverter}}"  Style="{StaticResource responseButtonStyle}" Content="{Binding Artist1.Artist}" Command="{Binding ArtistResponseCommand}" CommandParameter="{Binding Artist1}" />
-                    <Button Background="{Binding Artist2State, Converter={StaticResource responseToBackgroundConverter}}" Grid.Row="1" Style="{StaticResource responseButtonStyle}" Content="{Binding Artist2.Artist}" Command="{Binding ArtistResponseCommand}" CommandParameter="{Binding Artist2}" />
-                    <Button Background="{Binding Artist3State, Converter={StaticResource responseToBackgroundConverter}}" Grid.Row="2" Style="{StaticResource responseButtonStyle}" Content="{Binding Artist3.Artist}" Command="{Binding ArtistResponseCommand}" CommandParameter="{Binding Artist3}" />
-					<telerik:RadImageButton Grid.Row="1" Grid.Column="1" Command="{Binding ArtistReplyWithSrCommand}" ButtonShape="Image" ButtonType="Custom" HorizontalAlignment="Center" VerticalAlignment="Center" DisabledStateImageSource="/IndovinaCanzoni;component/images/microphone_48_48.png" PressedStateImageSource="/IndovinaCanzoni;component/images/microphone_48_48.png" RestStateImageSource="/IndovinaCanzoni;component/images/microphone_48_48.png" />
+                    <TextBlock Grid.ColumnSpan="2" Style="{StaticResource labelStyleBorderHeader}" Text="{Binding Path=LocalizedResources.Artist, Source={StaticResource LocalizedStrings}}"/>
+                    <Button Background="{Binding Artist1State, Converter={StaticResource responseToBackgroundConverter}}" Grid.Row="1"  Style="{StaticResource responseButtonStyle}" Content="{Binding Artist1.Artist}" Command="{Binding ArtistResponseCommand}" CommandParameter="{Binding Artist1}" />
+                    <Button Background="{Binding Artist2State, Converter={StaticResource responseToBackgroundConverter}}" Grid.Row="2" Style="{StaticResource responseButtonStyle}" Content="{Binding Artist2.Artist}" Command="{Binding ArtistResponseCommand}" CommandParameter="{Binding Artist2}" />
+                    <Button Background="{Binding Artist3State, Converter={StaticResource responseToBackgroundConverter}}" Grid.Row="3" Style="{StaticResource responseButtonStyle}" Content="{Binding Artist3.Artist}" Command="{Binding ArtistResponseCommand}" CommandParameter="{Binding Artist3}" />
+					<telerik:RadImageButton Grid.Row="3" Grid.Column="1" Command="{Binding ArtistReplyWithSrCommand}" ButtonShape="Image" ButtonType="Custom" HorizontalAlignment="Center" VerticalAlignment="Center" DisabledStateImageSource="/IndovinaCanzoni;component/images/microphone_48_48.png" PressedStateImageSource="/IndovinaCanzoni;component/images/microphone_48_48.png" RestStateImageSource="/IndovinaCanzoni;component/images/microphone_48_48.png" />
 				</Grid>
             </Border>
-            <Button Grid.Row="3" x:Name="replayButton" Content="{Binding Path=LocalizedResources.RePlay, Source={StaticResource LocalizedStrings}}" Command="{Binding PlayCommand}" />
-            <Button Grid.Column="1" Grid.Row="3" Content="{Binding Path=LocalizedResources.Next, Source={StaticResource LocalizedStrings}}" Command="{Binding MoveNextCommand}" />
+            <Button Grid.Row="2" x:Name="replayButton" Content="{Binding Path=LocalizedResources.RePlay, Source={StaticResource LocalizedStrings}}" Command="{Binding PlayCommand}" />
+            <Button Grid.Column="1" Grid.Row="2" Content="{Binding Path=LocalizedResources.Next, Source={StaticResource LocalizedStrings}}" Command="{Binding MoveNextCommand}" HorizontalAlignment="Center" VerticalAlignment="Center" />
         </Grid>
 
         <i:Interaction.Behaviors>

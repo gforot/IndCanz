@@ -21,17 +21,19 @@
         <Grid.Resources>
             <SolidColorBrush Color="Red" x:Key="redColor" />
             <!-- Caratteristiche comuni delle TextBlock-->
-            <Style x:Name="commonTextBlockStyle" TargetType="TextBlock">
+            <Style x:Name="commonTextBlockStyle" TargetType="TextBlock" BasedOn="{StaticResource lblCommon}">
                 <Setter Property="Margin" Value="5" />
             </Style>
-
             <Style x:Name="appTitleStyle" TargetType="TextBlock" BasedOn="{StaticResource commonTextBlockStyle}">
                 <Setter Property="Foreground" Value="{StaticResource redColor}" />
+                <Setter Property="FontSize" Value="48" />
             </Style>
-
             <Style x:Name="byTextStyle" TargetType="TextBlock" BasedOn="{StaticResource commonTextBlockStyle}">
                 <Setter Property="FontStyle" Value="Italic" />
                 <Setter Property="FontSize" Value="18" />
+            </Style>
+
+            <Style x:Name="appDescriptionStyle" TargetType="TextBlock"  BasedOn="{StaticResource commonTextBlockStyle}">
             </Style>
 
         </Grid.Resources>
@@ -43,7 +45,6 @@
         <!--TitlePanel contains the name of the application and page title-->
         <StackPanel Grid.Row="0" Margin="12,17,0,28">
             <TextBlock Text="{Binding LocalizedResources.ApplicationTitle, Source={StaticResource LocalizedStrings}}" Style="{StaticResource PhoneTextNormalStyle}"/>
-            <TextBlock Text="{Binding LocalizedResources.About, Source={StaticResource LocalizedStrings}}" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
         </StackPanel>
 
         <!--ContentPanel - place additional content here-->
@@ -52,7 +53,7 @@
             <TextBlock x:Name="txBy" Style="{StaticResource byTextStyle}" Text="{Binding LocalizedResources.Author, Source={StaticResource LocalizedStrings}}" />
 
             <TextBlock x:Name="txDescription" Text="{Binding LocalizedResources.AppDescription, Source={StaticResource LocalizedStrings}}"
-                       TextWrapping="Wrap" Margin="0,20,0,0"/>
+                       TextWrapping="Wrap" Margin="0,20,0,0" Style="{StaticResource appDescriptionStyle}" />
         </StackPanel>
 
         <i:Interaction.Behaviors>

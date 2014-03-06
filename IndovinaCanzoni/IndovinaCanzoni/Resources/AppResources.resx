@@ -174,7 +174,7 @@
     <value>Guess songs and author and get the best score! Select your favourite genre of music play the short sound bite and guess song title and author.</value>
   </data>
   <data name="Author" xml:space="preserve">
-    <value>By Andrea Rota</value>
+    <value>By gforot</value>
   </data>
   <data name="AppBarAboutButtonTxt" xml:space="preserve">
     <value>About</value>
@@ -232,5 +232,11 @@
   </data>
   <data name="MixRadio" xml:space="preserve">
     <value>Nokia Mix Radio</value>
+  </data>
+  <data name="Artist" xml:space="preserve">
+    <value>Artist</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Title</value>
   </data>
 </root>

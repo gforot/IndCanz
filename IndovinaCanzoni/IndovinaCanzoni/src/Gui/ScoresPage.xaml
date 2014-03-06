@@ -8,7 +8,6 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
     xmlns:cimbalino="clr-namespace:Cimbalino.Phone.Toolkit.Behaviors;assembly=Cimbalino.Phone.Toolkit"
-
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
@@ -20,7 +19,6 @@
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Style="{StaticResource rootGridStyle}">
        <Grid.Resources>
-
             <Style TargetType="ListBoxItem">
                 <Setter Property="HorizontalContentAlignment" Value="Stretch" />
             </Style>
@@ -35,7 +33,7 @@
                 <Setter Property="HorizontalAlignment" Value="Center" />
                 <Setter Property="VerticalAlignment" Value="Center" />
                 <Setter Property="FontSize" Value="24" />
-                <Setter Property="Foreground" Value="Green" />
+                <Setter Property="Foreground" Value="Red" />
             </Style>
             <DataTemplate x:Key="scoreItemTemplate">
                 <Border HorizontalAlignment="Stretch" Background="{StaticResource backgroundBrush}" BorderBrush="#FF75DCB2" BorderThickness="1" CornerRadius="5" Margin="5" Padding="5" VerticalAlignment="Center" >
@@ -54,11 +52,11 @@
 								<ColumnDefinition />
 							</Grid.ColumnDefinitions>
                             <StackPanel x:Name="songPanel" Orientation="Horizontal" HorizontalAlignment="Center">
-                                <TextBlock Text="{Binding Path=LocalizedResources.GuessedSong, Source={StaticResource LocalizedStrings}}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                <TextBlock Text="{Binding Path=LocalizedResources.GuessedSong, Source={StaticResource LocalizedStrings}}" Style="{StaticResource lblCommon}" />
                                 <TextBlock Text="{Binding GuessedTitles}" HorizontalAlignment="Center" Style="{StaticResource smallPointsStyle}" />
                             </StackPanel>
                             <StackPanel Grid.Column="1" x:Name="artistsPanel"  Orientation="Horizontal" HorizontalAlignment="Center">
-                                <TextBlock Text="{Binding Path=LocalizedResources.GuessedArtists, Source={StaticResource LocalizedStrings}}" />
+                                <TextBlock Text="{Binding Path=LocalizedResources.GuessedArtists, Source={StaticResource LocalizedStrings}}" Style="{StaticResource lblCommon}" />
                                 <TextBlock Text="{Binding GuessedArtists}" Style="{StaticResource smallPointsStyle}" />
                             </StackPanel>
                         </Grid>
@@ -74,9 +72,12 @@
         <!--TitlePanel contains the name of the application and page title-->
         <StackPanel Grid.Row="0" Margin="12,17,0,28">
             <TextBlock Text="{Binding LocalizedResources.ApplicationTitle, Source={StaticResource LocalizedStrings}}" Style="{StaticResource PhoneTextNormalStyle}"/>
-            <TextBlock Text="{Binding LocalizedResources.ScoresPageTitle, Source={StaticResource LocalizedStrings}}" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
+            <StackPanel x:Name="panelGenre" Orientation="Horizontal">
+                <TextBlock Style="{StaticResource labelStyle}" Text="{Binding Path=LocalizedResources.Genre, Source={StaticResource LocalizedStrings}}" />
+                <TextBlock Style="{StaticResource labelStyle2}" Text="{Binding SelectedGenre}" TextTrimming="WordEllipsis"  />
+            </StackPanel>
         </StackPanel>
-
+        
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
             <Grid.RowDefinitions>
@@ -98,17 +99,11 @@
                                                     IconUri="/Assets/AppBar/cancel.png"
                                                     Text="{Binding Path=LocalizedResources.AppBarClearResultsTxt, Source={StaticResource LocalizedStrings}}" />
 
-                <cimbalino:ApplicationBarIconButton Command="{Binding ClearResultsOfCurrentGenreCommand, Mode=OneTime}"
-                                                    IconUri="/Assets/AppBar/cancel.png"
-                                                    Text="{Binding Path=LocalizedResources.AppBarClearResultsForGenreTxt, Source={StaticResource LocalizedStrings}}" />
-
-                <cimbalino:ApplicationBarIconButton Command="{Binding ExitCommand, Mode=OneTime}"
+                <cimbalino:ApplicationBarIconButton Command="{Binding ShowAttributionPageCommand, Mode=OneTime}"
                                                     IconUri="/Assets/AppBar/cancel.png"
                                                     Text="{Binding Path=LocalizedResources.ExitTxt, Source={StaticResource LocalizedStrings}}" />
 
             </cimbalino:ApplicationBarBehavior>
         </i:Interaction.Behaviors>
-
     </Grid>
-
 </phone:PhoneApplicationPage>
