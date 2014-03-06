@@ -84,7 +84,7 @@
             </Grid>
             <telerikInput:RadListPicker Grid.Row="1" ItemsSource="{Binding Genres}"
                                         ItemTemplate="{StaticResource genreTemplate}"
-                                        SelectedItem="{Binding SelectedGenre, Mode=TwoWay}"
+                                        SelectedItem="{Binding CSelectedGenre, Mode=TwoWay}"
                                         />
             <Button Grid.Row="2" x:Name="btnSelectGenre" Command="{Binding SelectGenreCommand}" Content="{Binding Path=LocalizedResources.Select, Source={StaticResource LocalizedStrings}}" />
         </Grid>
