@@ -1,4 +1,5 @@
-﻿namespace IndovinaCanzoni.Model
+﻿using IndovinaCanzoni.Resources;
+namespace IndovinaCanzoni.Model
 {
     public class TitleResponse : ResponseBase
     {
@@ -18,6 +19,15 @@
             : base(isCorrect)
         {
             Title = title;
+        }
+
+        public TitleResponse()
+        {
+        }
+
+        public override void ResetValue()
+        {
+            Title = AppResources.NotAvailable; ;
         }
     }
 }

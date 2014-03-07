@@ -245,4 +245,7 @@
   <data name="Retry" xml:space="preserve">
     <value>Retry</value>
   </data>
+  <data name="NotAvailable" xml:space="preserve">
+    <value>n/a</value>
+  </data>
 </root>

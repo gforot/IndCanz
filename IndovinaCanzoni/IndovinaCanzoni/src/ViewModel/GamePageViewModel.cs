@@ -375,6 +375,13 @@ namespace IndovinaCanzoni.ViewModel
         public GamePageViewModel(INavigationService navigationService)
             : base(navigationService)
         {
+            Artist1 = new Model.ArtistResponse();
+            Artist2 = new Model.ArtistResponse();
+            Artist3 = new Model.ArtistResponse();
+            Title1 = new Model.TitleResponse();
+            Title2 = new Model.TitleResponse();
+            Title3 = new Model.TitleResponse();
+
             MessengerInstance.Register<Message>(this, OnMessageReceived);
 
             PlayCommand = new RelayCommand(Play, CanPlay);

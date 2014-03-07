@@ -1,4 +1,5 @@
-﻿namespace IndovinaCanzoni.Model
+﻿using IndovinaCanzoni.Resources;
+namespace IndovinaCanzoni.Model
 {
     public class ArtistResponse: ResponseBase
     {
@@ -18,6 +19,15 @@
             : base(isCorrect)
         {
             _artist = artist;
+        }
+
+        public ArtistResponse()
+        {
+        }
+
+        public override void ResetValue()
+        {
+            Artist = AppResources.NotAvailable;
         }
     }
 }

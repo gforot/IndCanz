@@ -2,7 +2,7 @@
 
 namespace IndovinaCanzoni.Model
 {
-    public class ResponseBase : ViewModelBase
+    public abstract class ResponseBase : ViewModelBase
     {
         //IsCorrect
         //IsSelected
@@ -30,5 +30,13 @@ namespace IndovinaCanzoni.Model
             _isCorrect = isCorrect;
             _isSelected = false;
         }
+
+        public ResponseBase()
+            : this(false)
+        {
+            ResetValue();
+        }
+
+        public abstract void ResetValue();
     }
 }
