@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System;
+using System.Windows.Data;
 
 namespace IndovinaCanzoni.Utils
 {
@@ -24,16 +25,17 @@ namespace IndovinaCanzoni.Utils
         private const int GuessedArtist5 = 0;
         #endregion
 
-        private readonly List<ScoreItem> _highScores = new List<ScoreItem>();
+        private ObservableCollection<ScoreItem> _highScores = new ObservableCollection<ScoreItem>();
 
-        public List<ScoreItem> Scores
+
+        public ObservableCollection<ScoreItem> Scores
         {
             get { return _highScores; }
         }
 
         public HighScores()
         {
-
+            
         }
 
         public void SetHighscores(IEnumerable<ScoreItem> highscores)
@@ -48,17 +50,28 @@ namespace IndovinaCanzoni.Utils
         private void TruncHighscores()
         {
             SortHighscores();
-            _highScores.RemoveRange(NumberOfScoresInHighscore, _highScores.Count - NumberOfScoresInHighscore);
+
+            while(_highScores.Count>NumberOfScoresInHighscore)
+            {
+                _highScores.RemoveAt(NumberOfScoresInHighscore);
+            }
         }
 
         private void SortHighscores()
         {
-            _highScores.Sort();
+            _highScores = new ObservableCollection<ScoreItem>(_highScores.OrderByDescending(x => x.Score));
         }
 
         private bool IsHighscore(ScoreItem si)
         {
-            return _highScores.Exists(s => si.Score >= s.Score);
+            foreach (ScoreItem sitem in _highScores)
+            {
+                if (sitem.Score < si.Score)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
         public void AddScore(ScoreItem si)

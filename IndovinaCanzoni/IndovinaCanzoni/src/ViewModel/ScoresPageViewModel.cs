@@ -12,13 +12,13 @@ namespace IndovinaCanzoni.ViewModel
     public class ScoresPageViewModel : ViewModelCommon
     {
         #region Properties
-        public static List<ScoreItem> HighScores
+        public static ObservableCollection<ScoreItem> HighScores
         {
             get 
             {
                 if (IsInDesignModeStatic)
                 {
-                    return new List<ScoreItem>()
+                    return new ObservableCollection<ScoreItem>()
                     {
                         new ScoreItem(){
                             User = "gforot",
