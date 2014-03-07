@@ -33,17 +33,17 @@ namespace IndovinaCanzoni.ViewModel
         //lista dei Generi disponibili.
         public ObservableCollection<Genre> Genres { get; private set; }
 
-        private const string _selectedGenrePrpName = "SelectedGenre";
-        private Genre _selectedGenre;
-        public Genre SelectedGenre
+        private const string _selectedGenrePrpName = "CSelectedGenre";
+        private Genre _cselectedGenre;
+        public Genre CSelectedGenre
         {
             get
             {
-                return _selectedGenre;
+                return _cselectedGenre;
             }
             set
             {
-                _selectedGenre = value;
+                _cselectedGenre = value;
                 RaisePropertyChanged(_selectedGenrePrpName);
                 SelectGenreCommand.RaiseCanExecuteChanged();
             }
@@ -76,16 +76,16 @@ namespace IndovinaCanzoni.ViewModel
 
         private bool CanSelectGenre()
         {
-            return _selectedGenre != null;
+            return _cselectedGenre != null;
         }
 
         private void SelectGenre()
         {
             IndovinaCanzoni.App.SaveScoreItems();
 
-            IndovinaCanzoni.App.SelectedGenre = SelectedGenre;
+            IndovinaCanzoni.App.SelectedGenre = CSelectedGenre;
 
-            IndovinaCanzoni.App.HighScores.SetHighscores(Data.DataLayer.GetInstance().LoadScoreItems(SelectedGenre.Id));
+            IndovinaCanzoni.App.HighScores.SetHighscores(Data.DataLayer.GetInstance().LoadScoreItems(CSelectedGenre.Id));
 
             //Navigazione
             NavigationService.NavigateTo(new Uri(PageAddresses.ScoresPage, UriKind.Relative));

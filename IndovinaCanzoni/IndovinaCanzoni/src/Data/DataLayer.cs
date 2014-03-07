@@ -95,6 +95,11 @@ namespace IndovinaCanzoni.Data
             {
                 if (store.DirectoryExists(Constants.ResultsFolderName))
                 {
+                    string[] s = store.GetFileNames(string.Format("{0}/*",Constants.ResultsFolderName));
+                    foreach (string st in s)
+                    {
+                        store.DeleteFile(string.Format("{0}/{1}", Constants.ResultsFolderName, st));
+                    }
                     store.DeleteDirectory(Constants.ResultsFolderName);
                 }
             }
