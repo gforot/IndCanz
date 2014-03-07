@@ -1,37 +1,48 @@
 <Application x:Class="IndovinaCanzoni.App" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone" xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" d1p1:Ignorable="d" xmlns:d1p1="http://schemas.openxmlformats.org/markup-compatibility/2006">
   <!--Application Resources-->
-  <Application.Resources>
-    <local:LocalizedStrings xmlns:local="clr-namespace:IndovinaCanzoni" x:Key="LocalizedStrings" />
-    <vm:ViewModelLocator x:Key="Locator" d:IsDataSource="True" xmlns:vm="clr-namespace:IndovinaCanzoni.ViewModel" />
-    <Style TargetType="Grid" x:Key="rootGridStyle">
-        <Setter Property="Background">
-            <Setter.Value>
-                <ImageBrush Stretch="Fill" ImageSource="images/background/background.jpg" Opacity="0.7"/>
-            </Setter.Value>
-        </Setter>
-    </Style>
-    <LinearGradientBrush x:Key="backgroundBrush" EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
-        <GradientStop Color="#CCB6B0B0" Offset="1"/>
-        <GradientStop Color="#CCFFFFFF" Offset="0"/>
-    </LinearGradientBrush>
-
-    <LinearGradientBrush x:Key="koResponseBackground" EndPoint="0.5,1" StartPoint="0.5,0">
-                <GradientStop Color="#B2F70808" Offset="0"/>
-                <GradientStop Color="#B2FDCCCC" Offset="1"/>
-    </LinearGradientBrush>
-
-    <LinearGradientBrush x:Key="okResponseBackground" EndPoint="0.5,1" StartPoint="0.5,0">
+    <Application.Resources>
+        <local:LocalizedStrings xmlns:local="clr-namespace:IndovinaCanzoni" x:Key="LocalizedStrings" />
+        <vm:ViewModelLocator x:Key="Locator" d:IsDataSource="True" xmlns:vm="clr-namespace:IndovinaCanzoni.ViewModel" />
+        <Style TargetType="Grid" x:Key="rootGridStyle">
+            <Setter Property="Background">
+                <Setter.Value>
+                    <ImageBrush Stretch="Fill" ImageSource="images/background/background.jpg" Opacity="0.7"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <LinearGradientBrush x:Key="backgroundBrush" EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+            <GradientStop Color="#BB62A3D1" Offset="1"/>
+            <GradientStop Color="#7F0F69D4" Offset="0"/>
+        </LinearGradientBrush>
+        <LinearGradientBrush x:Key="koResponseBackground" EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="#B2F70808" Offset="0"/>
+            <GradientStop Color="#B2FDCCCC" Offset="1"/>
+        </LinearGradientBrush>
+        <LinearGradientBrush x:Key="okResponseBackground" EndPoint="0.5,1" StartPoint="0.5,0">
             <GradientStop Color="#B211D635" Offset="0"/>
             <GradientStop Color="#B2FFFFFF" Offset="1"/>
         </LinearGradientBrush>
-
-    <LinearGradientBrush x:Key="undefinedResponseBackground" EndPoint="0.5,1" StartPoint="0.5,0">
+        <LinearGradientBrush x:Key="undefinedResponseBackground" EndPoint="0.5,1" StartPoint="0.5,0">
             <GradientStop Color="#B215C9F1" Offset="0"/>
             <GradientStop Color="#B2ADEFFD" Offset="1"/>
         </LinearGradientBrush>
-
+        <Style TargetType="TextBlock" x:Key="lblCommon">
+            <Setter Property="Foreground" Value="AntiqueWhite" />
+            <Setter Property="Margin" Value="2,2,7,2" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+        <Style x:Key="labelStyle" TargetType="TextBlock" BasedOn="{StaticResource lblCommon}">
+            <Setter Property="FontSize" Value="22" />
+            <Setter Property="FontStyle" Value="Italic" />
+        </Style>
+        <Style x:Key="labelStyle2" TargetType="TextBlock" BasedOn="{StaticResource lblCommon}">
+            <Setter Property="FontSize" Value="30" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="Foreground" Value="LightGreen" />
+        </Style>
     </Application.Resources>
-  <Application.ApplicationLifetimeObjects>
+    <Application.ApplicationLifetimeObjects>
     <!--Required object that handles lifetime events for the application-->
     <shell:PhoneApplicationService Launching="Application_Launching" Closing="Application_Closing" Activated="Application_Activated" Deactivated="Application_Deactivated" />
   </Application.ApplicationLifetimeObjects>

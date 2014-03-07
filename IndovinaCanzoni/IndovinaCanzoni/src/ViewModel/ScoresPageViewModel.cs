@@ -27,7 +27,22 @@ namespace IndovinaCanzoni.ViewModel
                         },
 						new ScoreItem(){
                             User = "Davide",
-                            GuessedTitles =2,
+                            GuessedTitles=2,
+                            GuessedArtists=1
+                        },
+						new ScoreItem(){
+                            User = "CPU",
+                            GuessedTitles=1,
+                            GuessedArtists= 1
+                        },
+						new ScoreItem(){
+                            User = "CPU",
+                            GuessedTitles=1,
+                            GuessedArtists=0
+                        },
+						new ScoreItem(){
+                            User = "CPU",
+                            GuessedTitles =0,
                             GuessedArtists = 1
                         }
                     };
@@ -58,14 +73,7 @@ namespace IndovinaCanzoni.ViewModel
         }
 
 
-        public RelayCommand ExitCommand { get; private set; }
 
-        private void Exit()
-        {
-            App.SaveScoreItems();
-
-            NavigationService.NavigateTo(new Uri(PageAddresses.AttributionPage, UriKind.Relative));
-        }
         #endregion
 
         #region Constructor
@@ -75,7 +83,6 @@ namespace IndovinaCanzoni.ViewModel
         {
             PlayCommand = new RelayCommand(Play, CanPlay);
             AboutCommand = new RelayCommand(About);
-            ExitCommand = new RelayCommand(Exit);
         }
         #endregion
     }

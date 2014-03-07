@@ -1,14 +1,18 @@
-﻿using Cimbalino.Phone.Toolkit.Helpers;
+﻿using System;
+using Cimbalino.Phone.Toolkit.Helpers;
 using Cimbalino.Phone.Toolkit.Services;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+using IndovinaCanzoni.Utils;
 
 namespace IndovinaCanzoni.ViewModel
 {
     public abstract class ViewModelCommon : ViewModelBase
     {
+        #region Commands
         public RelayCommand ClearResultsCommand { get; private set; }
-        public RelayCommand ClearResultsOfCurrentGenreCommand { get; private set; }
+        public RelayCommand ShowAttributionPageCommand { get; private set; }
+        #endregion
 
         protected IEmailComposeService EmailComposerService;
         protected ApplicationManifest ApplicationManifest;
@@ -18,6 +22,7 @@ namespace IndovinaCanzoni.ViewModel
         protected ViewModelCommon(IEmailComposeService emailComposerService,
             IApplicationManifestService applicationManifestService,
             IMarketplaceReviewService marketplaceReviewService)
+            : this()
         {
             EmailComposerService = emailComposerService;
             ApplicationManifest = applicationManifestService.GetApplicationManifest();
@@ -25,6 +30,7 @@ namespace IndovinaCanzoni.ViewModel
         }
 
         protected ViewModelCommon(INavigationService navigationService)
+            : this()
         {
             NavigationService = navigationService;
         }
@@ -32,7 +38,7 @@ namespace IndovinaCanzoni.ViewModel
         protected ViewModelCommon()
         {
             ClearResultsCommand = new RelayCommand(ClearResults);
-            ClearResultsOfCurrentGenreCommand = new RelayCommand(ClearResultsOfCurrentGenre);
+            ShowAttributionPageCommand = new RelayCommand(ShowAttributionPage);
         }
 
         private void ClearResults()
@@ -40,14 +46,25 @@ namespace IndovinaCanzoni.ViewModel
             Data.DataLayer.GetInstance().ClearResults();
         }
 
-        private void ClearResultsOfCurrentGenre()
+        private void ShowAttributionPage()
         {
-            if ((App.SelectedGenre == null) || (string.IsNullOrEmpty(App.SelectedGenre.Id)))
-            { 
-                return; 
-            }
-            Data.DataLayer.GetInstance().ClearResults(App.SelectedGenre.Id);
+            App.SaveScoreItems();
+            NavigationService.NavigateTo(new Uri(PageAddresses.AttributionPage, UriKind.Relative));
         }
 
+        #region SelectedGenre
+        private const string _designModeSelectedGenre = "Musica leggera/Musica vecchia";
+        public string SelectedGenre
+        {
+            get
+            {
+                if (IsInDesignMode)
+                {
+                    return _designModeSelectedGenre;
+                }
+                return App.SelectedGenre.Name;
+            }
+        }
+        #endregion
     }
 }

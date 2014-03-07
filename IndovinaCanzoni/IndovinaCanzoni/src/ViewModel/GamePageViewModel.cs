@@ -231,21 +231,6 @@ namespace IndovinaCanzoni.ViewModel
 
         #endregion
 
-        #region SelectedGenre
-        private const string _designModeSelectedGenre = "Metal";
-        public string SelectedGenre
-        {
-            get 
-            {
-                if (IsInDesignMode)
-                {
-                    return _designModeSelectedGenre;
-                }
-                return App.SelectedGenre.Name; 
-            }
-        }
-        #endregion
-
         #region Products
         private const string _productsPrpName = "Products";
 
@@ -379,14 +364,10 @@ namespace IndovinaCanzoni.ViewModel
 
         #endregion
 
-
-
-
         public bool IsGameFinished
         {
             get { return _numberOfAnswers >= Constants.NumberOfSongsPerMatch; }
         }
-
 
         #endregion
 
@@ -669,16 +650,19 @@ namespace IndovinaCanzoni.ViewModel
             Index = _availableProductIndexes[idx];
             _availableProductIndexes.RemoveAt(idx);
 
+            int rightProductPosition = _randomizer.Next(3);
+            int wrongProductsIndex = 0;
             List<Product> wrongProducts = GetWrongResponses(CurrentProduct);
-            Title1 = new TitleResponse(CurrentProduct.Name, true);
-            Title2 = new TitleResponse(wrongProducts[0].Name, false);
-            Title3 = new TitleResponse(wrongProducts[1].Name, false);
+            Title1 = rightProductPosition == 0 ? new TitleResponse(CurrentProduct.Name, true) : new TitleResponse(wrongProducts[wrongProductsIndex++].Name, false);
+            Title2 = rightProductPosition == 1 ? new TitleResponse(CurrentProduct.Name, true) : new TitleResponse(wrongProducts[wrongProductsIndex++].Name, false);
+            Title3 = rightProductPosition == 2 ? new TitleResponse(CurrentProduct.Name, true) : new TitleResponse(wrongProducts[wrongProductsIndex++].Name, false);
 
+            int rightArtistPosition = _randomizer.Next(3);
+            int wrongArtistsIndex = 0;
             List<Artist> wrongArtists = GetWrongArtists(CurrentProduct.Performers[0]);
-            Artist1 = new ArtistResponse(CurrentProduct.Performers[0].Name, true);
-            Artist2 = new ArtistResponse(wrongArtists[0].Name, false);
-            Artist3 = new ArtistResponse(wrongArtists[1].Name, false);
-
+            Artist1 = rightArtistPosition == 0 ? new ArtistResponse(CurrentProduct.Performers[0].Name, true) : new ArtistResponse(wrongArtists[wrongArtistsIndex++].Name, false);
+            Artist2 = rightArtistPosition == 1 ? new ArtistResponse(CurrentProduct.Performers[0].Name, true) : new ArtistResponse(wrongArtists[wrongArtistsIndex++].Name, false);
+            Artist3 = rightArtistPosition == 2 ? new ArtistResponse(CurrentProduct.Performers[0].Name, true) : new ArtistResponse(wrongArtists[wrongArtistsIndex++].Name, false);
             ArtistAnswerDone = false;
             TitleAnswerDone = false;
 
