@@ -19,7 +19,7 @@ namespace IndovinaCanzoni.src.Gui
 
         protected override void OnBackKeyPress(System.ComponentModel.CancelEventArgs e)
         {
-            e.Cancel = true;
+            Application.Current.Terminate();
         }
     }
 }

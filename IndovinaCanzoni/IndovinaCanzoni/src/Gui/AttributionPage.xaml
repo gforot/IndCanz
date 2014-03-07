@@ -41,14 +41,14 @@
 				<RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
                 <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
+                <!--<RowDefinition Height="Auto" />-->
             </Grid.RowDefinitions>
 			<TextBlock x:Name="txAppName" Style="{StaticResource appTitleStyle}" Text="{Binding LocalizedResources.ApplicationTitle, Source={StaticResource LocalizedStrings}}" />
             <TextBlock Grid.Row="1" Text="{Binding LocalizedResources.AttributionText, Source={StaticResource LocalizedStrings}}" 
                        Style="{StaticResource attributionTextStyle}" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap" />
             <HyperlinkButton TargetName="_blank" Grid.Row="2" Content="{Binding LocalizedResources.MixRadio, Source={StaticResource LocalizedStrings}}" NavigateUri="{Binding NokiaMixRadioAddress, Mode=OneTime}" />
-            <Button Grid.Row="3" Content="{Binding LocalizedResources.ExitTxt, Source={StaticResource LocalizedStrings}}"
-                    Command="{Binding ExitCommand}"/>
+            <!--<Button Grid.Row="3" Content="{Binding LocalizedResources.ExitTxt, Source={StaticResource LocalizedStrings}}"
+                    Command="{Binding ExitCommand}" />-->
         </Grid>
     </Grid>
 
