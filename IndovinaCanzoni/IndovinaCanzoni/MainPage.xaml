@@ -10,6 +10,7 @@
     xmlns:telerikPrimitives="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.Primitives"
     xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
     xmlns:cimbalino="clr-namespace:Cimbalino.Phone.Toolkit.Behaviors;assembly=Cimbalino.Phone.Toolkit"
+    xmlns:conv="clr-namespace:IndovinaCanzoni.Converters"
     x:Class="IndovinaCanzoni.MainPage"
     mc:Ignorable="d"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
@@ -22,11 +23,16 @@
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Opacity="0.8" Style="{StaticResource rootGridStyle}">
         <Grid.Resources>
+            <conv:BoolToVisibilityConverter x:Key="boolToVisibilityConverter" />
+            <conv:InvertedBoolToVisibilityConverter x:Key="invertedBoolToVisibilityConverter" />
             <DataTemplate x:Key="genreTemplate">
                 <Border>
                     <TextBlock Text="{Binding Name}" />
                 </Border>
             </DataTemplate>
+            <Style TargetType="TextBlock">
+                <Setter Value="20,10" Property="Margin" />
+            </Style>
         </Grid.Resources>
 
         <Grid.RowDefinitions>
@@ -66,7 +72,7 @@
         </StackPanel>
 
         <!--ContentPanel - place additional content here-->
-        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+        <Grid x:Name="ContentPanel" Visibility="{Binding IsNetworkAvailable, Converter={StaticResource boolToVisibilityConverter}}" Grid.Row="1" Margin="12,0,12,0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition />
@@ -87,8 +93,12 @@
                                         />
             <Button Grid.Row="2" x:Name="btnSelectGenre" Command="{Binding SelectGenreCommand}" Content="{Binding Path=LocalizedResources.Select, Source={StaticResource LocalizedStrings}}" />
         </Grid>
+        <StackPanel Visibility="{Binding IsNetworkAvailable, Converter={StaticResource invertedBoolToVisibilityConverter}}" x:Name="noInternet" Grid.Row="1" Margin="12,0,12,0">
+            <TextBlock Text="{Binding Path=LocalizedResources.CheckConnection, Source={StaticResource LocalizedStrings}}" TextWrapping="Wrap" />
+            <Button Content="{Binding Path=LocalizedResources.Retry, Source={StaticResource LocalizedStrings}}" Command="{Binding CheckConnectionCommand}" />
+        </StackPanel>
 
-        <!--<Image Source="/Assets/AlignmentGrid.png" VerticalAlignment="Top" Height="800" Width="480" Margin="0,-32,0,0" Grid.Row="0" Grid.RowSpan="2" IsHitTestVisible="False" />-->
+    <!--<Image Source="/Assets/AlignmentGrid.png" VerticalAlignment="Top" Height="800" Width="480" Margin="0,-32,0,0" Grid.Row="0" Grid.RowSpan="2" IsHitTestVisible="False" />-->
 
         <rateMyApp:FeedbackOverlay x:Name="FeedbackOverlay"
 			Grid.RowSpan="2"

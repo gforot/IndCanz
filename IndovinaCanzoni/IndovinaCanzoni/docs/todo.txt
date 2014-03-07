@@ -3,8 +3,7 @@ Inserire la pagina di credits per Nokia Mix Radio.(vedi testo challenge) DA APRI
 
 Traduzione in inglese, italiano.
 
-- "mischiare" le risposte corrette.(ora quella corretta è sempre la prima.
-- far partire la attribution page sulla chiusura con tasto back
+- uniformare pagine
 - controllare presenza rete internet
 
 return Microsoft.Phone.Net.NetworkInformation.NetworkInterface.GetIsNetworkAvailable();

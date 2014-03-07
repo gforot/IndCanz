@@ -18,8 +18,36 @@ namespace IndovinaCanzoni.ViewModel
         { 
             get 
             {
+                if (IsInDesignMode)
+                {
+                    return 400;
+                }
                 return App.CurrentScore == null ? 0 : App.CurrentScore.Score;
             } 
+        }
+
+        public int GuessedTitles
+        {
+            get
+            {
+                if (IsInDesignMode)
+                {
+                    return 4;
+                }
+                return App.CurrentScore == null ? 0 : App.CurrentScore.GuessedTitles;
+            }
+        }
+
+        public int GuessedArtists
+        {
+            get
+            {
+                if (IsInDesignMode)
+                {
+                    return 4;
+                }
+                return App.CurrentScore == null ? 0 : App.CurrentScore.GuessedArtists;
+            }
         }
 
         #region Commands

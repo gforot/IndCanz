@@ -27,7 +27,6 @@ namespace IndovinaCanzoni.ViewModel
     /// </summary>
     public class MainViewModel : ViewModelCommon
     {
-
         #region Properties
 
         //lista dei Generi disponibili.
@@ -67,6 +66,30 @@ namespace IndovinaCanzoni.ViewModel
 
         #endregion
 
+        #region IsNetworkAvailable
+
+        private const string _isNetworkAvailablePrpName = "IsNetworkAvailable";
+
+        private bool _isNetworkAvailable;
+        public bool IsNetworkAvailable
+        {
+            get 
+            {
+                if (IsInDesignMode)
+                {
+                    return false;
+                }
+                return _isNetworkAvailable; 
+            }
+            set
+            {
+                _isNetworkAvailable = value;
+                RaisePropertyChanged(_isNetworkAvailablePrpName);
+            }
+        }
+
+        #endregion
+
         #endregion
 
         #region Commands
@@ -92,6 +115,12 @@ namespace IndovinaCanzoni.ViewModel
         }
         #endregion
 
+        #region CheckConnection
+
+        public RelayCommand CheckConnectionCommand { get; private set; }
+
+        #endregion
+
         #endregion
 
         #region Constructor
@@ -102,8 +131,11 @@ namespace IndovinaCanzoni.ViewModel
         public MainViewModel(INavigationService navigationService)
             : base (navigationService)
         {
+            CheckConnection();
+
             Genres = new ObservableCollection<Genre>();
             SelectGenreCommand = new RelayCommand(SelectGenre, CanSelectGenre);
+            CheckConnectionCommand = new RelayCommand(CheckConnection);
 
             MessengerInstance.Register<Message>(this, OnMessageReceived);
             MessengerInstance.Send<Message>(new Message(IndovinaCanzoni.Utils.Messages.GetGenres));
@@ -130,6 +162,11 @@ namespace IndovinaCanzoni.ViewModel
             {
                 await GetGenres();
             }
+        }
+
+        private void CheckConnection()
+        {
+            IsNetworkAvailable = Microsoft.Phone.Net.NetworkInformation.NetworkInterface.GetIsNetworkAvailable();
         }
     }
 }

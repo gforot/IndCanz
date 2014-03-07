@@ -16,5 +16,10 @@ namespace IndovinaCanzoni.src.Gui
         {
             InitializeComponent();
         }
+
+        protected override void OnBackKeyPress(System.ComponentModel.CancelEventArgs e)
+        {
+            e.Cancel = true;
+        }
     }
 }

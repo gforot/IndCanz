@@ -16,6 +16,18 @@
 
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Style="{StaticResource rootGridStyle}">
+        <Grid.Resources>
+            <Style x:Key="lblScoreStyle" TargetType="TextBlock" BasedOn="{StaticResource lblCommon}">
+                <Setter Property="FontSize" Value="70" />
+            </Style>
+            <Style x:Key="lblGuessedTextStyle" TargetType="TextBlock" BasedOn="{StaticResource lblCommon}">
+                <Setter Property="FontSize" Value="35" />
+            </Style>
+            <Style x:Key="lblGuessedValuesStyle" TargetType="TextBlock" BasedOn="{StaticResource lblCommon}">
+                <Setter Property="FontSize" Value="50" />
+                <Setter Property="Foreground" Value="LightGreen" />
+            </Style>
+        </Grid.Resources>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
@@ -34,8 +46,22 @@
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             <StackPanel>
-                <TextBlock Text="{Binding Path=LocalizedResources.YourScoreIs, Source={StaticResource LocalizedStrings}}" HorizontalAlignment="Center" FontSize="48" />
-                <TextBlock Text="{Binding Score}" Margin="10" HorizontalAlignment="Center" FontSize="72" />
+                <TextBlock Style="{StaticResource lblScoreStyle}" Text="{Binding Path=LocalizedResources.YourScoreIs, Source={StaticResource LocalizedStrings}}" HorizontalAlignment="Center" />
+                <TextBlock Style="{StaticResource lblScoreStyle}" Text="{Binding Score}" HorizontalAlignment="Center" />
+                <Grid HorizontalAlignment="Center">
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="{Binding Path=LocalizedResources.GuessedSong, Source={StaticResource LocalizedStrings}}" Style="{StaticResource lblGuessedTextStyle}" />
+                    <TextBlock Text="{Binding Path=LocalizedResources.GuessedArtists, Source={StaticResource LocalizedStrings}}" Style="{StaticResource lblGuessedTextStyle}" Grid.Column="1" />
+                    <TextBlock Text="{Binding GuessedTitles}" Style="{StaticResource lblGuessedValuesStyle}" Grid.Row="1" />
+                    <TextBlock Text="{Binding GuessedArtists}" Style="{StaticResource lblGuessedValuesStyle}" Grid.Row="1" Grid.Column="1" />
+                </Grid>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Center">
                 <Button Content="{Binding Path=LocalizedResources.PlayAgain, Source={StaticResource LocalizedStrings}}" Command="{Binding NewGameCommand}" />

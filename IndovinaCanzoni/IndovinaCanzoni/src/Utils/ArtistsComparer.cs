@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Nokia.Music.Types;
 
-namespace IndovinaCanzoni.src.Utils
+namespace IndovinaCanzoni.Utils
 {
     public class ArtistsComparer : IEqualityComparer<Artist>
     {

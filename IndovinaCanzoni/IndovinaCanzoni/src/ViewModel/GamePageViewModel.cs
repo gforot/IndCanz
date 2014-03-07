@@ -8,7 +8,6 @@ using GalaSoft.MvvmLight.Command;
 using IndovinaCanzoni.Data;
 using IndovinaCanzoni.Messages;
 using IndovinaCanzoni.Model;
-using IndovinaCanzoni.src.Utils;
 using IndovinaCanzoni.Utils;
 using Nokia.Music.Types;
 using Windows.Phone.Speech.Recognition;

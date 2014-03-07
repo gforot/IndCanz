@@ -178,6 +178,15 @@ namespace IndovinaCanzoni.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Internet connection not found./nPlease connect and retry..
+        /// </summary>
+        public static string CheckConnection {
+            get {
+                return ResourceManager.GetString("CheckConnection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Player.
         /// </summary>
         public static string DefaultUser {
@@ -336,6 +345,15 @@ namespace IndovinaCanzoni.Resources {
         public static string Results {
             get {
                 return ResourceManager.GetString("Results", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Retry.
+        /// </summary>
+        public static string Retry {
+            get {
+                return ResourceManager.GetString("Retry", resourceCulture);
             }
         }
         

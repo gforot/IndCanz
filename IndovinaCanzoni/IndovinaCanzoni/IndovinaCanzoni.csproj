@@ -93,6 +93,8 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="src\Converters\BoolToVisibilityConverter.cs" />
+    <Compile Include="src\Converters\InvertedBoolToVisibilityConverter.cs" />
     <Compile Include="src\Converters\ResultToImageConverter.cs" />
     <Compile Include="src\Converters\ResponseToBackgroundConverter.cs" />
     <Compile Include="src\Data\DataLayer.cs" />
