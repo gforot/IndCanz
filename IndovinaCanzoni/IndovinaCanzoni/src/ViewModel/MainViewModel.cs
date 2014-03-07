@@ -92,14 +92,6 @@ namespace IndovinaCanzoni.ViewModel
         }
         #endregion
 
-        #region About
-        public RelayCommand AboutCommand { get; private set; }
-
-        private void About()
-        {
-            NavigationService.NavigateTo(new Uri(PageAddresses.AboutPage, UriKind.Relative));
-        }
-        #endregion
         #endregion
 
         #region Constructor
@@ -112,7 +104,6 @@ namespace IndovinaCanzoni.ViewModel
         {
             Genres = new ObservableCollection<Genre>();
             SelectGenreCommand = new RelayCommand(SelectGenre, CanSelectGenre);
-            AboutCommand = new RelayCommand(About);
 
             MessengerInstance.Register<Message>(this, OnMessageReceived);
             MessengerInstance.Send<Message>(new Message(IndovinaCanzoni.Utils.Messages.GetGenres));

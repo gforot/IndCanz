@@ -380,7 +380,7 @@ namespace IndovinaCanzoni.ViewModel
 
             PlayCommand = new RelayCommand(Play, CanPlay);
             MoveNextCommand = new RelayCommand(MoveNext, CanMoveNext);
-            AboutCommand = new RelayCommand(About);
+
             ArtistReplyWithSrCommand = new RelayCommand(ArtistReplyWithSr, CanArtistReplyWithSr);
             TitleReplyWithSrCommand = new RelayCommand(TitleReplyWithSr, CanTitleReplyWithSr);
 
@@ -400,17 +400,6 @@ namespace IndovinaCanzoni.ViewModel
         #endregion
 
         #region Command
-        #region AboutCommand
-
-        public RelayCommand AboutCommand { get; private set; }
-
-        private void About()
-        {
-            NavigationService.NavigateTo(new Uri(PageAddresses.AboutPage, UriKind.Relative));
-        }
-
-
-        #endregion
 
         #region RePlayCommand
         public RelayCommand PlayCommand { get; private set; }

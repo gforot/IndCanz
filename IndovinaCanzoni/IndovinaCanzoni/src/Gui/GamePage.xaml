@@ -127,6 +127,11 @@
                 <cimbalino:ApplicationBarIconButton Command="{Binding AboutCommand, Mode=OneTime}" 
                                                     IconUri="/Assets/AppBar/questionmark.png" 
                                                     Text="{Binding Path=LocalizedResources.AppBarAboutButtonTxt, Source={StaticResource LocalizedStrings}}" />
+
+                <cimbalino:ApplicationBarIconButton Command="{Binding ShowAttributionPageCommand, Mode=OneTime}"
+                                                    IconUri="/Assets/AppBar/cancel.png"
+                                                    Text="{Binding Path=LocalizedResources.ExitTxt, Source={StaticResource LocalizedStrings}}" />
+
             </cimbalino:ApplicationBarBehavior>
         </i:Interaction.Behaviors>
     </Grid>

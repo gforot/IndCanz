@@ -11,6 +11,9 @@ using IndovinaCanzoni.Model;
 using Nokia.Music.Types;
 using System.Collections.ObjectModel;
 using IndovinaCanzoni.Utils;
+using IndovinaCanzoni.ViewModel;
+using GalaSoft.MvvmLight.Ioc;
+using Cimbalino.Phone.Toolkit.Services;
 
 namespace IndovinaCanzoni
 {
@@ -106,7 +109,7 @@ namespace IndovinaCanzoni
 
         private void ShowNokiaMixRadioAttribution()
         {
-            
+
         }
 
         internal static void SaveScoreItems()

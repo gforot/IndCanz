@@ -65,15 +65,6 @@ namespace IndovinaCanzoni.ViewModel
             NavigationService.NavigateTo(new Uri(PageAddresses.GamePage, UriKind.Relative));
         }
 
-        public RelayCommand AboutCommand { get; private set; }
-
-        private void About()
-        {
-            NavigationService.NavigateTo(new Uri(PageAddresses.AboutPage, UriKind.Relative));
-        }
-
-
-
         #endregion
 
         #region Constructor
@@ -82,7 +73,6 @@ namespace IndovinaCanzoni.ViewModel
             : base(navigationService)
         {
             PlayCommand = new RelayCommand(Play, CanPlay);
-            AboutCommand = new RelayCommand(About);
         }
         #endregion
     }

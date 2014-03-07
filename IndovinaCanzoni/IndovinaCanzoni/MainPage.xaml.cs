@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Linq;
 using System.Windows;
+using Cimbalino.Phone.Toolkit.Services;
 using IndovinaCanzoni.Resources;
+using IndovinaCanzoni.Utils;
 using IndovinaCanzoni.ViewModel;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
@@ -51,5 +53,10 @@ namespace IndovinaCanzoni
             }
         }
         #endregion
+
+        protected override void OnBackKeyPress(System.ComponentModel.CancelEventArgs e)
+        {
+            NavigationService.Navigate(new Uri(PageAddresses.AttributionPage, UriKind.Relative));
+        }
     }
 }

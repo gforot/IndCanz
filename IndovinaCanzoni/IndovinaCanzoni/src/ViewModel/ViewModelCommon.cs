@@ -12,6 +12,7 @@ namespace IndovinaCanzoni.ViewModel
         #region Commands
         public RelayCommand ClearResultsCommand { get; private set; }
         public RelayCommand ShowAttributionPageCommand { get; private set; }
+        public RelayCommand AboutCommand { get; private set; }
         #endregion
 
         protected IEmailComposeService EmailComposerService;
@@ -39,6 +40,7 @@ namespace IndovinaCanzoni.ViewModel
         {
             ClearResultsCommand = new RelayCommand(ClearResults);
             ShowAttributionPageCommand = new RelayCommand(ShowAttributionPage);
+            AboutCommand = new RelayCommand(About);
         }
 
         private void ClearResults()
@@ -56,6 +58,11 @@ namespace IndovinaCanzoni.ViewModel
         {
             App.SaveScoreItems();
             NavigationService.NavigateTo(new Uri(PageAddresses.AttributionPage, UriKind.Relative));
+        }
+
+        private void About()
+        {
+            NavigationService.NavigateTo(new Uri(PageAddresses.AboutPage, UriKind.Relative));
         }
 
         #region SelectedGenre
