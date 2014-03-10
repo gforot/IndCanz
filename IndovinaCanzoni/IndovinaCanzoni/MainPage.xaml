@@ -81,8 +81,8 @@
             <MediaElement x:Name="player" AutoPlay="True"/>
             <Grid VerticalAlignment="Center" Margin="0">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="40*"/>
-                    <ColumnDefinition Width="206*" />
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
                 <TextBlock Text="{Binding Path=LocalizedResources.User, Source={StaticResource LocalizedStrings}}" HorizontalAlignment="Center" VerticalAlignment="Center"   />
                 <TextBox Grid.Column="1" Text="{Binding User, Mode=TwoWay}" VerticalAlignment="Center" Margin="0,0,10,0" HorizontalAlignment="Stretch"  />

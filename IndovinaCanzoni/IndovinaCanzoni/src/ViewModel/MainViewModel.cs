@@ -77,7 +77,7 @@ namespace IndovinaCanzoni.ViewModel
             {
                 if (IsInDesignMode)
                 {
-                    return false;
+                    return true;
                 }
                 return _isNetworkAvailable; 
             }

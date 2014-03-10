@@ -67,6 +67,7 @@ namespace IndovinaCanzoni
                 PhoneApplicationService.Current.UserIdleDetectionMode = IdleDetectionMode.Disabled;
             }
 
+            Application.Current.Host.Settings.EnableFrameRateCounter = false;
             User = AppResources.DefaultUser;
         }
 
