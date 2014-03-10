@@ -126,7 +126,7 @@
     <comment>Controls the Language and ensures that the font for all elements in the RootFrame aligns with the app's language. Set to the language code of this resource file's language.</comment>
   </data>
   <data name="ApplicationTitle" xml:space="preserve">
-    <value>Indovina Canzoni</value>
+    <value>Music Quiz</value>
   </data>
   <data name="AppBarButtonText" xml:space="preserve">
     <value>add</value>
@@ -135,7 +135,7 @@
     <value>Menu Item</value>
   </data>
   <data name="Answer" xml:space="preserve">
-    <value>Answer</value>
+    <value>Risposta</value>
   </data>
   <data name="GuessedArtists" xml:space="preserve">
     <value>Artists</value>
@@ -180,7 +180,7 @@
     <value>About</value>
   </data>
   <data name="AppBarFeedbackTxt" xml:space="preserve">
-    <value>Send Feedback</value>
+    <value>Manda feedback</value>
   </data>
   <data name="Rate" xml:space="preserve">
     <value>Rate</value>
@@ -210,7 +210,7 @@
     <value>Clear Results For Genre</value>
   </data>
   <data name="AppBarClearResultsTxt" xml:space="preserve">
-    <value>Clear Results</value>
+    <value>Svuota Record</value>
   </data>
   <data name="RePlay" xml:space="preserve">
     <value>Replay</value>

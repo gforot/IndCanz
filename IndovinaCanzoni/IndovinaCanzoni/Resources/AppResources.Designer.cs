@@ -142,7 +142,7 @@ namespace IndovinaCanzoni.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Indovina Canzoni.
+        ///   Looks up a localized string similar to Music Quiz.
         /// </summary>
         public static string ApplicationTitle {
             get {
