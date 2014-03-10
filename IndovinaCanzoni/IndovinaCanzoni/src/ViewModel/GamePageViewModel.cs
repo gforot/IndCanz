@@ -20,7 +20,7 @@ namespace IndovinaCanzoni.ViewModel
         //durata dell'ascolto del brano.
         //per ora costante. 
         //[TODO] in futuro potrebbe variare in base a "richiesta aiuto", "livello", ecc
-        const int _secondsOfTimer = 3;
+        const int _secondsOfTimer = 6;
         #endregion
 
         private readonly List<int> _availableProductIndexes;
