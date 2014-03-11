@@ -1,6 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Deployment xmlns="http://schemas.microsoft.com/windowsphone/2012/deployment" AppPlatformVersion="8.0">
   <DefaultLanguage xmlns="" code="en-US" />
+  <Languages xmlns="">
+    <Language code="it-IT" />
+    <Language code="it" />
+    <Language code="en-US" />
+  </Languages>
   <App xmlns="" ProductID="{e11baa81-a2e3-4bbf-816a-1991b01ea0d0}" Title="Music Quiz" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="gforot" Description="Select your favourite genre, listen to a song and guess the title and the artist." Publisher="gforot" PublisherID="{5a67c782-a29e-4994-a2dc-efd8e9e26f36}">
     <IconPath IsRelative="true" IsResource="false">Assets\ApplicationIcon.png</IconPath>
     <Capabilities>
