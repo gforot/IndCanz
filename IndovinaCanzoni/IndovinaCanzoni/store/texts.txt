@@ -1,1 +1,8 @@
-Select your favourite genre of music and guess the song title and artist. This app uses Nokia Mix Radio API
+Select your favourite genre of music and guess the song title and artist. 
+This app uses Nokia Mix Radio API.
+
+
+
+ITA:
+Seleziona il tuo genere musicale preferito ed indovina il titolo e l'autore della canzone.
+Questa app usa le Nokia Mix Radio API.
