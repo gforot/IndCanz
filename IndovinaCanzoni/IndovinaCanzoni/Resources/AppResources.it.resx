@@ -156,6 +156,12 @@
   <data name="Author" xml:space="preserve">
     <value>By gforot</value>
   </data>
+  <data name="BackTileMessage" xml:space="preserve">
+    <value>Indovina titolo ed artista!!!</value>
+  </data>
+  <data name="BackTileWideMessage" xml:space="preserve">
+    <value>Indovina titolo ed artista!!!</value>
+  </data>
   <data name="CheckConnection" xml:space="preserve">
     <value>Connessione assente. Riprovare più tardi.</value>
   </data>

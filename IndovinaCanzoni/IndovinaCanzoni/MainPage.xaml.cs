@@ -34,23 +34,39 @@ namespace IndovinaCanzoni
         #region Tiles
         private void CreateTiles()
         {
-            if (Mangopollo.Utils.CanUseLiveTiles)
-            {
-                var tileId = ShellTile.ActiveTiles.FirstOrDefault();
-                if (tileId != null)
-                {
-                    var tileData = new FlipTileData();
-                    tileData.Title = AppResources.ApplicationTitle;
-                    tileData.BackContent = "";
-                    //tileData.BackgroundImage = new Uri("/Icons/173x173.png", UriKind.Relative);
-                    tileData.BackBackgroundImage = new Uri("/Icons/173x173.png", UriKind.Relative);
-                    tileData.WideBackContent = "";
-                    //tileData.WideBackgroundImage = new Uri("/Icons/346x173.png", UriKind.Relative);
-                    tileData.WideBackBackgroundImage = new Uri("/Icons/346x173.png", UriKind.Relative);
-                    //Debug.WriteLine("Activating live tile: " + Mangopollo.Utils.CanUseLiveTiles);
-                    tileId.Update(tileData);
-                }
-            }
+            ShellTile oTile = ShellTile.ActiveTiles.First();
+            FlipTileData oFliptile = new FlipTileData();
+
+            
+
+            #region Front
+            oFliptile.Title = AppResources.ApplicationTitle;
+
+            oFliptile.SmallBackgroundImage = new Uri("Assets/Tiles/radio_159_159.png", UriKind.Relative);
+            oFliptile.BackgroundImage = new Uri("Assets/Tiles/radio_336_336.png", UriKind.Relative);
+            oFliptile.WideBackgroundImage = new Uri("Assets/Tiles/radio_691_336.png", UriKind.Relative);
+            #endregion
+
+            #region Back
+            oFliptile.BackBackgroundImage = new Uri("/Assets/Tiles/radio_336_336.png", UriKind.Relative);
+            oFliptile.WideBackBackgroundImage = new Uri("/Assets/Tiles/radio_691_336.png", UriKind.Relative);
+
+            oFliptile.BackTitle = AppResources.ApplicationTitle;
+
+            oFliptile.BackContent = AppResources.BackTileMessage;
+            oFliptile.WideBackContent = AppResources.BackTileWideMessage;
+            #endregion
+
+            #region Common
+            oFliptile.Count = 11;
+            #endregion
+
+
+
+
+
+
+            oTile.Update(oFliptile);
         }
         #endregion
 

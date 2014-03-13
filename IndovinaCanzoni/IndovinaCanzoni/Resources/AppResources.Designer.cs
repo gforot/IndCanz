@@ -178,6 +178,24 @@ namespace IndovinaCanzoni.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Guess title and artist!!!.
+        /// </summary>
+        public static string BackTileMessage {
+            get {
+                return ResourceManager.GetString("BackTileMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Guess title and artist!!!.
+        /// </summary>
+        public static string BackTileWideMessage {
+            get {
+                return ResourceManager.GetString("BackTileWideMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Internet connection not found./nPlease connect and retry..
         /// </summary>
         public static string CheckConnection {

@@ -248,4 +248,10 @@
   <data name="NotAvailable" xml:space="preserve">
     <value>n/a</value>
   </data>
+  <data name="BackTileMessage" xml:space="preserve">
+    <value>Guess title and artist!!!</value>
+  </data>
+  <data name="BackTileWideMessage" xml:space="preserve">
+    <value>Guess title and artist!!!</value>
+  </data>
 </root>
