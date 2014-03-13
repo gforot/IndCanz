@@ -5,6 +5,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System;
 using System.Windows.Data;
+using IndovinaCanzoni.Tiles;
 
 namespace IndovinaCanzoni.Utils
 {
@@ -80,6 +81,10 @@ namespace IndovinaCanzoni.Utils
             {
                 return;
             }
+
+            //aggiorno tile
+            TilesManager.UpdateTiles(si);
+
             _highScores.Add(si);
             TruncHighscores();   
         }

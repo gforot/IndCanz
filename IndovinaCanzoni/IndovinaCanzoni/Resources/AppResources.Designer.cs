@@ -178,7 +178,7 @@ namespace IndovinaCanzoni.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Guess title and artist!!!.
+        ///   Looks up a localized string similar to No highscore.
         /// </summary>
         public static string BackTileMessage {
             get {
@@ -187,11 +187,29 @@ namespace IndovinaCanzoni.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Guess title and artist!!!.
+        ///   Looks up a localized string similar to Highscore for {0}.
+        /// </summary>
+        public static string BackTileMessageFormat {
+            get {
+                return ResourceManager.GetString("BackTileMessageFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No highscore.
         /// </summary>
         public static string BackTileWideMessage {
             get {
                 return ResourceManager.GetString("BackTileWideMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} - {1} points.
+        /// </summary>
+        public static string BackTileWideMessageFormat {
+            get {
+                return ResourceManager.GetString("BackTileWideMessageFormat", resourceCulture);
             }
         }
         

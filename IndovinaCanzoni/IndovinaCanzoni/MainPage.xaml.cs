@@ -3,6 +3,7 @@ using System.Linq;
 using System.Windows;
 using Cimbalino.Phone.Toolkit.Services;
 using IndovinaCanzoni.Resources;
+using IndovinaCanzoni.Tiles;
 using IndovinaCanzoni.Utils;
 using IndovinaCanzoni.ViewModel;
 using Microsoft.Phone.Controls;
@@ -16,7 +17,10 @@ namespace IndovinaCanzoni
         public MainPage()
         {
             InitializeComponent();
-            CreateTiles();
+            if (Constants.IsFirstUsageOfApp)
+            {
+                TilesManager.UpdateTiles();
+            }
             FeedbackOverlay.VisibilityChanged += FeedbackOverlay_VisibilityChanged;
         }
 
@@ -28,45 +32,6 @@ namespace IndovinaCanzoni
             {
                 ApplicationBar.IsVisible = (FeedbackOverlay.Visibility != Visibility.Visible);
             }
-        }
-        #endregion
-
-        #region Tiles
-        private void CreateTiles()
-        {
-            ShellTile oTile = ShellTile.ActiveTiles.First();
-            FlipTileData oFliptile = new FlipTileData();
-
-            
-
-            #region Front
-            oFliptile.Title = AppResources.ApplicationTitle;
-
-            oFliptile.SmallBackgroundImage = new Uri("Assets/Tiles/radio_159_159.png", UriKind.Relative);
-            oFliptile.BackgroundImage = new Uri("Assets/Tiles/radio_336_336.png", UriKind.Relative);
-            oFliptile.WideBackgroundImage = new Uri("Assets/Tiles/radio_691_336.png", UriKind.Relative);
-            #endregion
-
-            #region Back
-            oFliptile.BackBackgroundImage = new Uri("/Assets/Tiles/radio_336_336.png", UriKind.Relative);
-            oFliptile.WideBackBackgroundImage = new Uri("/Assets/Tiles/radio_691_336.png", UriKind.Relative);
-
-            oFliptile.BackTitle = AppResources.ApplicationTitle;
-
-            oFliptile.BackContent = AppResources.BackTileMessage;
-            oFliptile.WideBackContent = AppResources.BackTileWideMessage;
-            #endregion
-
-            #region Common
-            oFliptile.Count = 11;
-            #endregion
-
-
-
-
-
-
-            oTile.Update(oFliptile);
         }
         #endregion
 

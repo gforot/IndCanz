@@ -2,6 +2,8 @@
 {
     public class Constants
     {
+        public static bool IsFirstUsageOfApp = true;
+
         /// <summary>
         /// True se si vuole testare la effettiva connessione con MixRadio
         /// Altrimenti false.

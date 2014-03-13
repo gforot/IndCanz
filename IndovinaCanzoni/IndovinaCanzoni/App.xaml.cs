@@ -14,6 +14,7 @@ using IndovinaCanzoni.Utils;
 using IndovinaCanzoni.ViewModel;
 using GalaSoft.MvvmLight.Ioc;
 using Cimbalino.Phone.Toolkit.Services;
+using System.IO.IsolatedStorage;
 
 namespace IndovinaCanzoni
 {
@@ -75,6 +76,18 @@ namespace IndovinaCanzoni
         // This code will not execute when the application is reactivated
         private void Application_Launching(object sender, LaunchingEventArgs e)
         {
+            IsolatedStorageSettings appSettings = IsolatedStorageSettings.ApplicationSettings;
+            Constants.IsFirstUsageOfApp = true;
+            if (appSettings.Contains("alreadyUsed"))
+            {
+                Constants.IsFirstUsageOfApp = false;
+            }
+            else
+            {
+                appSettings.Add("alreadyUsed", true);
+                appSettings.Save();
+            }
+
             HighScores = new HighScores();
         }
 

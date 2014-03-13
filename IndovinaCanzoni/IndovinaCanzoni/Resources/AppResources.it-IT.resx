@@ -249,9 +249,9 @@
     <value>n/d</value>
   </data>
   <data name="BackTileMessage" xml:space="preserve">
-    <value>Indovina titolo ed artista!!!</value>
+    <value>Nessun record</value>
   </data>
   <data name="BackTileWideMessage" xml:space="preserve">
-    <value>Indovina titolo ed artista!!!</value>
+    <value>Nessun record</value>
   </data>
 </root>
